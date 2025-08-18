@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="VLab Course Team">
 
-<title>VLab5 Course - About</title>
+<title>VLab5 Course - Exploring Global Tuna Atlas Data via Shiny (15 min)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">About</h1>
+      <h1 class="quarto-secondary-nav-title">Exploring Global Tuna Atlas Data via Shiny (15 min)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,15 +164,15 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Lesson 3.3 — Exploring Global Tuna Atlas data through Shiny applications in the VLab 5</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Lesson 3.3 — Exploring Global Tuna Atlas data through Shiny applications in the VLab 5</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exploring-global-tuna-atlas-data-via-shiny.html" class="sidebar-item-text sidebar-link">Exploring Global Tuna Atlas Data via Shiny (15 min)</a>
+  <a href="./exploring-global-tuna-atlas-data-via-shiny.html" class="sidebar-item-text sidebar-link active">Exploring Global Tuna Atlas Data via Shiny (15 min)</a>
   </div>
 </li>
       </ul>
@@ -181,20 +182,35 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#quick-start-in-vlab5" id="toc-quick-start-in-vlab5" class="nav-link active" data-scroll-target="#quick-start-in-vlab5">Quick Start in VLab5</a></li>
+  <li><a href="#shiny-apps-in-this-lesson" id="toc-shiny-apps-in-this-lesson" class="nav-link" data-scroll-target="#shiny-apps-in-this-lesson">📦 Shiny Apps in this lesson</a></li>
+  <li><a href="#example-walkthroughs" id="toc-example-walkthroughs" class="nav-link" data-scroll-target="#example-walkthroughs">Example walkthroughs</a></li>
+  <li><a href="#strengths-vs.-limitations-of-gui-tools" id="toc-strengths-vs.-limitations-of-gui-tools" class="nav-link" data-scroll-target="#strengths-vs.-limitations-of-gui-tools">Strengths vs.&nbsp;limitations of GUI tools</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">About</h1>
+<h1 class="title d-none d-lg-block">Exploring Global Tuna Atlas Data via Shiny (15 min)</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>VLab Course Team </p>
+          </div>
+  </div>
     
   
     
@@ -203,8 +219,128 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<blockquote class="blockquote">
+<p><strong>Objective:</strong> Learn how to interact with processed GTA datasets through dynamic <strong>Shiny</strong> applications, understand the <strong>benefits/limits</strong> of each app, and how CWP-formatted datasets fit in.<br>
+<strong>Prerequisite:</strong> Good understanding of GTA datasets (Levels, effort, CPUE).<br>
+<strong>Presentation:</strong> Hands-on demo + self‑exploration + short quiz.<br>
+<strong>Outcome:</strong> Learners can use a Shiny app to explore GTA datasets <strong>with or without writing code</strong>.</p>
+</blockquote>
+<hr>
+<section id="quick-start-in-vlab5" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-in-vlab5">Quick Start in VLab5</h2>
+<p>Shiny apps can be accessed in <strong>two ways</strong>:</p>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong> in VLab → directly launch stable or dev versions of available apps.</li>
+<li>From the repository in <code>~/GitHubRepos</code> → open the <code>.Rproj</code>, restore packages, and run <code>shiny::runApp()</code>.</li>
+</ol>
+<blockquote class="blockquote">
+<p>All Shiny apps have <strong>stable and dev versions</strong>, except <strong>darwin_core_viewer</strong> which is only available as a stable version in the Shiny Apps tab.</p>
+</blockquote>
+<hr>
+</section>
+<section id="shiny-apps-in-this-lesson" class="level2">
+<h2 class="anchored" data-anchor-id="shiny-apps-in-this-lesson">📦 Shiny Apps in this lesson</h2>
+<section id="main-apps-available-in-shiny-apps-tab" class="level3">
+<h3 class="anchored" data-anchor-id="main-apps-available-in-shiny-apps-tab">Main apps (available in Shiny Apps tab)</h3>
+<ul>
+<li><p><strong>tunaatlas_pie_map_shiny</strong> (stable + dev)<br>
+<em>Purpose:</em> Visualize <strong>any dataset in CWP format</strong> (catch/effort) with interactive <strong>maps and plots</strong>.<br>
+<em>Docs:</em> See repo <strong>README</strong> for supported schemas, required columns, and examples.<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a></p></li>
+<li><p><strong>shiny_compare_tunaatlas_datasets</strong> (stable + dev)<br>
+<em>Purpose:</em> <strong>Compare</strong> harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).<br>
+<em>Docs:</em> README describes how to reference DOIs and comparison keys.<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/shiny_compare_fisheries_datasets" class="uri">https://github.com/firms-gta/shiny_compare_fisheries_datasets</a></p></li>
+</ul>
+</section>
+<section id="additional-app" class="level3">
+<h3 class="anchored" data-anchor-id="additional-app">Additional app</h3>
+<ul>
+<li><strong>darwin_core_viewer</strong> (stable only)<br>
+<em>Purpose:</em> Minimal viewer for <strong>Darwin Core</strong> biodiversity data (maps + plots). Good <strong>template</strong> for custom viewers.<br>
+<em>Docs:</em> README covers expected Darwin Core fields (e.g., <code>scientificName</code>, <code>eventDate</code>, <code>decimalLatitude/Longitude</code>).<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/darwin_core_viewer" class="uri">https://github.com/firms-gta/darwin_core_viewer</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="example-walkthroughs" class="level2">
+<h2 class="anchored" data-anchor-id="example-walkthroughs">Example walkthroughs</h2>
+<section id="a-explore-a-cwp-dataset-with-tunaatlas_pie_map_shiny" class="level3">
+<h3 class="anchored" data-anchor-id="a-explore-a-cwp-dataset-with-tunaatlas_pie_map_shiny">A) Explore a CWP dataset with <code>tunaatlas_pie_map_shiny</code></h3>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong>, open the stable version (recommended).<br>
+<em>(Alternatively, run locally with <code>shiny::runApp()</code> after restoring packages.)</em><br>
+</li>
+<li>A formatted dataset is already loaded. You can as well choose a different dataset to explore in the ‘Choose dataset’ panel.</li>
+<li><strong>Filter</strong> → by species, gear, year range, area.<br>
+</li>
+<li><strong>Visualize</strong> → interactive map (e.g., 5° grid) + plots; export as needed (see README).</li>
+</ol>
+<p><strong>Strengths</strong>: quick exploration, map‑centric, supports broad CWP datasets.<br>
+<strong>Limits</strong>: depends on schema conformity; heavy datasets may be slow.</p>
+</section>
+<section id="b-compare-several-gta-releases-with-shiny_compare_tunaatlas_datasets" class="level3">
+<h3 class="anchored" data-anchor-id="b-compare-several-gta-releases-with-shiny_compare_tunaatlas_datasets">B) Compare several GTA releases with <code>shiny_compare_tunaatlas_datasets</code></h3>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong>, open dev or stable version.<br>
+</li>
+<li>Datasets are already loaded from DOIs. If you want to explore other datasets, just update the DOI.csv file in the repository.<br>
+</li>
+<li><strong>Choose keys</strong> (year/area/gear/species).<br>
+</li>
+<li><strong>Inspect differences</strong> → tables/plots of differences, coverage, and changes.</li>
+</ol>
+<p><strong>Strengths</strong>: release comparisons, quick differences across versions.<br>
+<strong>Limits</strong>: assumes comparable schemas; interpret differencies carefully as the differences of processes for each datasets are complex.</p>
+<hr>
+</section>
+</section>
+<section id="strengths-vs.-limitations-of-gui-tools" class="level2">
+<h2 class="anchored" data-anchor-id="strengths-vs.-limitations-of-gui-tools">Strengths vs.&nbsp;limitations of GUI tools</h2>
+<p><strong>Strengths</strong></p>
+<ul>
+<li>Lower barrier to entry — no code needed.<br>
+</li>
+<li>Fast exploratory analysis &amp; visual quality assurance.<br>
+</li>
+<li>Standardized filters/views reduce errors.</li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>Less flexible than writing code for bespoke analytics.<br>
+</li>
+<li>Performance can degrade on very large datasets.<br>
+</li>
+<li>Schema assumptions must be respected (CWP format).</li>
+</ul>
+<!-- --- -->
+<!-- ## Optional: Where CWP fits -->
+<!-- - **CWP standards** (species, gear, area) are the **backbone** of harmonization.   -->
+<!-- - Shiny apps expect datasets that follow these codes; otherwise mapping fails or fields won’t populate.   -->
+<!-- - If you need a refresher, see Lesson **3.1** (standards & FAIR) or Module 1. -->
+<hr>
+<!-- ## Bonus: What is ShinyProxy? -->
+<!-- A container‑based platform for **hosting Shiny apps** at scale (auth, routing, resource control). The GTA apps can be served through ShinyProxy.   -->
+<!-- > Coordinate with your platform admin (e.g., **Julien Barde**) for deployment specifics (images, memory, user mapping).   -->
+<!-- > See each repo’s **README** for containerization notes or Dockerfiles. -->
+<!-- 📌 There is also a **Shiny App Deployment Guide**, but this will be covered in a **separate bonus lesson**. -->
+<!-- --- -->
+<!-- ## Mini Task + Quick Quiz -->
+<!-- **Task (5–10 min)**   -->
+<!-- - Launch `tunaatlas_pie_map_shiny` from the Shiny Apps tab, load a CWP catch dataset, filter for one species (e.g., `SKJ`) and 2015–2020, and export a plot. -->
+<!-- **Quiz (2 items)**   -->
+<!-- 1) Which constraint is **most** crucial for these apps to work?   -->
+<!-- - A) File naming   -->
+<!-- - B) CWP schema conformity ✅   -->
+<!-- - C) Folder depth   -->
+<!-- 2) `shiny_compare_tunaatlas_datasets` is mainly used to…   -->
+<!-- - A) Edit raw CSVs   -->
+<!-- - B) Compare DOI releases ✅   -->
+<!-- - C) Generate CPUE -->
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

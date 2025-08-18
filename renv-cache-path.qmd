@@ -27,8 +27,17 @@ RENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv
 Then **restart R** (Session → Restart R). From now on, all your projects will use this cache automatically.
 
 **Notes:**
+
 - The path can be **any directory** you can read/write.  
-- Using a location under **`~/blue-cloud-dataspace/`** makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than local disk).
+- Using a location under **`~/blue-cloud-dataspace/`** makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than other folders from the workspace).
+- To avoid issues caused by cache corruption or accidental deletions (since the cache folders are shared), you can isolate your project libraries from the mutual cache using:
+
+```r
+renv::isolate()
+```
+
+This command copies all the required packages directly into the renv folder of your project.
+Be cautious when running this locally, as it can significantly increase disk usage.
 
 ---
 
@@ -90,6 +99,7 @@ In this course, we configured our cache in:
 because it is the one we use in the Vlab 5.
 
 But you are free to define a **different cache path** that matches your own setup:
+
 - A cache specific to your **group of projects**
 - A cache specific to your **VLab instance**
 

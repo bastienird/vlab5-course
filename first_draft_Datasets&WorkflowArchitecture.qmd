@@ -1,0 +1,84 @@
+---
+title: "Global Tuna Atlas — Datasets & Workflow Architecture"
+author: "Module 3 — Lesson 3.1"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+engine: knitr
+---
+
+## Learning goals
+- Understand the **family of GTA datasets** and their relationships.  
+- See the **end‑to‑end workflow**: inputs → harmonization → aggregation → publication.
+
+---
+
+## The GTA dataset family (high level)
+
+- **Level 0 (L0)** — *Raw-like harmonized* records at highest available resolution (spatial, temporal, gear).  
+- **Level 1 (L1)** — Harmonized & **standardized** records using CWP mappings (species, gear, area codes).  
+- **Level 2 (L2)** — **Aggregated** products (e.g., by year × area × gear × species).  
+- **Effort** — Fishing effort aligned to the same spatial/temporal grids.  
+- **CPUE** — Derived indicator (Catch Per Unit Effort) from harmonized **catch** and **effort**.
+
+> **Note**: Names/levels reflect the data lineage, not legal definitions.
+
+---
+
+## Workflow architecture (overview)
+
+```text
+Providers (RFMOs, partners)
+  │  raw formats (csv/xlsx/db)
+  ▼
+Ingestion → Validation → Harmonization (CWP codes)
+  │  (geoflow-tunaatlas scripts)
+  ▼
+L0/L1 tables (standard schema)
+  │
+  ├─► L2 aggregations (by time/space/gear/species)
+  │
+  ├─► Effort harmonization (same grid)
+  │
+  └─► CPUE = Catch / Effort (post‑processing)
+  ▼
+Publication & metadata (Zenodo DOI)
+```
+
+Key components:
+- **Harmonization**: mapping provider codes to **CWP** standards.
+- **Spatial gridding**: consistent areas (e.g., 5° × 5°) / EEZ / FAO areas as required.
+- **Temporal alignment**: monthly/annual aggregations.
+- **Metadata & provenance**: versioning, changelogs, DOI per release.
+
+---
+
+## Inputs & outputs (typical)
+
+**Inputs**
+- Provider catch tables (species, gear, flag, time, area, weight).  
+- Effort tables (days/fishing, hooks, sets, hours).  
+- Reference dictionaries (CWP species/gear/area).  
+
+**Core outputs**
+- `catch_L0`, `catch_L1`, `catch_L2`  
+- `effort_L1` (or harmonized effort grid)  
+- `cpue_products` (derived indicators)  
+- Release package + **README**, **data dictionary**, and **metadata**.
+
+---
+
+## Quality checks (examples)
+- Integrity checks (keys, duplicates, missing).  
+- Code-list coverage (all provider codes resolvable to CWP).  
+- Range checks on weights/effort by species/gear.  
+- Reproducibility: run logs, session info, `renv::restore()`.
+
+---
+
+## Where this is implemented
+- In practice, the architecture is executed by the **geoflow-tunaatlas** repository (plus related Shiny viewers), with workflows that:  
+  1) harmonize raw inputs to CWP; 2) produce L0/L1; 3) aggregate to L2; 4) publish and document releases (DOI).  
+
+> You will run an example in Lesson **3.5** and see how CPUE is produced in the companion page.

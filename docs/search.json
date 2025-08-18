@@ -109,7 +109,7 @@
     "href": "renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
     "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Option A — Set a user-level cache in ~/.Renviron",
-    "text": "Option A — Set a user-level cache in ~/.Renviron\nCreate (or edit) a file named ~/.Renviron and add:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nThen restart R (Session → Restart R). From now on, all your projects will use this cache automatically.\nNotes: - The path can be any directory you can read/write.\n- Using a location under ~/blue-cloud-dataspace/ makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than local disk)."
+    "text": "Option A — Set a user-level cache in ~/.Renviron\nCreate (or edit) a file named ~/.Renviron and add:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nThen restart R (Session → Restart R). From now on, all your projects will use this cache automatically.\nNotes:\n\nThe path can be any directory you can read/write.\n\nUsing a location under ~/blue-cloud-dataspace/ makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than other folders from the workspace).\nTo avoid issues caused by cache corruption or accidental deletions (since the cache folders are shared), you can isolate your project libraries from the mutual cache using:\n\nrenv::isolate()\nThis command copies all the required packages directly into the renv folder of your project. Be cautious when running this locally, as it can significantly increase disk usage."
   },
   {
     "objectID": "renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
@@ -144,7 +144,7 @@
     "href": "renv-cache-path.html#notes-on-group-specific-caches",
     "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Notes on group-specific caches",
-    "text": "Notes on group-specific caches\nIn this course, we configured our cache in:\n~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nbecause it is the one we use in the Vlab 5.\nBut you are free to define a different cache path that matches your own setup: - A cache specific to your group of projects - A cache specific to your VLab instance\nThis flexibility lets different groups share a cache internally while keeping separation from other workspaces."
+    "text": "Notes on group-specific caches\nIn this course, we configured our cache in:\n~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nbecause it is the one we use in the Vlab 5.\nBut you are free to define a different cache path that matches your own setup:\n\nA cache specific to your group of projects\nA cache specific to your VLab instance\n\nThis flexibility lets different groups share a cache internally while keeping separation from other workspaces."
   },
   {
     "objectID": "lesson-3-5-overview.html",
@@ -180,5 +180,82 @@
     "title": "Overview",
     "section": "Expected outcome",
     "text": "Expected outcome\nBy the end of this lesson, learners will:\n\nIdentify and choose an appropriate repository.\nExecute a full R workflow in VLab5.\n(Bonus) Understand package dependencies and renv logic."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "",
+    "text": "Understand the family of GTA datasets and their relationships.\n\nSee the end‑to‑end workflow: inputs → harmonization → aggregation → publication."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#the-gta-dataset-family-high-level",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#the-gta-dataset-family-high-level",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "The GTA dataset family (high level)",
+    "text": "The GTA dataset family (high level)\n\nLevel 0 (L0) — Raw-like harmonized records at highest available resolution (spatial, temporal, gear).\n\nLevel 1 (L1) — Harmonized & standardized records using CWP mappings (species, gear, area codes).\n\nLevel 2 (L2) — Aggregated products (e.g., by year × area × gear × species).\n\nEffort — Fishing effort aligned to the same spatial/temporal grids.\n\nCPUE — Derived indicator (Catch Per Unit Effort) from harmonized catch and effort.\n\n\nNote: Names/levels reflect the data lineage, not legal definitions."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#workflow-architecture-overview",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#workflow-architecture-overview",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "Workflow architecture (overview)",
+    "text": "Workflow architecture (overview)\nProviders (RFMOs, partners)\n  │  raw formats (csv/xlsx/db)\n  ▼\nIngestion → Validation → Harmonization (CWP codes)\n  │  (geoflow-tunaatlas scripts)\n  ▼\nL0/L1 tables (standard schema)\n  │\n  ├─► L2 aggregations (by time/space/gear/species)\n  │\n  ├─► Effort harmonization (same grid)\n  │\n  └─► CPUE = Catch / Effort (post‑processing)\n  ▼\nPublication & metadata (Zenodo DOI)\nKey components: - Harmonization: mapping provider codes to CWP standards. - Spatial gridding: consistent areas (e.g., 5° × 5°) / EEZ / FAO areas as required. - Temporal alignment: monthly/annual aggregations. - Metadata & provenance: versioning, changelogs, DOI per release."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#inputs-outputs-typical",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#inputs-outputs-typical",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "Inputs & outputs (typical)",
+    "text": "Inputs & outputs (typical)\nInputs - Provider catch tables (species, gear, flag, time, area, weight).\n- Effort tables (days/fishing, hooks, sets, hours).\n- Reference dictionaries (CWP species/gear/area).\nCore outputs - catch_L0, catch_L1, catch_L2\n- effort_L1 (or harmonized effort grid)\n- cpue_products (derived indicators)\n- Release package + README, data dictionary, and metadata."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#quality-checks-examples",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#quality-checks-examples",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "Quality checks (examples)",
+    "text": "Quality checks (examples)\n\nIntegrity checks (keys, duplicates, missing).\n\nCode-list coverage (all provider codes resolvable to CWP).\n\nRange checks on weights/effort by species/gear.\n\nReproducibility: run logs, session info, renv::restore()."
+  },
+  {
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#where-this-is-implemented",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#where-this-is-implemented",
+    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "section": "Where this is implemented",
+    "text": "Where this is implemented\n\nIn practice, the architecture is executed by the geoflow-tunaatlas repository (plus related Shiny viewers), with workflows that:\n\nharmonize raw inputs to CWP; 2) produce L0/L1; 3) aggregate to L2; 4) publish and document releases (DOI).\n\n\n\nYou will run an example in Lesson 3.5 and see how CPUE is produced in the companion page."
+  },
+  {
+    "objectID": "exploring-global-tuna-atlas-data-via-shiny.html",
+    "href": "exploring-global-tuna-atlas-data-via-shiny.html",
+    "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
+    "section": "",
+    "text": "Objective: Learn how to interact with processed GTA datasets through dynamic Shiny applications, understand the benefits/limits of each app, and how CWP-formatted datasets fit in.\nPrerequisite: Good understanding of GTA datasets (Levels, effort, CPUE).\nPresentation: Hands-on demo + self‑exploration + short quiz.\nOutcome: Learners can use a Shiny app to explore GTA datasets with or without writing code."
+  },
+  {
+    "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#quick-start-in-vlab5",
+    "href": "exploring-global-tuna-atlas-data-via-shiny.html#quick-start-in-vlab5",
+    "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
+    "section": "Quick Start in VLab5",
+    "text": "Quick Start in VLab5\nShiny apps can be accessed in two ways:\n\nFrom the Shiny Apps tab in VLab → directly launch stable or dev versions of available apps.\nFrom the repository in ~/GitHubRepos → open the .Rproj, restore packages, and run shiny::runApp().\n\n\nAll Shiny apps have stable and dev versions, except darwin_core_viewer which is only available as a stable version in the Shiny Apps tab."
+  },
+  {
+    "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#shiny-apps-in-this-lesson",
+    "href": "exploring-global-tuna-atlas-data-via-shiny.html#shiny-apps-in-this-lesson",
+    "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
+    "section": "📦 Shiny Apps in this lesson",
+    "text": "📦 Shiny Apps in this lesson\n\nMain apps (available in Shiny Apps tab)\n\ntunaatlas_pie_map_shiny (stable + dev)\nPurpose: Visualize any dataset in CWP format (catch/effort) with interactive maps and plots.\nDocs: See repo README for supported schemas, required columns, and examples.\nGitHub: https://github.com/firms-gta/tunaatlas_pie_map_shiny\nshiny_compare_tunaatlas_datasets (stable + dev)\nPurpose: Compare harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).\nDocs: README describes how to reference DOIs and comparison keys.\nGitHub: https://github.com/firms-gta/shiny_compare_fisheries_datasets\n\n\n\nAdditional app\n\ndarwin_core_viewer (stable only)\nPurpose: Minimal viewer for Darwin Core biodiversity data (maps + plots). Good template for custom viewers.\nDocs: README covers expected Darwin Core fields (e.g., scientificName, eventDate, decimalLatitude/Longitude).\nGitHub: https://github.com/firms-gta/darwin_core_viewer"
+  },
+  {
+    "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#example-walkthroughs",
+    "href": "exploring-global-tuna-atlas-data-via-shiny.html#example-walkthroughs",
+    "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
+    "section": "Example walkthroughs",
+    "text": "Example walkthroughs\n\nA) Explore a CWP dataset with tunaatlas_pie_map_shiny\n\nFrom the Shiny Apps tab, open the stable version (recommended).\n(Alternatively, run locally with shiny::runApp() after restoring packages.)\n\nA formatted dataset is already loaded. You can as well choose a different dataset to explore in the ‘Choose dataset’ panel.\nFilter → by species, gear, year range, area.\n\nVisualize → interactive map (e.g., 5° grid) + plots; export as needed (see README).\n\nStrengths: quick exploration, map‑centric, supports broad CWP datasets.\nLimits: depends on schema conformity; heavy datasets may be slow.\n\n\nB) Compare several GTA releases with shiny_compare_tunaatlas_datasets\n\nFrom the Shiny Apps tab, open dev or stable version.\n\nDatasets are already loaded from DOIs. If you want to explore other datasets, just update the DOI.csv file in the repository.\n\nChoose keys (year/area/gear/species).\n\nInspect differences → tables/plots of differences, coverage, and changes.\n\nStrengths: release comparisons, quick differences across versions.\nLimits: assumes comparable schemas; interpret differencies carefully as the differences of processes for each datasets are complex."
+  },
+  {
+    "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#strengths-vs.-limitations-of-gui-tools",
+    "href": "exploring-global-tuna-atlas-data-via-shiny.html#strengths-vs.-limitations-of-gui-tools",
+    "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
+    "section": "Strengths vs. limitations of GUI tools",
+    "text": "Strengths vs. limitations of GUI tools\nStrengths\n\nLower barrier to entry — no code needed.\n\nFast exploratory analysis & visual quality assurance.\n\nStandardized filters/views reduce errors.\n\nLimitations\n\nLess flexible than writing code for bespoke analytics.\n\nPerformance can degrade on very large datasets.\n\nSchema assumptions must be respected (CWP format)."
   }
 ]
