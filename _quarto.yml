@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "VLab5 Course"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: intro-rstudio.qmd
+        text: Intro to RStudio
+      - href: project-organization.qmd
+        text: Project Organization
+      - href: running-scripts-in-loaded-repo.qmd
+        text: Running Rscripts in loaded repositories
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    link-external: true
+    link-external-icon: true   # ajoute un petit icône ↗
+
+editor: visual
+
