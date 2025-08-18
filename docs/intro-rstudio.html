@@ -122,12 +122,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -147,27 +147,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="./index.html">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./intro-rstudio.html" aria-current="page">
- <span class="menu-text">Intro to RStudio</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-module-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Module 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-module-3">    
+        <li>
+    <a class="dropdown-item" href="./lesson-3-1-overview.qmd">
+ <span class="dropdown-text">📘 Lesson 3.1 Overview</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./project-organization.html">
- <span class="menu-text">Project Organization</span></a>
+        <li>
+    <a class="dropdown-item" href="./lesson-3-5-overview.html">
+ <span class="dropdown-text">🎓 Lesson 3.5 Overview</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./running-scripts-in-loaded-repo.html">
- <span class="menu-text">Running Rscripts in loaded repositories</span></a>
-  </li>  
+    </ul>
+  </li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction to VLab5 and RStudio Server</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">📘 Lesson 3.1 — Intro to Global Tuna Atlas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  lesson-3-1-overview.qmd
+  </li>
+          <li class="sidebar-item">
+  gta-datasets-architecture.qmd
+  </li>
+          <li class="sidebar-item">
+  gta-dataset-specificities.qmd
+  </li>
+          <li class="sidebar-item">
+  gta-standards-fair.qmd
+  </li>
+          <li class="sidebar-item">
+  gta-materials.qmd
+  </li>
+          <li class="sidebar-item">
+  gta-quiz.qmd
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">🎓 Lesson 3.5 — Running R Workflows in VLab5</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lesson-3-5-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-rstudio.html" class="sidebar-item-text sidebar-link active">Introduction to VLab5 and RStudio Server</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project-organization.html" class="sidebar-item-text sidebar-link">Project Organization</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./running-scripts-in-loaded-repo.html" class="sidebar-item-text sidebar-link">Running Rscripts in a loaded project</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deploy-repos-in-vlab-rstudioserver.html" class="sidebar-item-text sidebar-link">Bonus (Advanced): Deploy a Repo in Your Own VLab</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./renv-cache-path.html" class="sidebar-item-text sidebar-link">Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -188,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to VLab5 and RStudio Server</h1>
+<h1 class="title d-none d-lg-block">Introduction to VLab5 and RStudio Server</h1>
 </div>
 
 
@@ -512,4 +597,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -8,7 +8,7 @@
 
 <meta name="author" content="VLab Course Team">
 
-<title>VLab5 Course - Running Rscripts in a loaded project</title>
+<title>VLab5 Course - Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Running Rscripts in a loaded project</h1>
+      <h1 class="quarto-secondary-nav-title">Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -235,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./running-scripts-in-loaded-repo.html" class="sidebar-item-text sidebar-link active">Running Rscripts in a loaded project</a>
+  <a href="./running-scripts-in-loaded-repo.html" class="sidebar-item-text sidebar-link">Running Rscripts in a loaded project</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./renv-cache-path.html" class="sidebar-item-text sidebar-link">Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</a>
+  <a href="./renv-cache-path.html" class="sidebar-item-text sidebar-link active">Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</a>
   </div>
 </li>
       </ul>
@@ -259,10 +259,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#step-1-open-the-project-.rproj" id="toc-step-1-open-the-project-.rproj" class="nav-link active" data-scroll-target="#step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</a></li>
-  <li><a href="#step-2-restore-the-project-environment-with-renv" id="toc-step-2-restore-the-project-environment-with-renv" class="nav-link" data-scroll-target="#step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></a></li>
-  <li><a href="#example-with-geoflow-tunaatlas-project" id="toc-example-with-geoflow-tunaatlas-project" class="nav-link" data-scroll-target="#example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</a></li>
-  <li><a href="#other-repositories" id="toc-other-repositories" class="nav-link" data-scroll-target="#other-repositories">Other Repositories</a></li>
+  <li><a href="#why-use-a-personal-renv-cache-setting" id="toc-why-use-a-personal-renv-cache-setting" class="nav-link active" data-scroll-target="#why-use-a-personal-renv-cache-setting">Why use a personal <code>renv</code> cache setting?</a></li>
+  <li><a href="#option-a-set-a-user-level-cache-in-.renviron" id="toc-option-a-set-a-user-level-cache-in-.renviron" class="nav-link" data-scroll-target="#option-a-set-a-user-level-cache-in-.renviron">Option A — Set a user-level cache in <code>~/.Renviron</code></a></li>
+  <li><a href="#option-b-set-a-project-level-cache-in-project.renviron" id="toc-option-b-set-a-project-level-cache-in-project.renviron" class="nav-link" data-scroll-target="#option-b-set-a-project-level-cache-in-project.renviron">Option B — Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></a></li>
+  <li><a href="#verify-your-configuration" id="toc-verify-your-configuration" class="nav-link" data-scroll-target="#verify-your-configuration">Verify your configuration</a></li>
+  <li><a href="#using-the-cache-with-projects" id="toc-using-the-cache-with-projects" class="nav-link" data-scroll-target="#using-the-cache-with-projects">Using the cache with projects</a></li>
+  <li><a href="#good-practices-caveats" id="toc-good-practices-caveats" class="nav-link" data-scroll-target="#good-practices-caveats">Good practices &amp; caveats</a></li>
+  <li><a href="#notes-on-group-specific-caches" id="toc-notes-on-group-specific-caches" class="nav-link" data-scroll-target="#notes-on-group-specific-caches">Notes on group-specific caches</a></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Running Rscripts in a loaded project</h1>
+<h1 class="title d-none d-lg-block">Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)</h1>
 </div>
 
 
@@ -292,68 +295,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Before running any code in a repository, make sure you are <strong>inside the correct R project</strong> (<code>.Rproj</code>). This activates project-specific settings (including <code>renv</code>) and sets the working directory properly.</p>
-<hr>
-<section id="step-1-open-the-project-.rproj" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</h2>
-<p>Open a project using one of these options:</p>
-<ul>
-<li><strong>From the Files pane</strong> (bottom-right): navigate to the repository folder and click the <code>.Rproj</code> file.</li>
-<li><strong>Programmatically (requires <code>rstudioapi</code>)</strong>:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">openProject</span>(<span class="st">"~/GitHubRepos/geoflow-tunaatlas/stable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>Opening the <code>.Rproj</code> ensures that <code>renv</code> is activated via the project’s <code>.Rprofile</code> and that your working directory is correct.</p>
+<p>This independent note explains how <strong>any RStudio Server user on the infrastructure</strong> can use a <strong>shared/global <code>renv</code> cache</strong> without modifying Docker images or course repositories.</p>
 </blockquote>
+<section id="why-use-a-personal-renv-cache-setting" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-personal-renv-cache-setting">Why use a personal <code>renv</code> cache setting?</h2>
+<ul>
+<li>Avoid reinstalling the same packages for every project.<br>
+</li>
+<li>Speed up <code>renv::restore()</code> across projects by reusing binaries.<br>
+</li>
+<li>Keep full reproducibility (each project still uses its own <code>renv.lock</code>).</li>
+</ul>
 <hr>
 </section>
-<section id="step-2-restore-the-project-environment-with-renv" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></h2>
-<p>The <a href="https://rstudio.github.io/renv/"><code>renv</code> package</a> manages <strong>project-specific R environments</strong> to guarantee <strong>reproducibility</strong>. It records exact package versions in <code>renv.lock</code> and restores them on any machine.</p>
-<p>Run this once per project:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What this does:</p>
-<ul>
-<li>Installs missing packages <strong>or</strong> links them from VLab’s <strong>shared cache</strong> (fast).</li>
-<li>Aligns your session’s packages with the versions expected by the project.</li>
-</ul>
-<p>Useful tips:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check environment status (optional)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
+<section id="option-a-set-a-user-level-cache-in-.renviron" class="level2">
+<h2 class="anchored" data-anchor-id="option-a-set-a-user-level-cache-in-.renviron">Option A — Set a user-level cache in <code>~/.Renviron</code></h2>
+<p>Create (or edit) a file named <code>~/.Renviron</code> and add:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>RENV_PATHS_CACHE<span class="ot">=</span><span class="er">~/</span>blue<span class="sc">-</span>cloud<span class="sc">-</span>dataspace<span class="sc">/</span>GlobalFisheriesAtlas<span class="sc">/</span>cacheRenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then <strong>restart R</strong> (Session → Restart R). From now on, all your projects will use this cache automatically.</p>
+<p><strong>Notes:</strong> - The path can be <strong>any directory</strong> you can read/write.<br>
+- Using a location under <strong><code>~/blue-cloud-dataspace/</code></strong> makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than local disk).</p>
+<hr>
+</section>
+<section id="option-b-set-a-project-level-cache-in-project.renviron" class="level2">
+<h2 class="anchored" data-anchor-id="option-b-set-a-project-level-cache-in-project.renviron">Option B — Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></h2>
+<p>If you prefer to scope the cache setting to a <strong>single project</strong>, create a file named <code>.Renviron</code> in the <strong>project root</strong> (next to <code>.Rproj</code>) with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>RENV_PATHS_CACHE<span class="ot">=</span><span class="er">~/</span>blue<span class="sc">-</span>cloud<span class="sc">-</span>dataspace<span class="sc">/</span>GlobalFisheriesAtlas<span class="sc">/</span>cacheRenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Restart R inside the project. Only this project will use that cache.</p>
+<hr>
+</section>
+<section id="verify-your-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="verify-your-configuration">Verify your configuration</h2>
+<p>Run these checks in the R console:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What cache path is currently active?</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="st">"RENV_PATHS_CACHE"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If prompted after updates, restart your R session</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) rstudioapi<span class="sc">::</span><span class="fu">restartSession</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>✅ <strong>Always</strong> run <code>renv::restore()</code> when you open a <strong>new</strong> repository.<br>
-ℹ️ A later section of this course dives deeper into <code>renv</code>, shared caches in VLab, and linking multiple repos to a common cache directory.</p>
-</blockquote>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Where does renv think the cache lives?</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span>paths<span class="sc">$</span><span class="fu">cache</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Project environment status (optional)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you change <code>~/.Renviron</code> or <code>&lt;project&gt;/.Renviron</code>, <strong>restart R</strong> to apply.</p>
 <hr>
 </section>
-<section id="example-with-geoflow-tunaatlas-project" class="level2">
-<h2 class="anchored" data-anchor-id="example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</h2>
-<section id="step-3-explore-the-.rmd-report" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-explore-the-.rmd-report">Step 3: Explore the <code>.Rmd</code> Report</h3>
-<p>The file <code>summary_catch.Rmd</code> is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.</p>
-<p>You can render the entire report at once using:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"summary_catch.Rmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>However, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.</p>
-<p>Open the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation</p>
-</section>
-<section id="outputs" class="level3">
-<h3 class="anchored" data-anchor-id="outputs">Outputs</h3>
-<p>Executing the full <code>.Rmd</code> will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an <code>outputs/</code> subfolder.</p>
-<p>Note: <code>geoflow-tunaatlas</code> is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the <code>.Rmd</code> example shown here.</p>
+<section id="using-the-cache-with-projects" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-cache-with-projects">Using the cache with projects</h2>
+<p>Inside any project (after opening the <code>.Rproj</code>):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()   <span class="co"># will reuse packages from the shared cache when versions match</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Packages required by <code>renv.lock</code> will be <strong>linked or installed once</strong> into the cache and reused next time.</p>
 <hr>
 </section>
+<section id="good-practices-caveats" class="level2">
+<h2 class="anchored" data-anchor-id="good-practices-caveats">Good practices &amp; caveats</h2>
+<ul>
+<li>Keep the cache path <strong>stable</strong>; moving it breaks existing links.<br>
+</li>
+<li>If the cache becomes very large, you can clean unused entries with <code>renv::cache_clean()</code> (advanced).<br>
+</li>
+<li>The cache is <strong>per R version</strong>; upgrading R may create a new cache tree.<br>
+</li>
+<li>Shared locations improve reuse across projects and users, but network storage can be slower than local disk.</li>
+</ul>
+<hr>
 </section>
-<section id="other-repositories" class="level2">
-<h2 class="anchored" data-anchor-id="other-repositories">Other Repositories</h2>
-<p>For all of the other repositories in this course: - <code>tunaatlas_pie_map_shiny</code> - <code>shiny_compare_tunaatlas_datasets</code> - <code>darwin_core_viewer</code> the usage is much simpler. You typically only need two commands to get started:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These repositories are Shiny apps that can be launched directly after restoring the environment.</p>
-<p>You’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!</p>
+<section id="notes-on-group-specific-caches" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-group-specific-caches">Notes on group-specific caches</h2>
+<p>In this course, we configured our cache in:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span><span class="er">/</span>blue<span class="sc">-</span>cloud<span class="sc">-</span>dataspace<span class="sc">/</span>GlobalFisheriesAtlas<span class="sc">/</span>cacheRenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>because it is the one we use in the Vlab 5.</p>
+<p>But you are free to define a <strong>different cache path</strong> that matches your own setup: - A cache specific to your <strong>group of projects</strong> - A cache specific to your <strong>VLab instance</strong></p>
+<p>This flexibility lets different groups share a cache internally while keeping separation from other workspaces.</p>
 
 
 </section>

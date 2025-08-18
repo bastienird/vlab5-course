@@ -1,4 +1,12 @@
-## Overview
+---
+title: "Running Rscripts in a loaded project"
+author: "VLab Course Team"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+engine: knitr
+---
 
 Before running any code in a repository, make sure you are **inside the correct R project** (`.Rproj`). This activates project-specific settings (including `renv`) and sets the working directory properly.
 

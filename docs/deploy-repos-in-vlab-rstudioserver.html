@@ -8,7 +8,7 @@
 
 <meta name="author" content="VLab Course Team">
 
-<title>VLab5 Course - Running Rscripts in a loaded project</title>
+<title>VLab5 Course - Bonus (Advanced): Deploy a Repo in Your Own VLab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Running Rscripts in a loaded project</h1>
+      <h1 class="quarto-secondary-nav-title">Bonus (Advanced): Deploy a Repo in Your Own VLab</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -235,12 +235,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./running-scripts-in-loaded-repo.html" class="sidebar-item-text sidebar-link active">Running Rscripts in a loaded project</a>
+  <a href="./running-scripts-in-loaded-repo.html" class="sidebar-item-text sidebar-link">Running Rscripts in a loaded project</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deploy-repos-in-vlab-rstudioserver.html" class="sidebar-item-text sidebar-link">Bonus (Advanced): Deploy a Repo in Your Own VLab</a>
+  <a href="./deploy-repos-in-vlab-rstudioserver.html" class="sidebar-item-text sidebar-link active">Bonus (Advanced): Deploy a Repo in Your Own VLab</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,10 +259,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#step-1-open-the-project-.rproj" id="toc-step-1-open-the-project-.rproj" class="nav-link active" data-scroll-target="#step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</a></li>
-  <li><a href="#step-2-restore-the-project-environment-with-renv" id="toc-step-2-restore-the-project-environment-with-renv" class="nav-link" data-scroll-target="#step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></a></li>
-  <li><a href="#example-with-geoflow-tunaatlas-project" id="toc-example-with-geoflow-tunaatlas-project" class="nav-link" data-scroll-target="#example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</a></li>
-  <li><a href="#other-repositories" id="toc-other-repositories" class="nav-link" data-scroll-target="#other-repositories">Other Repositories</a></li>
+  <li><a href="#deployment-of-rstudio-server-in-a-vlab" id="toc-deployment-of-rstudio-server-in-a-vlab" class="nav-link active" data-scroll-target="#deployment-of-rstudio-server-in-a-vlab">1) Deployment of RStudio Server in a VLab</a></li>
+  <li><a href="#managing-a-global-renv-cache-in-docker-images" id="toc-managing-a-global-renv-cache-in-docker-images" class="nav-link" data-scroll-target="#managing-a-global-renv-cache-in-docker-images">2) Managing a Global <code>renv</code> cache in Docker images</a></li>
+  <li><a href="#the-truly-simple-path-what-to-consider" id="toc-the-truly-simple-path-what-to-consider" class="nav-link" data-scroll-target="#the-truly-simple-path-what-to-consider">3) The truly simple path (what to consider)</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">4) Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Running Rscripts in a loaded project</h1>
+<h1 class="title d-none d-lg-block">Bonus (Advanced): Deploy a Repo in Your Own VLab</h1>
 </div>
 
 
@@ -292,68 +292,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Before running any code in a repository, make sure you are <strong>inside the correct R project</strong> (<code>.Rproj</code>). This activates project-specific settings (including <code>renv</code>) and sets the working directory properly.</p>
-<hr>
-<section id="step-1-open-the-project-.rproj" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</h2>
-<p>Open a project using one of these options:</p>
-<ul>
-<li><strong>From the Files pane</strong> (bottom-right): navigate to the repository folder and click the <code>.Rproj</code> file.</li>
-<li><strong>Programmatically (requires <code>rstudioapi</code>)</strong>:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">openProject</span>(<span class="st">"~/GitHubRepos/geoflow-tunaatlas/stable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>Opening the <code>.Rproj</code> ensures that <code>renv</code> is activated via the project’s <code>.Rprofile</code> and that your working directory is correct.</p>
+<p>This optional guide is for <strong>advanced users</strong> who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab.</p>
+</blockquote>
+<hr>
+<section id="deployment-of-rstudio-server-in-a-vlab" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-of-rstudio-server-in-a-vlab">1) Deployment of RStudio Server in a VLab</h2>
+<p>The deployment process is documented in this D4Science support ticket:<br>
+<a href="https://support.d4science.org/issues/23536#note-15" class="uri">https://support.d4science.org/issues/23536#note-15</a></p>
+<p>The RStudio server setup for VLab5 is managed in the following repository:<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5" class="uri">https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5</a></p>
+<p>Key files include: - <strong>07_vlab5_github_repositories.sh</strong> — defines which GitHub repositories (stable/dev) are preloaded into the environment.<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh">View script</a> - <strong>Dockerfile</strong> — defines the RStudio server Docker image and how repositories and dependencies are installed.<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile">View Dockerfile</a></p>
+<blockquote class="blockquote">
+<p>⚠️ This is more <strong>technical and system-level</strong>. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough.</p>
 </blockquote>
 <hr>
 </section>
-<section id="step-2-restore-the-project-environment-with-renv" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></h2>
-<p>The <a href="https://rstudio.github.io/renv/"><code>renv</code> package</a> manages <strong>project-specific R environments</strong> to guarantee <strong>reproducibility</strong>. It records exact package versions in <code>renv.lock</code> and restores them on any machine.</p>
-<p>Run this once per project:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What this does:</p>
+<section id="managing-a-global-renv-cache-in-docker-images" class="level2">
+<h2 class="anchored" data-anchor-id="managing-a-global-renv-cache-in-docker-images">2) Managing a Global <code>renv</code> cache in Docker images</h2>
+<p>When building custom RStudio Docker images for your own VLab, it is possible to preconfigure a <strong>shared global cache</strong> for <code>renv</code>. This ensures that all projects within the VLab use the same package cache, saving time and storage.</p>
+<p>This is done by adding a line to <code>.Renviron.site</code> <strong>during Docker build</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">'RENV_PATHS_CACHE="~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv"'</span> <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> <span class="st">"</span><span class="va">${R_HOME}</span><span class="st">/etc/Renviron.site"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reference: <a href="https://support.d4science.org/issues/29739" class="uri">https://support.d4science.org/issues/29739</a></p>
+<section id="key-points" class="level3">
+<h3 class="anchored" data-anchor-id="key-points">Key points:</h3>
 <ul>
-<li>Installs missing packages <strong>or</strong> links them from VLab’s <strong>shared cache</strong> (fast).</li>
-<li>Aligns your session’s packages with the versions expected by the project.</li>
+<li>You can set <code>RENV_PATHS_CACHE</code> to <strong>any directory</strong>, depending on your VLab setup.<br>
+</li>
+<li>Using <strong><code>~/blue-cloud-dataspace/</code></strong> is recommended: it is accessible across all users and all VLab instances (though slightly slower than local storage).<br>
+</li>
+<li><code>.Renviron.site</code> ensures the cache is <strong>global to the image</strong> — every repository opened in RStudio will reuse this shared cache.</li>
 </ul>
-<p>Useful tips:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check environment status (optional)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If prompted after updates, restart your R session</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) rstudioapi<span class="sc">::</span><span class="fu">restartSession</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Effectively: - Each repository still has its own <code>renv.lock</code> file (to ensure reproducibility).<br>
+- But the <strong>package binaries</strong> are stored once in the shared cache, instead of reinstalling them for every project.</p>
+<hr>
+</section>
+</section>
+<section id="the-truly-simple-path-what-to-consider" class="level2">
+<h2 class="anchored" data-anchor-id="the-truly-simple-path-what-to-consider">3) The truly simple path (what to consider)</h2>
+<p>If you want to deploy <strong>the same setup</strong> as VLab5 in <em>your own</em> VLab, here are the essentials to look at and adapt per VLab:</p>
+<ol type="1">
+<li><strong>D4Science ticket (reference implementation &amp; notes):</strong>
+<ul>
+<li>See: https://support.d4science.org/issues/23536#note-15<br>
+<em>(Contains key decisions &amp; parameters used for the Fisheries Atlas VLab RStudio.)</em></li>
+</ul></li>
+<li><strong>RStudio Server image for D4Science (to adapt):</strong>
+<ul>
+<li>Repo: https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5</li>
+<li>Files to review:
+<ul>
+<li><code>Dockerfile</code><br>
+https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile</li>
+<li><code>07_vlab5_github_repositories.sh</code> (preloads the course repositories)<br>
+https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh</li>
+</ul></li>
+</ul></li>
+</ol>
 <blockquote class="blockquote">
-<p>✅ <strong>Always</strong> run <code>renv::restore()</code> when you open a <strong>new</strong> repository.<br>
-ℹ️ A later section of this course dives deeper into <code>renv</code>, shared caches in VLab, and linking multiple repos to a common cache directory.</p>
+<p>If this is interesting for your team, we can do a short technical walkthrough per VLab, since each environment may require minor adjustments (base image, permissions, storage mounts, etc.).</p>
 </blockquote>
 <hr>
 </section>
-<section id="example-with-geoflow-tunaatlas-project" class="level2">
-<h2 class="anchored" data-anchor-id="example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</h2>
-<section id="step-3-explore-the-.rmd-report" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-explore-the-.rmd-report">Step 3: Explore the <code>.Rmd</code> Report</h3>
-<p>The file <code>summary_catch.Rmd</code> is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.</p>
-<p>You can render the entire report at once using:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"summary_catch.Rmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>However, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.</p>
-<p>Open the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation</p>
-</section>
-<section id="outputs" class="level3">
-<h3 class="anchored" data-anchor-id="outputs">Outputs</h3>
-<p>Executing the full <code>.Rmd</code> will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an <code>outputs/</code> subfolder.</p>
-<p>Note: <code>geoflow-tunaatlas</code> is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the <code>.Rmd</code> example shown here.</p>
-<hr>
-</section>
-</section>
-<section id="other-repositories" class="level2">
-<h2 class="anchored" data-anchor-id="other-repositories">Other Repositories</h2>
-<p>For all of the other repositories in this course: - <code>tunaatlas_pie_map_shiny</code> - <code>shiny_compare_tunaatlas_datasets</code> - <code>darwin_core_viewer</code> the usage is much simpler. You typically only need two commands to get started:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These repositories are Shiny apps that can be launched directly after restoring the environment.</p>
-<p>You’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">4) Summary</h2>
+<ul>
+<li><strong>Basic users</strong>: You don’t need to worry about this — VLab5 is already configured.<br>
+</li>
+<li><strong>Advanced users</strong>: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global <code>renv</code> cache.<br>
+</li>
+<li><strong>Best practice</strong>: Use a cache in <code>blue-cloud-dataspace</code> for shared accessibility across all VLab instances.</li>
+</ul>
+<blockquote class="blockquote">
+<p>✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case.</p>
+</blockquote>
 
 
 </section>
