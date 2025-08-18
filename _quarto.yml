@@ -10,7 +10,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: "Module 3"
+      - text: "Global Tuna Atlas & VLab5"
         menu:
           - href: lesson-3-1-overview.qmd
             text: "📘 Lesson 3.1 Overview"
@@ -23,22 +23,23 @@ website:
       style: docked
       collapse-level: 1
       contents:
-        - section: "📘 Lesson 3.1 — Intro to Global Tuna Atlas"
+        - section: "📘 Lesson 3.1 — Intro to Global Tuna Atlas (incoming)"
           contents:
-            - lesson-3-1-overview.qmd
-            - gta-datasets-architecture.qmd
-            - gta-dataset-specificities.qmd
-            - gta-standards-fair.qmd
-            - gta-materials.qmd
-            - gta-quiz.qmd
+            # - lesson-3-1-overview.qmd
+            # - gta-datasets-architecture.qmd
+            # - gta-dataset-specificities.qmd
+            # - gta-standards-fair.qmd
+            # - gta-materials.qmd
+            # - gta-quiz.qmd
         - section: "🎓 Lesson 3.5 — Running R Workflows in VLab5"
           contents:
             - lesson-3-5-overview.qmd
             - intro-rstudio.qmd
             - project-organization.qmd
             - running-scripts-in-loaded-repo.qmd
-            - deploy-repos-in-vlab-rstudioserver.qmd
             - renv-cache-path.qmd
+            - deploy-repos-in-vlab-rstudioserver.qmd
+
 
 format:
   html:

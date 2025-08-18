@@ -1,4 +1,4 @@
-## Project Organization
+## Project organization
 
 All project repositories used in this course are **pre-installed** in your environment.
 
@@ -18,14 +18,14 @@ find ~/GitHubRepos -maxdepth 2 -exec ls -ld {} \;
 
 This will show the folder structure and help you identify which projects are available.
 
-### 🗂️ Types of Repositories
+### 🗂 ️Types of repositories
 
 -   Some repositories include **only a `dev` version** → they are currently under development.
 -   Others include both:
     -   `stable/`: the latest **release** from the `main` branch.
     -   `dev/`: the most recent **push** to the `dev` branch.
 
-### 📦 List of Projects
+### 📦 List of projects
 
 | Repository                           | Versions     | Description                                                                                                                                                                                | Main Script                      | GitHub                                                                  |
 |---------------|---------------|---------------|---------------|---------------|
@@ -40,4 +40,4 @@ This will show the folder structure and help you identify which projects are ava
 
 You can open and explore any of these projects directly in RStudio by navigating to the appropriate folder using the **Files tab**, or via `setwd("~/GitHubRepos/<project>/<version>/<project>")` in your console.
 
-Ready to run your first workflow? Jump to the next section about
+Ready to run your first workflow? Jump to the next section [Running Rscripts in a loaded project](running-scripts-in-loaded-repo.qmd) about the running of some scripts in the Vlab infrastructure of BlueCloud 2026. 
