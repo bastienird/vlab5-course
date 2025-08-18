@@ -173,17 +173,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#running-a-workflow-with-in-the-vlab-5-rstudio-server" id="toc-running-a-workflow-with-in-the-vlab-5-rstudio-server" class="nav-link active" data-scroll-target="#running-a-workflow-with-in-the-vlab-5-rstudio-server">Running a Workflow with in the Vlab 5 Rstudio server</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#step-1-open-the-project-.rproj" id="toc-step-1-open-the-project-.rproj" class="nav-link" data-scroll-target="#step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</a></li>
+  <li><a href="#step-2-restore-the-project-environment-with-renv" id="toc-step-2-restore-the-project-environment-with-renv" class="nav-link" data-scroll-target="#step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></a></li>
+  <li><a href="#example-with-geoflow-tunaatlas-project" id="toc-example-with-geoflow-tunaatlas-project" class="nav-link" data-scroll-target="#example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</a>
   <ul class="collapse">
-  <li><a href="#step-1-restore-the-project-environment-using-renv" id="toc-step-1-restore-the-project-environment-using-renv" class="nav-link" data-scroll-target="#step-1-restore-the-project-environment-using-renv">Step 1: Restore the Project Environment using <code>renv</code></a></li>
-  </ul></li>
-  <li><a href="#example-running-a-workflow-in-the-geoflow-tunaatlas-project." id="toc-example-running-a-workflow-in-the-geoflow-tunaatlas-project." class="nav-link" data-scroll-target="#example-running-a-workflow-in-the-geoflow-tunaatlas-project.">Example: Running a Workflow in the <code>geoflow-tunaatlas</code> project.</a>
-  <ul class="collapse">
-  <li><a href="#step-2-open-the-repository-folder" id="toc-step-2-open-the-repository-folder" class="nav-link" data-scroll-target="#step-2-open-the-repository-folder">Step 2: Open the Repository Folder</a></li>
   <li><a href="#step-3-explore-the-.rmd-report" id="toc-step-3-explore-the-.rmd-report" class="nav-link" data-scroll-target="#step-3-explore-the-.rmd-report">Step 3: Explore the <code>.Rmd</code> Report</a></li>
   <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs">Outputs</a></li>
   </ul></li>
-  <li><a href="#step-4-other-repositories" id="toc-step-4-other-repositories" class="nav-link" data-scroll-target="#step-4-other-repositories">Step 4: Other Repositories</a></li>
+  <li><a href="#other-repositories" id="toc-other-repositories" class="nav-link" data-scroll-target="#other-repositories">Other Repositories</a></li>
   </ul>
 </nav>
     </div>
@@ -192,37 +190,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="running-a-workflow-with-in-the-vlab-5-rstudio-server" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-workflow-with-in-the-vlab-5-rstudio-server">Running a Workflow with in the Vlab 5 Rstudio server</h2>
-<p>Before running any code in a repository, it’s important to ensure the right packages are installed and loaded.</p>
-<section id="step-1-restore-the-project-environment-using-renv" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-restore-the-project-environment-using-renv">Step 1: Restore the Project Environment using <code>renv</code></h3>
-<p>Each repository comes with a pre-configured environment managed by <a href="https://rstudio.github.io/renv/"><code>renv</code></a>. This ensures all necessary packages are available and compatible.</p>
-<p>Run the following command in the console:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This command will install (or link from cache) all required packages listed in the project’s <code>renv.lock</code> file.</p>
-<blockquote class="blockquote">
-<p>✅ Do this every time you open a new repository, even if it’s already been used before.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>ℹ️ A more detailed section is available later in this course, covering advanced <code>renv</code> usage, shared caching in VLab environments, and how to link multiple repositories to a common cache directory.</p>
-</blockquote>
-<p>You may need to reload the session beof</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Before running any code in a repository, make sure you are <strong>inside the correct R project</strong> (<code>.Rproj</code>). This activates project-specific settings (including <code>renv</code>) and sets the working directory properly.</p>
 <hr>
 </section>
+<section id="step-1-open-the-project-.rproj" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-open-the-project-.rproj">Step 1 — Open the Project (<code>.Rproj</code>)</h2>
+<p>Open a project using one of these options:</p>
+<ul>
+<li><strong>From the Files pane</strong> (bottom-right): navigate to the repository folder and click the <code>.Rproj</code> file.</li>
+<li><strong>Programmatically (requires <code>rstudioapi</code>)</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">openProject</span>(<span class="st">"~/GitHubRepos/geoflow-tunaatlas/stable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Opening the <code>.Rproj</code> ensures that <code>renv</code> is activated via the project’s <code>.Rprofile</code> and that your working directory is correct.</p>
+</blockquote>
+<hr>
 </section>
-<section id="example-running-a-workflow-in-the-geoflow-tunaatlas-project." class="level2">
-<h2 class="anchored" data-anchor-id="example-running-a-workflow-in-the-geoflow-tunaatlas-project.">Example: Running a Workflow in the <code>geoflow-tunaatlas</code> project.</h2>
-<p>We’ll now run an example R Markdown workflow included in the repository.</p>
-<section id="step-2-open-the-repository-folder" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-open-the-repository-folder">Step 2: Open the Repository Folder</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/GitHubRepos/geoflow-tunaatlas/stable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="step-2-restore-the-project-environment-with-renv" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project Environment with <code>renv</code></h2>
+<p>The <a href="https://rstudio.github.io/renv/"><code>renv</code> package</a> manages <strong>project-specific R environments</strong> to guarantee <strong>reproducibility</strong>. It records exact package versions in <code>renv.lock</code> and restores them on any machine.</p>
+<p>Run this once per project:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What this does:</p>
+<ul>
+<li>Installs missing packages <strong>or</strong> links them from VLab’s <strong>shared cache</strong> (fast).</li>
+<li>Aligns your session’s packages with the versions expected by the project.</li>
+</ul>
+<p>Useful tips:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check environment status (optional)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If prompted after updates, restart your R session</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"rstudioapi"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) rstudioapi<span class="sc">::</span><span class="fu">restartSession</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>✅ <strong>Always</strong> run <code>renv::restore()</code> when you open a <strong>new</strong> repository.<br>
+ℹ️ A later section of this course dives deeper into <code>renv</code>, shared caches in VLab, and linking multiple repos to a common cache directory.</p>
+</blockquote>
+<hr>
 </section>
+<section id="example-with-geoflow-tunaatlas-project" class="level2">
+<h2 class="anchored" data-anchor-id="example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</h2>
 <section id="step-3-explore-the-.rmd-report" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-explore-the-.rmd-report">Step 3: Explore the <code>.Rmd</code> Report</h3>
 <p>The file <code>summary_catch.Rmd</code> is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.</p>
 <p>You can render the entire report at once using:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"summary_catch.Rmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"summary_catch.Rmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>However, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.</p>
 <p>Open the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation</p>
 </section>
@@ -233,11 +248,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 </section>
 </section>
-<section id="step-4-other-repositories" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-other-repositories">Step 4: Other Repositories</h2>
+<section id="other-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="other-repositories">Other Repositories</h2>
 <p>For all of the other repositories in this course: - <code>tunaatlas_pie_map_shiny</code> - <code>shiny_compare_tunaatlas_datasets</code> - <code>darwin_core_viewer</code> the usage is much simpler. You typically only need two commands to get started:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These repositories are Shiny apps that can be launched directly after restoring the environment.</p>
 <p>You’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!</p>
 

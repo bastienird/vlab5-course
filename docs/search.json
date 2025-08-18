@@ -32,20 +32,34 @@
     "href": "running-scripts-in-loaded-repo.html",
     "title": "VLab5 Course",
     "section": "",
-    "text": "Before running any code in a repository, it’s important to ensure the right packages are installed and loaded.\n\n\nEach repository comes with a pre-configured environment managed by renv. This ensures all necessary packages are available and compatible.\nRun the following command in the console:\nrenv::restore()\nThis command will install (or link from cache) all required packages listed in the project’s renv.lock file.\n\n✅ Do this every time you open a new repository, even if it’s already been used before.\n\n\nℹ️ A more detailed section is available later in this course, covering advanced renv usage, shared caching in VLab environments, and how to link multiple repositories to a common cache directory.\n\nYou may need to reload the session beof"
+    "text": "Before running any code in a repository, make sure you are inside the correct R project (.Rproj). This activates project-specific settings (including renv) and sets the working directory properly."
   },
   {
-    "objectID": "running-scripts-in-loaded-repo.html#example-running-a-workflow-in-the-geoflow-tunaatlas-project.",
-    "href": "running-scripts-in-loaded-repo.html#example-running-a-workflow-in-the-geoflow-tunaatlas-project.",
+    "objectID": "running-scripts-in-loaded-repo.html#step-1-open-the-project-.rproj",
+    "href": "running-scripts-in-loaded-repo.html#step-1-open-the-project-.rproj",
     "title": "VLab5 Course",
-    "section": "Example: Running a Workflow in the geoflow-tunaatlas project.",
-    "text": "Example: Running a Workflow in the geoflow-tunaatlas project.\nWe’ll now run an example R Markdown workflow included in the repository.\n\nStep 2: Open the Repository Folder\nsetwd(\"~/GitHubRepos/geoflow-tunaatlas/stable\")\n\n\nStep 3: Explore the .Rmd Report\nThe file summary_catch.Rmd is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.\nYou can render the entire report at once using:\nrmarkdown::render(\"summary_catch.Rmd\")\nHowever, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.\nOpen the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation\n\n\nOutputs\nExecuting the full .Rmd will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an outputs/ subfolder.\nNote: geoflow-tunaatlas is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the .Rmd example shown here."
+    "section": "Step 1 — Open the Project (.Rproj)",
+    "text": "Step 1 — Open the Project (.Rproj)\nOpen a project using one of these options:\n\nFrom the Files pane (bottom-right): navigate to the repository folder and click the .Rproj file.\nProgrammatically (requires rstudioapi):\n\nif (!requireNamespace(\"rstudioapi\", quietly = TRUE)) install.packages(\"rstudioapi\")\nrstudioapi::openProject(\"~/GitHubRepos/geoflow-tunaatlas/stable\")\n\nOpening the .Rproj ensures that renv is activated via the project’s .Rprofile and that your working directory is correct."
   },
   {
-    "objectID": "running-scripts-in-loaded-repo.html#step-4-other-repositories",
-    "href": "running-scripts-in-loaded-repo.html#step-4-other-repositories",
+    "objectID": "running-scripts-in-loaded-repo.html#step-2-restore-the-project-environment-with-renv",
+    "href": "running-scripts-in-loaded-repo.html#step-2-restore-the-project-environment-with-renv",
     "title": "VLab5 Course",
-    "section": "Step 4: Other Repositories",
-    "text": "Step 4: Other Repositories\nFor all of the other repositories in this course: - tunaatlas_pie_map_shiny - shiny_compare_tunaatlas_datasets - darwin_core_viewer the usage is much simpler. You typically only need two commands to get started:\nrenv::restore()\nshiny::runApp()\nThese repositories are Shiny apps that can be launched directly after restoring the environment.\nYou’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!"
+    "section": "Step 2 — Restore the Project Environment with renv",
+    "text": "Step 2 — Restore the Project Environment with renv\nThe renv package manages project-specific R environments to guarantee reproducibility. It records exact package versions in renv.lock and restores them on any machine.\nRun this once per project:\nrenv::restore()\nWhat this does:\n\nInstalls missing packages or links them from VLab’s shared cache (fast).\nAligns your session’s packages with the versions expected by the project.\n\nUseful tips:\n# Check environment status (optional)\nrenv::status()\n\n# If prompted after updates, restart your R session\nif (requireNamespace(\"rstudioapi\", quietly = TRUE)) rstudioapi::restartSession()\n\n✅ Always run renv::restore() when you open a new repository.\nℹ️ A later section of this course dives deeper into renv, shared caches in VLab, and linking multiple repos to a common cache directory."
+  },
+  {
+    "objectID": "running-scripts-in-loaded-repo.html#example-with-geoflow-tunaatlas-project",
+    "href": "running-scripts-in-loaded-repo.html#example-with-geoflow-tunaatlas-project",
+    "title": "VLab5 Course",
+    "section": "Example with geoflow-tunaatlas project",
+    "text": "Example with geoflow-tunaatlas project\n\nStep 3: Explore the .Rmd Report\nThe file summary_catch.Rmd is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.\nYou can render the entire report at once using:\nrmarkdown::render(\"summary_catch.Rmd\")\nHowever, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.\nOpen the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation\n\n\nOutputs\nExecuting the full .Rmd will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an outputs/ subfolder.\nNote: geoflow-tunaatlas is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the .Rmd example shown here."
+  },
+  {
+    "objectID": "running-scripts-in-loaded-repo.html#other-repositories",
+    "href": "running-scripts-in-loaded-repo.html#other-repositories",
+    "title": "VLab5 Course",
+    "section": "Other Repositories",
+    "text": "Other Repositories\nFor all of the other repositories in this course: - tunaatlas_pie_map_shiny - shiny_compare_tunaatlas_datasets - darwin_core_viewer the usage is much simpler. You typically only need two commands to get started:\nrenv::restore()\nshiny::runApp()\nThese repositories are Shiny apps that can be launched directly after restoring the environment.\nYou’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!"
   }
 ]
