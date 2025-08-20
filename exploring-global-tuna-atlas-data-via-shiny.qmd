@@ -30,9 +30,13 @@ If you want to run the shiny apps but are not yet a member of the Vlab 5, you ca
 
 ```bash
 docker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>
-docker run ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>
+docker run --rm --name tunaatlas \
+  -p 3838:3838 \
+  ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>
+
 ```
 
+and then open http://127.0.0.1:3838/
 
 ---
 
