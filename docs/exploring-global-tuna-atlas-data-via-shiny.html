@@ -328,8 +328,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="outside-vlab-5" class="level2">
 <h2 class="anchored" data-anchor-id="outside-vlab-5">Outside Vlab 5</h2>
-<p>If you want to run the shiny apps but are not yet a member of the Vlab 5, you can use the following command in your terminal (if you already have docker installed). Warning the docker images can be heavy and need certain amount of RAM for running.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span></span>
+<p>If you’re not (yet) a VLab5 member, you can still run the Shiny app locally using Docker.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Docker images can be large and the app may require several GB of RAM.</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span> #<span class="er">(</span><span class="ex">first</span> time only<span class="kw">)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--name</span> tunaatlas <span class="dt">\</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 3838:3838 <span class="dt">\</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

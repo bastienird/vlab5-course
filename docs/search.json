@@ -228,7 +228,7 @@
     "href": "exploring-global-tuna-atlas-data-via-shiny.html#outside-vlab-5",
     "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
     "section": "Outside Vlab 5",
-    "text": "Outside Vlab 5\nIf you want to run the shiny apps but are not yet a member of the Vlab 5, you can use the following command in your terminal (if you already have docker installed). Warning the docker images can be heavy and need certain amount of RAM for running.\ndocker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>\ndocker run --rm --name tunaatlas \\\n  -p 3838:3838 \\\n  ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>\nand then open http://127.0.0.1:3838/"
+    "text": "Outside Vlab 5\nIf you’re not (yet) a VLab5 member, you can still run the Shiny app locally using Docker.\n\nNote: Docker images can be large and the app may require several GB of RAM.\n\ndocker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny> #(first time only)\ndocker run --rm --name tunaatlas \\\n  -p 3838:3838 \\\n  ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>\nand then open http://127.0.0.1:3838/"
   },
   {
     "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#shiny-apps-in-this-lesson",
