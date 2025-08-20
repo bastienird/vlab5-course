@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Module 3 — Lesson 3.1">
+<meta name="author" content="Module 3">
 
-<title>VLab5 Course - Global Tuna Atlas — Datasets &amp; Workflow Architecture</title>
+<title>VLab5 Course - Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -106,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Global Tuna Atlas — Datasets &amp; Workflow Architecture</h1>
+      <h1 class="quarto-secondary-nav-title">Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -185,13 +248,20 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">🎯 Objectives</a></li>
+  <li><a href="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" id="toc-overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="nav-link" data-scroll-target="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture">Overview of the Global Tuna Atlas datasets and workflow architecture</a></li>
+  <li><a href="#presentation-of-dataset-specificities" id="toc-presentation-of-dataset-specificities" class="nav-link" data-scroll-target="#presentation-of-dataset-specificities">📦 Presentation of dataset specificities</a>
   <ul class="collapse">
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#the-gta-dataset-family-high-level" id="toc-the-gta-dataset-family-high-level" class="nav-link" data-scroll-target="#the-gta-dataset-family-high-level">The GTA dataset family (high level)</a></li>
-  <li><a href="#workflow-architecture-overview" id="toc-workflow-architecture-overview" class="nav-link" data-scroll-target="#workflow-architecture-overview">Workflow architecture (overview)</a></li>
-  <li><a href="#inputs-outputs-typical" id="toc-inputs-outputs-typical" class="nav-link" data-scroll-target="#inputs-outputs-typical">Inputs &amp; outputs (typical)</a></li>
-  <li><a href="#quality-checks-examples" id="toc-quality-checks-examples" class="nav-link" data-scroll-target="#quality-checks-examples">Quality checks (examples)</a></li>
-  <li><a href="#where-this-is-implemented" id="toc-where-this-is-implemented" class="nav-link" data-scroll-target="#where-this-is-implemented">Where this is implemented</a></li>
+  <li><a href="#nominal-catch-dataset-firms-level-0" id="toc-nominal-catch-dataset-firms-level-0" class="nav-link" data-scroll-target="#nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</a></li>
+  <li><a href="#geo-referenced-catch-datasets" id="toc-geo-referenced-catch-datasets" class="nav-link" data-scroll-target="#geo-referenced-catch-datasets">Geo-referenced Catch Datasets</a>
+  <ul class="collapse">
+  <li><a href="#firms-level-0" id="toc-firms-level-0" class="nav-link" data-scroll-target="#firms-level-0">FIRMS Level 0</a></li>
+  <li><a href="#ird-level-2" id="toc-ird-level-2" class="nav-link" data-scroll-target="#ird-level-2">IRD Level 2</a></li>
+  </ul></li>
+  <li><a href="#effort-dataset-ird-level-0" id="toc-effort-dataset-ird-level-0" class="nav-link" data-scroll-target="#effort-dataset-ird-level-0">Effort Dataset (IRD Level 0)</a></li>
+  </ul></li>
+  <li><a href="#cpue-code-and-derivation" id="toc-cpue-code-and-derivation" class="nav-link" data-scroll-target="#cpue-code-and-derivation">⚖️ CPUE code and derivation</a></li>
   </ul>
 </nav>
     </div>
@@ -200,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Global Tuna Atlas — Datasets &amp; Workflow Architecture</h1>
+<h1 class="title d-none d-lg-block">Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</h1>
 </div>
 
 
@@ -210,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Module 3 — Lesson 3.1 </p>
+             <p>Module 3 </p>
           </div>
   </div>
     
@@ -221,88 +291,75 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="learning-goals" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
+<section id="objectives" class="level1">
+<h1>🎯 Objectives</h1>
+<p>By the end of this lesson, you should be able to: - Distinguish nominal, geo-referenced, effort, and CPUE datasets. - Understand the GTA workflow architecture and reproducibility principles. - Recognize specificities and caveats for each dataset (e.g., raising rules, effort unit heterogeneity). - Locate the code and repositories to reproduce or customize GTA datasets.</p>
+</section>
+<section id="overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="level1">
+<h1>Overview of the Global Tuna Atlas datasets and workflow architecture</h1>
+<p>The <strong>Global Tuna Atlas (GTA)</strong> integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). The GTA workflows are designed to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, and Reusable) and reproducible.</p>
+<p>The workflow architecture includes: - <strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area). - <strong>Geo-referenced catches</strong> (monthly, fine spatial resolution: 1° or 5°). - <strong>Effort datasets</strong> (various measurement units, unaggregated to preserve semantics). - <strong>Derived CPUE datasets</strong> (catch-per-unit-effort).</p>
+<p>Each dataset is produced using harmonized formats based on <a href="https://www.fao.org/3/cc6734en/cc6734en.pdf">CWP standards</a> and reproducible scripts available in the <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas repository for level 2 and efforts (IRD)</a> and <a href="https://github.com/firms-gta/geoflow-gta">geoflow-tunaatlas repository for level 0 (FIRMS)</a>.</p>
+<hr>
+</section>
+<section id="presentation-of-dataset-specificities" class="level1">
+<h1>📦 Presentation of dataset specificities</h1>
+<section id="nominal-catch-dataset-firms-level-0" class="level2">
+<h2 class="anchored" data-anchor-id="nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</h2>
 <ul>
-<li>Understand the <strong>family of GTA datasets</strong> and their relationships.<br>
-</li>
-<li>See the <strong>end‑to‑end workflow</strong>: inputs → harmonization → aggregation → publication.</li>
+<li><strong>Time span:</strong> 1918–2023.</li>
+<li><strong>Content:</strong> Live-weight equivalent (metric tonnes), mainly retained catches.</li>
+<li><strong>Stratification:</strong> Year, fleet, gear, large area, species.</li>
+<li><strong>Use case:</strong> Benchmark of global tuna catch volumes.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.5745958">10.5281/zenodo.5745958</a>.</li>
+</ul>
+</section>
+<section id="geo-referenced-catch-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="geo-referenced-catch-datasets">Geo-referenced Catch Datasets</h2>
+<section id="firms-level-0" class="level3">
+<h3 class="anchored" data-anchor-id="firms-level-0">FIRMS Level 0</h3>
+<ul>
+<li><strong>Time span:</strong> 1950–2023.</li>
+<li><strong>Resolution:</strong> 1°/5° grid, monthly.</li>
+<li><strong>Content:</strong> Catches from all t-RFMOs, harmonized.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.5747174">10.5281/zenodo.5747174</a>.</li>
+</ul>
+</section>
+<section id="ird-level-2" class="level3">
+<h3 class="anchored" data-anchor-id="ird-level-2">IRD Level 2</h3>
+<ul>
+<li>Further processed to align geo-referenced data with nominal totals.</li>
+<li>Includes raising, updating of strata, and better handling of IATTC observer vs logbook data.</li>
+<li><strong>Warning:</strong> Not suitable for quota/legality studies due to uncertainty in precise georeferencing.</li>
+<li><strong>Code:</strong> Full workflow at <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas</a>.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.15496164">10.5281/zenodo.15496164</a>.</li>
+</ul>
+</section>
+</section>
+<section id="effort-dataset-ird-level-0" class="level2">
+<h2 class="anchored" data-anchor-id="effort-dataset-ird-level-0">Effort Dataset (IRD Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1950–2023.</li>
+<li><strong>Content:</strong> 23 different measurement units, no aggregation.</li>
+<li><strong>Specificities:</strong> Duplicates exist (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS). End-users must harmonize depending on research needs.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.15496164">10.5281/zenodo.15496164</a>.</li>
 </ul>
 <hr>
 </section>
-<section id="the-gta-dataset-family-high-level" class="level2">
-<h2 class="anchored" data-anchor-id="the-gta-dataset-family-high-level">The GTA dataset family (high level)</h2>
+</section>
+<section id="cpue-code-and-derivation" class="level1">
+<h1>⚖️ CPUE code and derivation</h1>
+<p>The <strong>CPUE dataset</strong> is derived by combining catch (Level 0 or 2) with effort (Level 0) on common strata.</p>
+<p><strong>Formula:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CPUE <span class="ot">=</span> Catch <span class="sc">/</span> Effort </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>for each strata of datasets. It is to be noted that the some stratas are present in only one of the datasets, meaning they are incomplete as efforts could be without catches but catches should’nt be displayed without efforts.</p>
 <ul>
-<li><strong>Level 0 (L0)</strong> — <em>Raw-like harmonized</em> records at highest available resolution (spatial, temporal, gear).<br>
-</li>
-<li><strong>Level 1 (L1)</strong> — Harmonized &amp; <strong>standardized</strong> records using CWP mappings (species, gear, area codes).<br>
-</li>
-<li><strong>Level 2 (L2)</strong> — <strong>Aggregated</strong> products (e.g., by year × area × gear × species).<br>
-</li>
-<li><strong>Effort</strong> — Fishing effort aligned to the same spatial/temporal grids.<br>
-</li>
-<li><strong>CPUE</strong> — Derived indicator (Catch Per Unit Effort) from harmonized <strong>catch</strong> and <strong>effort</strong>.</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Note</strong>: Names/levels reflect the data lineage, not legal definitions.</p>
-</blockquote>
-<hr>
-</section>
-<section id="workflow-architecture-overview" class="level2">
-<h2 class="anchored" data-anchor-id="workflow-architecture-overview">Workflow architecture (overview)</h2>
-<pre class="text"><code>Providers (RFMOs, partners)
-  │  raw formats (csv/xlsx/db)
-  ▼
-Ingestion → Validation → Harmonization (CWP codes)
-  │  (geoflow-tunaatlas scripts)
-  ▼
-L0/L1 tables (standard schema)
-  │
-  ├─► L2 aggregations (by time/space/gear/species)
-  │
-  ├─► Effort harmonization (same grid)
-  │
-  └─► CPUE = Catch / Effort (post‑processing)
-  ▼
-Publication &amp; metadata (Zenodo DOI)</code></pre>
-<p>Key components: - <strong>Harmonization</strong>: mapping provider codes to <strong>CWP</strong> standards. - <strong>Spatial gridding</strong>: consistent areas (e.g., 5° × 5°) / EEZ / FAO areas as required. - <strong>Temporal alignment</strong>: monthly/annual aggregations. - <strong>Metadata &amp; provenance</strong>: versioning, changelogs, DOI per release.</p>
-<hr>
-</section>
-<section id="inputs-outputs-typical" class="level2">
-<h2 class="anchored" data-anchor-id="inputs-outputs-typical">Inputs &amp; outputs (typical)</h2>
-<p><strong>Inputs</strong> - Provider catch tables (species, gear, flag, time, area, weight).<br>
-- Effort tables (days/fishing, hooks, sets, hours).<br>
-- Reference dictionaries (CWP species/gear/area).</p>
-<p><strong>Core outputs</strong> - <code>catch_L0</code>, <code>catch_L1</code>, <code>catch_L2</code><br>
-- <code>effort_L1</code> (or harmonized effort grid)<br>
-- <code>cpue_products</code> (derived indicators)<br>
-- Release package + <strong>README</strong>, <strong>data dictionary</strong>, and <strong>metadata</strong>.</p>
-<hr>
-</section>
-<section id="quality-checks-examples" class="level2">
-<h2 class="anchored" data-anchor-id="quality-checks-examples">Quality checks (examples)</h2>
-<ul>
-<li>Integrity checks (keys, duplicates, missing).<br>
-</li>
-<li>Code-list coverage (all provider codes resolvable to CWP).<br>
-</li>
-<li>Range checks on weights/effort by species/gear.<br>
-</li>
-<li>Reproducibility: run logs, session info, <code>renv::restore()</code>.</li>
+<li>The unit depends on the effort measure (e.g., mt / 1000 hooks).</li>
+<li>Scripts in <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas</a> handle joining, raising, and outputting CPUE tables.</li>
+<li>Outputs are saved in standardized CWP formats, ready for visualization or publication.</li>
 </ul>
 <hr>
-</section>
-<section id="where-this-is-implemented" class="level2">
-<h2 class="anchored" data-anchor-id="where-this-is-implemented">Where this is implemented</h2>
-<ul>
-<li>In practice, the architecture is executed by the <strong>geoflow-tunaatlas</strong> repository (plus related Shiny viewers), with workflows that:
-<ol type="1">
-<li>harmonize raw inputs to CWP; 2) produce L0/L1; 3) aggregate to L2; 4) publish and document releases (DOI).</li>
-</ol></li>
-</ul>
-<blockquote class="blockquote">
-<p>You will run an example in Lesson <strong>3.5</strong> and see how CPUE is produced in the companion page.</p>
-</blockquote>
+<p>If you want to explore some of the CWP datasets, some .Rmd are available in the repos as well as shiny apps (later in the courses)</p>
 
 
 </section>

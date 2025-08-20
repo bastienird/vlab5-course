@@ -184,44 +184,30 @@
   {
     "objectID": "first_draft_Datasets&WorkflowArchitecture.html",
     "href": "first_draft_Datasets&WorkflowArchitecture.html",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
+    "title": "Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture",
     "section": "",
-    "text": "Understand the family of GTA datasets and their relationships.\n\nSee the end‑to‑end workflow: inputs → harmonization → aggregation → publication."
+    "text": "By the end of this lesson, you should be able to: - Distinguish nominal, geo-referenced, effort, and CPUE datasets. - Understand the GTA workflow architecture and reproducibility principles. - Recognize specificities and caveats for each dataset (e.g., raising rules, effort unit heterogeneity). - Locate the code and repositories to reproduce or customize GTA datasets."
   },
   {
-    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#the-gta-dataset-family-high-level",
-    "href": "first_draft_Datasets&WorkflowArchitecture.html#the-gta-dataset-family-high-level",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
-    "section": "The GTA dataset family (high level)",
-    "text": "The GTA dataset family (high level)\n\nLevel 0 (L0) — Raw-like harmonized records at highest available resolution (spatial, temporal, gear).\n\nLevel 1 (L1) — Harmonized & standardized records using CWP mappings (species, gear, area codes).\n\nLevel 2 (L2) — Aggregated products (e.g., by year × area × gear × species).\n\nEffort — Fishing effort aligned to the same spatial/temporal grids.\n\nCPUE — Derived indicator (Catch Per Unit Effort) from harmonized catch and effort.\n\n\nNote: Names/levels reflect the data lineage, not legal definitions."
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "title": "Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture",
+    "section": "Nominal Catch Dataset (FIRMS Level 0)",
+    "text": "Nominal Catch Dataset (FIRMS Level 0)\n\nTime span: 1918–2023.\nContent: Live-weight equivalent (metric tonnes), mainly retained catches.\nStratification: Year, fleet, gear, large area, species.\nUse case: Benchmark of global tuna catch volumes.\nDOI: 10.5281/zenodo.5745958."
   },
   {
-    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#workflow-architecture-overview",
-    "href": "first_draft_Datasets&WorkflowArchitecture.html#workflow-architecture-overview",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
-    "section": "Workflow architecture (overview)",
-    "text": "Workflow architecture (overview)\nProviders (RFMOs, partners)\n  │  raw formats (csv/xlsx/db)\n  ▼\nIngestion → Validation → Harmonization (CWP codes)\n  │  (geoflow-tunaatlas scripts)\n  ▼\nL0/L1 tables (standard schema)\n  │\n  ├─► L2 aggregations (by time/space/gear/species)\n  │\n  ├─► Effort harmonization (same grid)\n  │\n  └─► CPUE = Catch / Effort (post‑processing)\n  ▼\nPublication & metadata (Zenodo DOI)\nKey components: - Harmonization: mapping provider codes to CWP standards. - Spatial gridding: consistent areas (e.g., 5° × 5°) / EEZ / FAO areas as required. - Temporal alignment: monthly/annual aggregations. - Metadata & provenance: versioning, changelogs, DOI per release."
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "title": "Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture",
+    "section": "Geo-referenced Catch Datasets",
+    "text": "Geo-referenced Catch Datasets\n\nFIRMS Level 0\n\nTime span: 1950–2023.\nResolution: 1°/5° grid, monthly.\nContent: Catches from all t-RFMOs, harmonized.\nDOI: 10.5281/zenodo.5747174.\n\n\n\nIRD Level 2\n\nFurther processed to align geo-referenced data with nominal totals.\nIncludes raising, updating of strata, and better handling of IATTC observer vs logbook data.\nWarning: Not suitable for quota/legality studies due to uncertainty in precise georeferencing.\nCode: Full workflow at geoflow-tunaatlas.\nDOI: 10.5281/zenodo.15496164."
   },
   {
-    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#inputs-outputs-typical",
-    "href": "first_draft_Datasets&WorkflowArchitecture.html#inputs-outputs-typical",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
-    "section": "Inputs & outputs (typical)",
-    "text": "Inputs & outputs (typical)\nInputs - Provider catch tables (species, gear, flag, time, area, weight).\n- Effort tables (days/fishing, hooks, sets, hours).\n- Reference dictionaries (CWP species/gear/area).\nCore outputs - catch_L0, catch_L1, catch_L2\n- effort_L1 (or harmonized effort grid)\n- cpue_products (derived indicators)\n- Release package + README, data dictionary, and metadata."
-  },
-  {
-    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#quality-checks-examples",
-    "href": "first_draft_Datasets&WorkflowArchitecture.html#quality-checks-examples",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
-    "section": "Quality checks (examples)",
-    "text": "Quality checks (examples)\n\nIntegrity checks (keys, duplicates, missing).\n\nCode-list coverage (all provider codes resolvable to CWP).\n\nRange checks on weights/effort by species/gear.\n\nReproducibility: run logs, session info, renv::restore()."
-  },
-  {
-    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#where-this-is-implemented",
-    "href": "first_draft_Datasets&WorkflowArchitecture.html#where-this-is-implemented",
-    "title": "Global Tuna Atlas — Datasets & Workflow Architecture",
-    "section": "Where this is implemented",
-    "text": "Where this is implemented\n\nIn practice, the architecture is executed by the geoflow-tunaatlas repository (plus related Shiny viewers), with workflows that:\n\nharmonize raw inputs to CWP; 2) produce L0/L1; 3) aggregate to L2; 4) publish and document releases (DOI).\n\n\n\nYou will run an example in Lesson 3.5 and see how CPUE is produced in the companion page."
+    "objectID": "first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "href": "first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "title": "Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture",
+    "section": "Effort Dataset (IRD Level 0)",
+    "text": "Effort Dataset (IRD Level 0)\n\nTime span: 1950–2023.\nContent: 23 different measurement units, no aggregation.\nSpecificities: Duplicates exist (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS). End-users must harmonize depending on research needs.\nDOI: 10.5281/zenodo.15496164."
   },
   {
     "objectID": "exploring-global-tuna-atlas-data-via-shiny.html",
