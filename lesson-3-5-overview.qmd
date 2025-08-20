@@ -8,14 +8,13 @@ format:
 engine: knitr
 ---
 
-> **Optional lesson — recommended before or after 3.2**  
-> **Estimated duration:** 15–20 minutes  
+> **Estimated duration:** 30 minutes
 > **Format:** lab notebook (Explainer video + real-time walkthrough incoming)  
 > **Prerequisites:** Access to VLab5, completion of VLab5 platform orientation.
 
 ---
 
-## Course Map (Pages)
+## Course map (Pages)
 
 - **Intro to RStudio in VLab5**  
   `intro-rstudio.qmd` — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).

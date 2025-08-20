@@ -157,8 +157,8 @@
     "objectID": "lesson-3-5-overview.html#course-map-pages",
     "href": "lesson-3-5-overview.html#course-map-pages",
     "title": "Overview",
-    "section": "Course Map (Pages)",
-    "text": "Course Map (Pages)\n\nIntro to RStudio in VLab5\nintro-rstudio.qmd — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).\nProject Organization\nproject-organization.qmd — Pre-installed repositories in ~/GitHubRepos, stable vs dev structure, quick terminal command to list repos, README locations.\nRunning scripts in a loaded repository\nrunning-scripts-in-loaded-repo.qmd — Open .Rproj, run renv::restore(), render example Rmd (summary_catch.Rmd in geoflow-tunaatlas), pattern for Shiny apps (shiny::runApp()).\nDeploy repos in your own VLab (Bonus)\ndeploy-repos-in-vlab-rstudioserver.qmd — High-level notes for advanced users: RStudio Server image, preload script, global renv cache at image build-time, and optional per-project/per-user cache notes."
+    "section": "Course map (Pages)",
+    "text": "Course map (Pages)\n\nIntro to RStudio in VLab5\nintro-rstudio.qmd — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).\nProject Organization\nproject-organization.qmd — Pre-installed repositories in ~/GitHubRepos, stable vs dev structure, quick terminal command to list repos, README locations.\nRunning scripts in a loaded repository\nrunning-scripts-in-loaded-repo.qmd — Open .Rproj, run renv::restore(), render example Rmd (summary_catch.Rmd in geoflow-tunaatlas), pattern for Shiny apps (shiny::runApp()).\nDeploy repos in your own VLab (Bonus)\ndeploy-repos-in-vlab-rstudioserver.qmd — High-level notes for advanced users: RStudio Server image, preload script, global renv cache at image build-time, and optional per-project/per-user cache notes."
   },
   {
     "objectID": "lesson-3-5-overview.html#learning-objectives",

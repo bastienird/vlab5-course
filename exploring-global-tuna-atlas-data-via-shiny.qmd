@@ -24,6 +24,16 @@ Shiny apps can be accessed in **two ways**:
 
 > All Shiny apps have **stable and dev versions**, except **darwin_core_viewer** which is only available as a stable version in the Shiny Apps tab.
 
+## Outside Vlab 5
+
+If you want to run the shiny apps but are not yet a member of the Vlab 5, you can use the following command in your terminal (if you already have docker installed). Warning the docker images can be heavy and need certain amount of RAM for running.
+
+```bash
+docker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>
+docker run ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>
+```
+
+
 ---
 
 ## 📦 Shiny Apps in this lesson

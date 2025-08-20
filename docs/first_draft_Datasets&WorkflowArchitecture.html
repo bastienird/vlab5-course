@@ -153,12 +153,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-global-tuna-atlas--vlab5">    
         <li>
-    <a class="dropdown-item" href="./lesson-3-1-overview.qmd">
- <span class="dropdown-text">📘 Lesson 3.1 Overview</span></a>
+    <a class="dropdown-item" href="./first_draft_Datasets&amp;WorkflowArchitecture.html">
+ <span class="dropdown-text">Lesson 3.1</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lesson-3-5-overview.html">
- <span class="dropdown-text">🎓 Lesson 3.2 Overview</span></a>
+ <span class="dropdown-text">Lesson 3.2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./exploring-global-tuna-atlas-data-via-shiny.html">
+ <span class="dropdown-text">Lesson 3.2</span></a>
   </li>  
     </ul>
   </li>
@@ -183,16 +187,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Lesson 3.1 — Intro to Global Tuna Atlas (incoming)</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Lesson 3.2 — Running R Workflows in VLab5</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="./first_draft_Datasets&amp;WorkflowArchitecture.html" class="sidebar-item-text sidebar-link active">Lesson 3.1 — Intro to Global Tuna Atlas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  role-of-cwp-standards.qmd
+  </li>
+          <li class="sidebar-item">
+  reproductibility.qmd
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./lesson-3-5-overview.html" class="sidebar-item-text sidebar-link">Lesson 3.2 — Running R Workflows in VLab5</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lesson-3-5-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
@@ -227,12 +244,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Lesson 3.3 — Exploring Global Tuna Atlas data through Shiny applications in the VLab 5</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a href="./exploring-global-tuna-atlas-data-via-shiny.html" class="sidebar-item-text sidebar-link">Lesson 3.3 — Exploring GTA data via Shiny (VLab5)</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exploring-global-tuna-atlas-data-via-shiny.html" class="sidebar-item-text sidebar-link">Exploring Global Tuna Atlas Data via Shiny (15 min)</a>
@@ -251,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">🎯 Objectives</a></li>
   <li><a href="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" id="toc-overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="nav-link" data-scroll-target="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture">Overview of the Global Tuna Atlas datasets and workflow architecture</a></li>
-  <li><a href="#presentation-of-dataset-specificities" id="toc-presentation-of-dataset-specificities" class="nav-link" data-scroll-target="#presentation-of-dataset-specificities">📦 Presentation of dataset specificities</a>
+  <li><a href="#presentation-of-dataset-specificities" id="toc-presentation-of-dataset-specificities" class="nav-link" data-scroll-target="#presentation-of-dataset-specificities">Presentation of dataset specificities</a>
   <ul class="collapse">
   <li><a href="#nominal-catch-dataset-firms-level-0" id="toc-nominal-catch-dataset-firms-level-0" class="nav-link" data-scroll-target="#nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</a></li>
   <li><a href="#geo-referenced-catch-datasets" id="toc-geo-referenced-catch-datasets" class="nav-link" data-scroll-target="#geo-referenced-catch-datasets">Geo-referenced Catch Datasets</a>
@@ -261,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#effort-dataset-ird-level-0" id="toc-effort-dataset-ird-level-0" class="nav-link" data-scroll-target="#effort-dataset-ird-level-0">Effort Dataset (IRD Level 0)</a></li>
   </ul></li>
-  <li><a href="#cpue-code-and-derivation" id="toc-cpue-code-and-derivation" class="nav-link" data-scroll-target="#cpue-code-and-derivation">⚖️ CPUE code and derivation</a></li>
+  <li><a href="#cpue-code-and-derivation" id="toc-cpue-code-and-derivation" class="nav-link" data-scroll-target="#cpue-code-and-derivation">CPUE code and derivation</a></li>
   </ul>
 </nav>
     </div>
@@ -298,12 +315,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="level1">
 <h1>Overview of the Global Tuna Atlas datasets and workflow architecture</h1>
 <p>The <strong>Global Tuna Atlas (GTA)</strong> integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). The GTA workflows are designed to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, and Reusable) and reproducible.</p>
-<p>The workflow architecture includes: - <strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area). - <strong>Geo-referenced catches</strong> (monthly, fine spatial resolution: 1° or 5°). - <strong>Effort datasets</strong> (various measurement units, unaggregated to preserve semantics). - <strong>Derived CPUE datasets</strong> (catch-per-unit-effort).</p>
+<p>The workflow architecture includes:</p>
+<ul>
+<li><strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area).</li>
+<li><strong>Geo-referenced catches</strong> (monthly, fine spatial resolution: 1° or 5°).</li>
+<li><strong>Effort datasets</strong> (various measurement units, unaggregated to preserve semantics).</li>
+<li><strong>Derived CPUE datasets</strong> (catch-per-unit-effort).</li>
+</ul>
 <p>Each dataset is produced using harmonized formats based on <a href="https://www.fao.org/3/cc6734en/cc6734en.pdf">CWP standards</a> and reproducible scripts available in the <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas repository for level 2 and efforts (IRD)</a> and <a href="https://github.com/firms-gta/geoflow-gta">geoflow-tunaatlas repository for level 0 (FIRMS)</a>.</p>
 <hr>
 </section>
 <section id="presentation-of-dataset-specificities" class="level1">
-<h1>📦 Presentation of dataset specificities</h1>
+<h1>Presentation of dataset specificities</h1>
 <section id="nominal-catch-dataset-firms-level-0" class="level2">
 <h2 class="anchored" data-anchor-id="nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</h2>
 <ul>
@@ -348,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 <section id="cpue-code-and-derivation" class="level1">
-<h1>⚖️ CPUE code and derivation</h1>
+<h1>CPUE code and derivation</h1>
 <p>The <strong>CPUE dataset</strong> is derived by combining catch (Level 0 or 2) with effort (Level 0) on common strata.</p>
 <p><strong>Formula:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CPUE <span class="ot">=</span> Catch <span class="sc">/</span> Effort </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

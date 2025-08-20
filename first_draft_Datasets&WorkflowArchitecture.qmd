@@ -10,6 +10,7 @@ format:
 # 🎯 Objectives 
 
 By the end of this lesson, you should be able to:
+
 - Distinguish nominal, geo-referenced, effort, and CPUE datasets.
 - Understand the GTA workflow architecture and reproducibility principles.
 - Recognize specificities and caveats for each dataset (e.g., raising rules, effort unit heterogeneity).
@@ -20,6 +21,7 @@ By the end of this lesson, you should be able to:
 The **Global Tuna Atlas (GTA)** integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). The GTA workflows are designed to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, and Reusable) and reproducible.
 
 The workflow architecture includes:
+
 - **Nominal catches** (annual, aggregated by fleet, gear, species, large area).
 - **Geo-referenced catches** (monthly, fine spatial resolution: 1° or 5°).
 - **Effort datasets** (various measurement units, unaggregated to preserve semantics).
@@ -29,7 +31,7 @@ Each dataset is produced using harmonized formats based on [CWP standards](https
 
 ---
 
-# 📦 Presentation of dataset specificities
+# Presentation of dataset specificities
 
 ## Nominal Catch Dataset (FIRMS Level 0)
 - **Time span:** 1918–2023.
@@ -61,7 +63,7 @@ Each dataset is produced using harmonized formats based on [CWP standards](https
 
 ---
 
-# ⚖️ CPUE code and derivation
+# CPUE code and derivation
 
 The **CPUE dataset** is derived by combining catch (Level 0 or 2) with effort (Level 0) on common strata.
 
