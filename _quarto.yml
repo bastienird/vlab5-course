@@ -51,9 +51,14 @@ website:
 format:
   html:
     theme: cosmo
+    embed-resources: true
+    code-copy: true
+    code-overflow: wrap
     toc: true
     toc-depth: 3
-    code-copy: true
     link-external: true
     link-external-icon: true
     smooth-scroll: true
+  gfm:
+    output-ext: md 
+  

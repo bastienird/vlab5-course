@@ -1,0 +1,6 @@
+project:
+  output-dir: md_out
+
+format:
+  gfm:
+    output-ext: md
