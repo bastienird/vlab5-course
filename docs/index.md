@@ -1,6 +1,0 @@
-vlab5-course
-================
-
-This website contains several tutorial and courses related to the Global
-Tuna Atlas datasets, the related shiny apps and the use of the Vlab5 of
-the BlueCloud 2026 project.

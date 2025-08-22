@@ -67,7 +67,7 @@
     "href": "deploy-repos-in-vlab-rstudioserver.html#deployment-of-rstudio-server-in-a-vlab",
     "title": "Bonus (Advanced): Deploy repositories in your own VLab",
     "section": "1) Deployment of RStudio Server in a VLab",
-    "text": "1) Deployment of RStudio Server in a VLab\nThe deployment process is documented in this D4Science support ticket:\nhttps://support.d4science.org/issues/23536#note-15\nThe RStudio server setup for VLab5 is managed in the following repository:\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nKey files include: - 07_vlab5_github_repositories.sh — defines which GitHub repositories (stable/dev) are preloaded into the environment.\nView script - Dockerfile — defines the RStudio server Docker image and how repositories and dependencies are installed.\nView Dockerfile\n\n⚠️ This is more technical and system-level. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough."
+    "text": "1) Deployment of RStudio Server in a VLab\nThe deployment process is documented in this D4Science support ticket:\nhttps://support.d4science.org/issues/23536#note-15\nThe RStudio server setup for VLab5 is managed in the following repository:\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nKey files include:\n\n07_vlab5_github_repositories.sh — defines which GitHub repositories (stable/dev) are preloaded into the environment.\nView script\nDockerfile — defines the RStudio server Docker image and how repositories and dependencies are installed.\nView Dockerfile\n\n\n⚠️ This is more technical and system-level. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough."
   },
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html#managing-a-global-renv-cache-in-docker-images",
@@ -151,7 +151,7 @@
     "href": "lesson-3-5-overview.html",
     "title": "Overview",
     "section": "",
-    "text": "Estimated duration: 30 minutes Format: lab notebook (Explainer video + real-time walkthrough incoming)\nPrerequisites: Access to VLab5, completion of VLab5 platform orientation."
+    "text": "Estimated duration: 30 minutes\nFormat: lab notebook (Explainer video + real-time walkthrough incoming)\nPrerequisites: Access to VLab5, completion of VLab5 platform orientation."
   },
   {
     "objectID": "lesson-3-5-overview.html#course-map-pages",

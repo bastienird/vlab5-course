@@ -4,3 +4,11 @@
 .Ruserdata
 
 /.quarto/
+docs/
+!docs/.nojekyll
+!docs/CNAME
+md_out/
+md_moodle/
+ims_pkg/
+*.zip
+*.mbz

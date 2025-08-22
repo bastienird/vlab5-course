@@ -17,14 +17,16 @@ The RStudio server setup for VLab5 is managed in the following
 repository:  
 <https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5>
 
-Key files include: - **07_vlab5_github_repositories.sh** — defines which
-GitHub repositories (stable/dev) are preloaded into the environment.  
-[View
-script](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh) -
-**Dockerfile** — defines the RStudio server Docker image and how
-repositories and dependencies are installed.  
-[View
-Dockerfile](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile)
+Key files include:
+
+- **07_vlab5_github_repositories.sh** — defines which GitHub
+  repositories (stable/dev) are preloaded into the environment.  
+  [View
+  script](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh)
+- **Dockerfile** — defines the RStudio server Docker image and how
+  repositories and dependencies are installed.  
+  [View
+  Dockerfile](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile)
 
 > ⚠️ This is more **technical and system-level**. If you are interested
 > in customizing or deploying your own RStudio VLab instance, we can

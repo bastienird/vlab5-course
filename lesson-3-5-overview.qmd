@@ -8,9 +8,11 @@ format:
 engine: knitr
 ---
 
-> **Estimated duration:** 30 minutes
-> **Format:** lab notebook (Explainer video + real-time walkthrough incoming)  
-> **Prerequisites:** Access to VLab5, completion of VLab5 platform orientation.
+> **Estimated duration:** 30 minutes   
+>  
+> **Format:** lab notebook (Explainer video + real-time walkthrough incoming)    
+>  
+> **Prerequisites:** Access to VLab5, completion of VLab5 platform orientation.  
 
 ---
 

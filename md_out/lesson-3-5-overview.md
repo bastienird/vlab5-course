@@ -2,8 +2,11 @@ Overview
 ================
 VLab Course Team
 
-> **Estimated duration:** 30 minutes **Format:** lab notebook (Explainer
-> video + real-time walkthrough incoming)  
+> **Estimated duration:** 30 minutes
+>
+> **Format:** lab notebook (Explainer video + real-time walkthrough
+> incoming)
+>
 > **Prerequisites:** Access to VLab5, completion of VLab5 platform
 > orientation.
 

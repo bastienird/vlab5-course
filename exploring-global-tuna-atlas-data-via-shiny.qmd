@@ -11,7 +11,7 @@ engine: knitr
 > **Objective:** Learn how to interact with processed GTA datasets through dynamic **Shiny** applications, understand the **benefits/limits** of each app, and how CWP-formatted datasets fit in.  
 > **Prerequisite:** Good understanding of GTA datasets (Levels, effort, CPUE).  
 > **Presentation:** Hands-on demo + self‑exploration + short quiz.  
-> **Outcome:** Learners can use a Shiny app to explore GTA datasets **with or without writing code**.
+> **Outcome:** Learners can use a Shiny app to explore GTA datasets **with or without writing code**.  
 
 ---
 
