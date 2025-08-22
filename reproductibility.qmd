@@ -1,0 +1,72 @@
+---
+title: "Lesson — Why reproducibility matters in GTA workflows"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    code-overflow: wrap
+  gfm: default
+---
+
+# Objectives
+
+By the end of this lesson, learners will be able to:
+
+- Explain why **reproducibility** is a key principle in scientific data workflows.  
+- Understand the role of **DOIs** and the **FAIR principles**.  
+- Recognize how reproducibility is implemented in the Global Tuna Atlas (GTA) workflows.  
+- Identify what parts of the workflow are *not* reproducible, and why.  
+
+---
+
+# 1. Why reproducibility matters
+
+Scientific analyses must be **transparent, traceable, and repeatable**.  
+
+In fisheries data, reproducibility ensures that:
+
+- Other researchers can validate results.  
+- Policy-makers can rely on **evidence-based advice**.  
+- Updates to datasets can be compared to earlier versions.  
+
+The **FAIR principles** (Findable, Accessible, Interoperable, Reusable) provide a framework to guarantee these goals.  
+
+**DOIs (Digital Object Identifiers)** are used in GTA to make datasets **citable and permanent**.  
+
+---
+
+# 2. How reproducibility is implemented in GTA workflows
+
+## RStudio Server in VLab5
+
+Provides the *same environment* (same RStudio version and resources) for all learners and users.  
+
+## `renv` package
+Manages R dependencies by locking package versions in `renv.lock`, ensuring analyses run identically across sessions.  
+
+```r
+# Restore all packages for a project
+renv::restore()
+```
+
+## Docker images
+
+Provide portable containers that encapsulate code, packages, and system dependencies.  
+This ensures the same workflow runs identically on any machine.  
+
+---
+
+# 3. What is *not* reproducible
+
+- The **direct database connection** cannot be fully shared:
+  - Requires **passwords** that cannot be distributed publicly.  
+  - Risk of overload if too many users connect simultaneously.  
+
+Instead, reproducibility is achieved by providing:
+
+- **Exported datasets** (via Zenodo DOIs).  
+- **Scripts** that rebuild processing steps.  
+
+Each user could, if needed, set up their *own database instance* locally.  
+

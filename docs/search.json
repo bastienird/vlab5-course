@@ -58,91 +58,91 @@
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html",
     "href": "deploy-repos-in-vlab-rstudioserver.html",
-    "title": "Bonus (Advanced): Deploy repositories in your own VLab",
+    "title": "Advanced: Deploy repositories in your own VLab",
     "section": "",
     "text": "This optional guide is for advanced users who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab."
   },
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html#deployment-of-rstudio-server-in-a-vlab",
     "href": "deploy-repos-in-vlab-rstudioserver.html#deployment-of-rstudio-server-in-a-vlab",
-    "title": "Bonus (Advanced): Deploy repositories in your own VLab",
+    "title": "Advanced: Deploy repositories in your own VLab",
     "section": "1) Deployment of RStudio Server in a VLab",
     "text": "1) Deployment of RStudio Server in a VLab\nThe deployment process is documented in this D4Science support ticket:\nhttps://support.d4science.org/issues/23536#note-15\nThe RStudio server setup for VLab5 is managed in the following repository:\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nKey files include:\n\n07_vlab5_github_repositories.sh — defines which GitHub repositories (stable/dev) are preloaded into the environment.\nView script\nDockerfile — defines the RStudio server Docker image and how repositories and dependencies are installed.\nView Dockerfile\n\n\n⚠️ This is more technical and system-level. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough."
   },
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html#managing-a-global-renv-cache-in-docker-images",
     "href": "deploy-repos-in-vlab-rstudioserver.html#managing-a-global-renv-cache-in-docker-images",
-    "title": "Bonus (Advanced): Deploy repositories in your own VLab",
+    "title": "Advanced: Deploy repositories in your own VLab",
     "section": "2) Managing a Global renv cache in Docker images",
     "text": "2) Managing a Global renv cache in Docker images\nWhen building custom RStudio Docker images for your own VLab, it is possible to preconfigure a shared global cache for renv. This ensures that all projects within the VLab use the same package cache, saving time and storage.\nThis is done by adding a line to .Renviron.site during Docker build:\nRUN echo 'RENV_PATHS_CACHE=\"~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\"' \\\n  >> \"${R_HOME}/etc/Renviron.site\"\nReference: https://support.d4science.org/issues/29739\n\nKey points:\n\nYou can set RENV_PATHS_CACHE to any directory, depending on your VLab setup.\n\nUsing ~/blue-cloud-dataspace/ is recommended: it is accessible across all users and all VLab instances (though slightly slower than local storage).\n\n.Renviron.site ensures the cache is global to the image — every repository opened in RStudio will reuse this shared cache.\n\nEffectively: - Each repository still has its own renv.lock file (to ensure reproducibility).\n- But the package binaries are stored once in the shared cache, instead of reinstalling them for every project."
   },
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html#the-truly-simple-path-what-to-consider",
     "href": "deploy-repos-in-vlab-rstudioserver.html#the-truly-simple-path-what-to-consider",
-    "title": "Bonus (Advanced): Deploy repositories in your own VLab",
+    "title": "Advanced: Deploy repositories in your own VLab",
     "section": "3) The truly simple path (what to consider)",
     "text": "3) The truly simple path (what to consider)\nIf you want to deploy the same setup as VLab5 in your own VLab, here are the essentials to look at and adapt per VLab:\n\nD4Science ticket (reference implementation & notes):\n\nSee: https://support.d4science.org/issues/23536#note-15\n(Contains key decisions & parameters used for the Fisheries Atlas VLab RStudio.)\n\nRStudio Server image for D4Science (to adapt):\n\nRepo: https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nFiles to review:\n\nDockerfile\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile\n07_vlab5_github_repositories.sh (preloads the course repositories)\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh\n\n\n\n\nIf this is interesting for your team, we can do a short technical walkthrough per VLab, since each environment may require minor adjustments (base image, permissions, storage mounts, etc.)."
   },
   {
     "objectID": "deploy-repos-in-vlab-rstudioserver.html#summary",
     "href": "deploy-repos-in-vlab-rstudioserver.html#summary",
-    "title": "Bonus (Advanced): Deploy repositories in your own VLab",
+    "title": "Advanced: Deploy repositories in your own VLab",
     "section": "4) Summary",
     "text": "4) Summary\n\nBasic users: You don’t need to worry about this — VLab5 is already configured.\n\nAdvanced users: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global renv cache.\n\nBest practice: Use a cache in blue-cloud-dataspace for shared accessibility across all VLab instances.\n\n\n✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case."
   },
   {
     "objectID": "renv-cache-path.html",
     "href": "renv-cache-path.html",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "",
     "text": "This independent note explains how any RStudio Server user on the infrastructure can use a shared/global renv cache without modifying Docker images or course repositories."
   },
   {
     "objectID": "renv-cache-path.html#why-use-a-personal-renv-cache-setting",
     "href": "renv-cache-path.html#why-use-a-personal-renv-cache-setting",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Why use a personal renv cache setting?",
     "text": "Why use a personal renv cache setting?\n\nAvoid reinstalling the same packages for every project.\n\nSpeed up renv::restore() across projects by reusing binaries.\n\nKeep full reproducibility (each project still uses its own renv.lock)."
   },
   {
     "objectID": "renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
     "href": "renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Option A — Set a user-level cache in ~/.Renviron",
     "text": "Option A — Set a user-level cache in ~/.Renviron\nCreate (or edit) a file named ~/.Renviron and add:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nThen restart R (Session → Restart R). From now on, all your projects will use this cache automatically.\nNotes:\n\nThe path can be any directory you can read/write.\n\nUsing a location under ~/blue-cloud-dataspace/ makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than other folders from the workspace).\nTo avoid issues caused by cache corruption or accidental deletions (since the cache folders are shared), you can isolate your project libraries from the mutual cache using:\n\nrenv::isolate()\nThis command copies all the required packages directly into the renv folder of your project. Be cautious when running this locally, as it can significantly increase disk usage."
   },
   {
     "objectID": "renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
     "href": "renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Option B — Set a project-level cache in <project>/.Renviron",
     "text": "Option B — Set a project-level cache in <project>/.Renviron\nIf you prefer to scope the cache setting to a single project, create a file named .Renviron in the project root (next to .Rproj) with:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nRestart R inside the project. Only this project will use that cache."
   },
   {
     "objectID": "renv-cache-path.html#verify-your-configuration",
     "href": "renv-cache-path.html#verify-your-configuration",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Verify your configuration",
     "text": "Verify your configuration\nRun these checks in the R console:\n# What cache path is currently active?\nSys.getenv(\"RENV_PATHS_CACHE\")\n\n# Where does renv think the cache lives?\nrenv::paths$cache()\n\n# Project environment status (optional)\nrenv::status()\nIf you change ~/.Renviron or <project>/.Renviron, restart R to apply."
   },
   {
     "objectID": "renv-cache-path.html#using-the-cache-with-projects",
     "href": "renv-cache-path.html#using-the-cache-with-projects",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Using the cache with projects",
     "text": "Using the cache with projects\nInside any project (after opening the .Rproj):\nrenv::restore()   # will reuse packages from the shared cache when versions match\nPackages required by renv.lock will be linked or installed once into the cache and reused next time."
   },
   {
     "objectID": "renv-cache-path.html#good-practices-caveats",
     "href": "renv-cache-path.html#good-practices-caveats",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Good practices & caveats",
     "text": "Good practices & caveats\n\nKeep the cache path stable; moving it breaks existing links.\n\nIf the cache becomes very large, you can clean unused entries with renv::cache_clean() (advanced).\n\nThe cache is per R version; upgrading R may create a new cache tree.\n\nShared locations improve reuse across projects and users, but network storage can be slower than local disk."
   },
   {
     "objectID": "renv-cache-path.html#notes-on-group-specific-caches",
     "href": "renv-cache-path.html#notes-on-group-specific-caches",
-    "title": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
+    "title": "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)",
     "section": "Notes on group-specific caches",
     "text": "Notes on group-specific caches\nIn this course, we configured our cache in:\n~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nbecause it is the one we use in the Vlab 5.\nBut you are free to define a different cache path that matches your own setup:\n\nA cache specific to your group of projects\nA cache specific to your VLab instance\n\nThis flexibility lets different groups share a cache internally while keeping separation from other workspaces."
   },
@@ -220,8 +220,8 @@
     "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#quick-start-in-vlab5",
     "href": "exploring-global-tuna-atlas-data-via-shiny.html#quick-start-in-vlab5",
     "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
-    "section": "Quick Start in VLab5",
-    "text": "Quick Start in VLab5\nShiny apps can be accessed in two ways:\n\nFrom the Shiny Apps tab in VLab → directly launch stable or dev versions of available apps.\nFrom the repository in ~/GitHubRepos → open the .Rproj, restore packages, and run shiny::runApp().\n\n\nAll Shiny apps have stable and dev versions, except darwin_core_viewer which is only available as a stable version in the Shiny Apps tab."
+    "section": "Quick start in VLab5",
+    "text": "Quick start in VLab5\nShiny apps can be accessed in two ways:\n\nFrom the Shiny Apps tab in VLab → directly launch stable or dev versions of available apps.\nFrom the repository in ~/GitHubRepos → open the .Rproj, restore packages, and run shiny::runApp().\n\n\nAll Shiny apps have stable and dev versions, except darwin_core_viewer which is only available as a stable version in the Shiny Apps tab."
   },
   {
     "objectID": "exploring-global-tuna-atlas-data-via-shiny.html#outside-vlab-5",
@@ -250,5 +250,320 @@
     "title": "Exploring Global Tuna Atlas Data via Shiny (15 min)",
     "section": "Strengths vs. limitations of GUI tools",
     "text": "Strengths vs. limitations of GUI tools\nStrengths\n\nLower barrier to entry — no code needed.\n\nFast exploratory analysis & visual quality assurance.\n\nStandardized filters/views reduce errors.\n\nLimitations\n\nLess flexible than writing code for bespoke analytics.\n\nPerformance can degrade on very large datasets.\n\nSchema assumptions must be respected (CWP format)."
+  },
+  {
+    "objectID": "md_out/index.html",
+    "href": "md_out/index.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "vlab5-course\nThis website contains several tutorial and courses related to the Global Tuna Atlas datasets, the related shiny apps and the use of the Vlab5 of the BlueCloud 2026 project."
+  },
+  {
+    "objectID": "md_out/about.html",
+    "href": "md_out/about.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "About"
+  },
+  {
+    "objectID": "md_out/intro-rstudio.html",
+    "href": "md_out/intro-rstudio.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Fisheries Atlas Course Team: Grasset Bastien, Barde Julien\n\n\nThis short notebook will guide you through the key features and technical setup of the RStudio Server in VLab5.\n\n\nTo begin working in VLab5 with R workflows, start by navigating to the Analytics section on the platform.\nYou have two main options to launch an RStudio session:\n\nRStudio on D4Science (Start) – This is the default environment. It includes all preloaded repositories you’ll use in this course (both stable and dev versions). It has limited RAM compared to the second option.\nRStudio on GoogleCloud (Start) – This environment offers more RAM and computing power, which can be useful for heavier computations. However, it does not include the preloaded repositories by default. If you use it, you’ll need to manually configure and copy the necessary projects.\n\nOnce you launch either version, you’ll enter a standard RStudio Server interface directly in your browser.\nRStudio is organized into four panes:\n\nTop-left: Script editor\nBottom-left: Console and Terminal\n\nThe Console is where you type and run R code interactively.\nThe Terminal provides access to a Unix shell, useful for running system commands (e.g., Git, file management).\nThe Background Jobs tab (when visible) lets you launch long-running scripts without blocking the console. You can track progress and logs independently.\n\n\n\n🧩 These tabs are modular: you can show or hide panes using the menu bar → View > Panes or via the small gear icons in the top-right of each panel.\n\n\nTop-right: Environment, History, Git, Connections, Build, Tutorial\n\nThe Environment tab lists all current objects (datasets, models, functions).\nHistory tracks all commands you’ve run.\nGit appears if the project is under version control.\nBuild is used for R packages or Quarto/Bookdown projects.\nTutorial can show RStudio tutorials if available.\n\nBottom-right: Files, Plots, Packages, Help, and Viewer\n\nThis pane lets you navigate directories, visualize plots, install/view packages, access help pages, and render HTML outputs.\n\n\nTo explore the technical setup of your session, run the following lines of code in the R console:\n\n\n\n\n\nR.version.string\n[1] \"R version 4.2.3 (2023-03-15)\"\n\n\n\nrstudioapi::versionInfo()\nThis returns information such as: - version: RStudio version installed (e.g., 2023.3.0.386) - release_name: Code name for the release (e.g., Cherry Blossom) - mode: Whether you’re on the server version\n\n\n\nSys.info()\n                                                          sysname \n                                                          \"Linux\" \n                                                          release \n                                             \"4.15.0-189-generic\" \n                                                          version \n                   \"#200-Ubuntu SMP Wed Jun 22 19:53:37 UTC 2022\" \n                                                         nodename \n\"jupyter-bastien-2egrasset65011--rname-2d-52-53tudio-53erver-4fp\" \n                                                          machine \n                                                         \"x86_64\" \n                                                            login \n                                                        \"unknown\" \n                                                             user \n                                                         \"jovyan\" \n                                                   effective_user \n                                                         \"jovyan\" \nYou’ll see OS-level details such as: - sysname: Operating system - release: Kernel version - machine: Architecture (usually x86_64) - user: Your current user session (likely jovyan)\n\n\n\n# Note: this uses system-level shell command\nsystem(\"free -g\")\nThis command shows approximate memory allocation: - total: Total memory available (e.g., 125 GB) - used and available: What’s currently in use or free\n\n⚠️ Note: The number you see in “available” RAM may be lower (e.g., 32 GB) due to container quotas or dynamic allocation. The full infrastructure may have more memory, but your session may be limited based on demand and environment.\n📊 To get a user-friendly view of the actual allocated RAM, go to the top-right Environment panel in RStudio and click “Memory usage report”. This tool gives you a live snapshot of RAM used by your session.\n\n\n\n\ninstalled.packages()[1:20, c(\"Package\", \"Version\")]\n            Package       Version \nantiword    \"antiword\"    \"1.3.4\" \nbase64enc   \"base64enc\"   \"0.1-3\" \nbslib       \"bslib\"       \"0.7.0\" \ncachem      \"cachem\"      \"1.0.8\" \ncli         \"cli\"         \"3.6.2\" \ncommonmark  \"commonmark\"  \"2.0.0\" \ndigest      \"digest\"      \"0.6.35\"\nevaluate    \"evaluate\"    \"0.23\"  \nfastmap     \"fastmap\"     \"1.1.1\" \nfontawesome \"fontawesome\" \"0.5.2\" \nfs          \"fs\"          \"1.6.3\" \nglue        \"glue\"        \"1.7.0\" \nhighr       \"highr\"       \"0.10\"  \nhtmltools   \"htmltools\"   \"0.5.8\" \njquerylib   \"jquerylib\"   \"0.1.4\" \njsonlite    \"jsonlite\"    \"1.8.8\" \nknitr       \"knitr\"       \"1.45\"  \nlifecycle   \"lifecycle\"   \"1.0.4\" \nlitedown    \"litedown\"    \"0.7\"   \nmagrittr    \"magrittr\"    \"2.0.3\" \nThis shows the first 20 installed packages and their versions. You can increase the number for a full list.\n\n\n\n# Try loading a utility package\nrequire(antiword)\nLoading required package: antiword\nIf successful, this confirms that the package and its dependencies are correctly installed.\n\n\n\n\n\n\nAll environments and package lists may evolve over time.\nThe VLab infrastructure will be updated regularly to keep compatibility with the course materials.\nYou can always re-run this notebook to verify your session.\n\n\nNext step: Now that you know your environment, proceed to Project Organization and explore the available repositories!"
+  },
+  {
+    "objectID": "md_out/project-organization.html",
+    "href": "md_out/project-organization.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "All project repositories used in this course are pre-installed in your environment.\n\n\nProjects are located in:\n~/GitHubRepos\nTo view the full list of repositories (including dev and stable subfolders), you can run the following in the Terminal:\nfind ~/GitHubRepos -maxdepth 2 -exec ls -ld {} \\;\nThis will show the folder structure and help you identify which projects are available.\n\n\n\n\nSome repositories include only a dev version → they are currently under development.\nOthers include both:\n\nstable/: the latest release from the main branch.\ndev/: the most recent push to the dev branch.\n\n\n\n\n\n\n\n\nRepository\nVersions\nDescription\nMain Script\nGitHub\n\n\n\n\ngeoflow-tunaatlas\nstable + dev\nPrepares the Global Tuna Atlas datasets (Levels 0, 1, 2; effort and CPUE) and deploys them to Zenodo. Also contains Dockerfiles for downloading source datasets and running workflows.\nlaunching_jsons_creating_GTA.R\nGitHub\n\n\ntunaatlas_pie_map_shiny\nstable + dev\nA Shiny app for visualizing any dataset in CWP format with various plots and maps.\nglobal.R\nGitHub\n\n\nshiny_compare_tunaatlas_datasets\ndev only\nA Shiny app to compare GTA datasets from zenodo DOIs.\nglobal.R\nGitHub\n\n\ndarwin_core_viewer\ndev only\nA basic Shiny app to visualize biodiversity data using the Darwin Core data format. Provides maps and plots. Designed as a starting point for custom apps.\napp.R\nGitHub\n\n\n\n\n📌 Documentation for each project is available in the README.md files within the folders, and on the respective GitHub repositories.\n\n\nYou can open and explore any of these projects directly in RStudio by navigating to the appropriate folder using the Files tab, or via setwd(\"~/GitHubRepos/<project>/<version>/<project>\") in your console.\nReady to run your first workflow? Jump to the next section Running Rscripts in a loaded project about the running of some scripts in the Vlab infrastructure of BlueCloud 2026."
+  },
+  {
+    "objectID": "md_out/running-scripts-in-loaded-repo.html",
+    "href": "md_out/running-scripts-in-loaded-repo.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\nBefore running any code in a repository, make sure you are inside the correct R project (.Rproj). This activates project-specific settings (including renv) and sets the working directory properly.\n\n\n\nOpen a project using one of these options:\n\nFrom the Files pane (bottom-right): navigate to the repository folder and click the .Rproj file.\nProgrammatically (requires rstudioapi):\n\nif (!requireNamespace(\"rstudioapi\", quietly = TRUE)) install.packages(\"rstudioapi\")\nrstudioapi::openProject(\"~/GitHubRepos/geoflow-tunaatlas/stable\")\n\nOpening the .Rproj ensures that renv is activated via the project’s .Rprofile and that your working directory is correct.\n\n\n\n\n\nThe renv package manages project-specific R environments to guarantee reproducibility. It records exact package versions in renv.lock and restores them on any machine.\nRun this once per project:\nrenv::restore()\nWhat this does:\n\nInstalls missing packages or links them from VLab’s shared cache (fast).\nAligns your session’s packages with the versions expected by the project.\n\nUseful tips:\n# Check environment status (optional)\nrenv::status()\n\n# If prompted after updates, restart your R session\nif (requireNamespace(\"rstudioapi\", quietly = TRUE)) rstudioapi::restartSession()\n\n✅ Always run renv::restore() when you open a new repository.\nℹ️ A later section of this course dives deeper into renv, shared caches in VLab, and linking multiple repos to a common cache directory.\n\nIf you want to use the cache renv with your own projects or within your Vlab feel free to follow this tutorial renv cache path.\n\n\n\n\n\n\nThe file summary_catch.Rmd is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.\nYou can render the entire report at once using:\nrmarkdown::render(\"summary_catch.Rmd\")\nHowever, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.\nOpen the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation\n\n\n\nExecuting the full .Rmd will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an outputs/ subfolder.\nNote: geoflow-tunaatlas is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the .Rmd example shown here.\n\n\n\n\n\nFor all of the other repositories in this course: - tunaatlas_pie_map_shiny - shiny_compare_tunaatlas_datasets - darwin_core_viewer the usage is much simpler. You typically only need two commands to get started:\nrenv::restore()\nshiny::runApp()\nThese repositories are Shiny apps that can be launched directly after restoring the environment.\nYou’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!"
+  },
+  {
+    "objectID": "md_out/deploy-repos-in-vlab-rstudioserver.html",
+    "href": "md_out/deploy-repos-in-vlab-rstudioserver.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nThis optional guide is for advanced users who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab.\n\n\n\n\nThe deployment process is documented in this D4Science support ticket:\nhttps://support.d4science.org/issues/23536#note-15\nThe RStudio server setup for VLab5 is managed in the following repository:\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nKey files include:\n\n07_vlab5_github_repositories.sh — defines which GitHub repositories (stable/dev) are preloaded into the environment.\nView script\nDockerfile — defines the RStudio server Docker image and how repositories and dependencies are installed.\nView Dockerfile\n\n\n⚠️ This is more technical and system-level. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough.\n\n\n\n\n\nWhen building custom RStudio Docker images for your own VLab, it is possible to preconfigure a shared global cache for renv. This ensures that all projects within the VLab use the same package cache, saving time and storage.\nThis is done by adding a line to .Renviron.site during Docker build:\nRUN echo 'RENV_PATHS_CACHE=\"~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\"' \\\n  >> \"${R_HOME}/etc/Renviron.site\"\nReference: https://support.d4science.org/issues/29739\n\n\n\nYou can set RENV_PATHS_CACHE to any directory, depending on your VLab setup.\n\nUsing ~/blue-cloud-dataspace/ is recommended: it is accessible across all users and all VLab instances (though slightly slower than local storage).\n\n.Renviron.site ensures the cache is global to the image — every repository opened in RStudio will reuse this shared cache.\n\nEffectively: - Each repository still has its own renv.lock file (to ensure reproducibility).\n- But the package binaries are stored once in the shared cache, instead of reinstalling them for every project.\n\n\n\n\n\nIf you want to deploy the same setup as VLab5 in your own VLab, here are the essentials to look at and adapt per VLab:\n\nD4Science ticket (reference implementation & notes):\n\nSee: https://support.d4science.org/issues/23536#note-15\n(Contains key decisions & parameters used for the Fisheries Atlas VLab RStudio.)\n\nRStudio Server image for D4Science (to adapt):\n\nRepo: https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nFiles to review:\n\nDockerfile\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile\n07_vlab5_github_repositories.sh (preloads the course repositories)\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh\n\n\n\n\nIf this is interesting for your team, we can do a short technical walkthrough per VLab, since each environment may require minor adjustments (base image, permissions, storage mounts, etc.).\n\n\n\n\n\n\nBasic users: You don’t need to worry about this — VLab5 is already configured.\n\nAdvanced users: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global renv cache.\n\nBest practice: Use a cache in blue-cloud-dataspace for shared accessibility across all VLab instances.\n\n\n✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html",
+    "href": "md_out/renv-cache-path.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure) ================ VLab Course Team"
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#why-use-a-personal-renv-cache-setting",
+    "href": "md_out/renv-cache-path.html#why-use-a-personal-renv-cache-setting",
+    "title": "VLab5 Course",
+    "section": "Why use a personal renv cache setting?",
+    "text": "Why use a personal renv cache setting?\n\nAvoid reinstalling the same packages for every project.\n\nSpeed up renv::restore() across projects by reusing binaries.\n\nKeep full reproducibility (each project still uses its own renv.lock)."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
+    "href": "md_out/renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
+    "title": "VLab5 Course",
+    "section": "Option A — Set a user-level cache in ~/.Renviron",
+    "text": "Option A — Set a user-level cache in ~/.Renviron\nCreate (or edit) a file named ~/.Renviron and add:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nThen restart R (Session → Restart R). From now on, all your projects will use this cache automatically.\nNotes:\n\nThe path can be any directory you can read/write.\n\nUsing a location under ~/blue-cloud-dataspace/ makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than other folders from the workspace).\nTo avoid issues caused by cache corruption or accidental deletions (since the cache folders are shared), you can isolate your project libraries from the mutual cache using:\n\nrenv::isolate()\nThis command copies all the required packages directly into the renv folder of your project. Be cautious when running this locally, as it can significantly increase disk usage."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
+    "href": "md_out/renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
+    "title": "VLab5 Course",
+    "section": "Option B — Set a project-level cache in <project>/.Renviron",
+    "text": "Option B — Set a project-level cache in <project>/.Renviron\nIf you prefer to scope the cache setting to a single project, create a file named .Renviron in the project root (next to .Rproj) with:\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nRestart R inside the project. Only this project will use that cache."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#verify-your-configuration",
+    "href": "md_out/renv-cache-path.html#verify-your-configuration",
+    "title": "VLab5 Course",
+    "section": "Verify your configuration",
+    "text": "Verify your configuration\nRun these checks in the R console:\n# What cache path is currently active?\nSys.getenv(\"RENV_PATHS_CACHE\")\n\n# Where does renv think the cache lives?\nrenv::paths$cache()\n\n# Project environment status (optional)\nrenv::status()\nIf you change ~/.Renviron or <project>/.Renviron, restart R to apply."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#using-the-cache-with-projects",
+    "href": "md_out/renv-cache-path.html#using-the-cache-with-projects",
+    "title": "VLab5 Course",
+    "section": "Using the cache with projects",
+    "text": "Using the cache with projects\nInside any project (after opening the .Rproj):\nrenv::restore()   # will reuse packages from the shared cache when versions match\nPackages required by renv.lock will be linked or installed once into the cache and reused next time."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#good-practices-caveats",
+    "href": "md_out/renv-cache-path.html#good-practices-caveats",
+    "title": "VLab5 Course",
+    "section": "Good practices & caveats",
+    "text": "Good practices & caveats\n\nKeep the cache path stable; moving it breaks existing links.\n\nIf the cache becomes very large, you can clean unused entries with renv::cache_clean() (advanced).\n\nThe cache is per R version; upgrading R may create a new cache tree.\n\nShared locations improve reuse across projects and users, but network storage can be slower than local disk."
+  },
+  {
+    "objectID": "md_out/renv-cache-path.html#notes-on-group-specific-caches",
+    "href": "md_out/renv-cache-path.html#notes-on-group-specific-caches",
+    "title": "VLab5 Course",
+    "section": "Notes on group-specific caches",
+    "text": "Notes on group-specific caches\nIn this course, we configured our cache in:\n~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\nbecause it is the one we use in the Vlab 5.\nBut you are free to define a different cache path that matches your own setup:\n\nA cache specific to your group of projects\nA cache specific to your VLab instance\n\nThis flexibility lets different groups share a cache internally while keeping separation from other workspaces."
+  },
+  {
+    "objectID": "md_out/lesson-3-5-overview.html",
+    "href": "md_out/lesson-3-5-overview.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nEstimated duration: 30 minutes\nFormat: lab notebook (Explainer video + real-time walkthrough incoming)\nPrerequisites: Access to VLab5, completion of VLab5 platform orientation.\n\n\n\n\n\nIntro to RStudio in VLab5\nintro-rstudio.qmd — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).\nProject Organization\nproject-organization.qmd — Pre-installed repositories in ~/GitHubRepos, stable vs dev structure, quick terminal command to list repos, README locations.\nRunning scripts in a loaded repository\nrunning-scripts-in-loaded-repo.qmd — Open .Rproj, run renv::restore(), render example Rmd (summary_catch.Rmd in geoflow-tunaatlas), pattern for Shiny apps (shiny::runApp()).\nDeploy repos in your own VLab (Bonus)\ndeploy-repos-in-vlab-rstudioserver.qmd — High-level notes for advanced users: RStudio Server image, preload script, global renv cache at image build-time, and optional per-project/per-user cache notes.\n\n\n\n\n\nBy the end of this lesson, learners will be able to:\n\nNavigate the VLab5 RStudio environment confidently.\nUnderstand the structure of project repositories, including stable vs dev versions.\nUse renv::restore() to initialize a reproducible R environment.\nExecute a complete R script within VLab5.\n(Bonus) Understand how the shared package cache works within the infrastructure.\n(Bonus) Deploy a repo in their own VLab environment if needed.\n\n\n\n\n\n\nLaunch RStudio (D4Science or Google Cloud) and inspect the environment.\nExplore pre-installed repos in ~/GitHubRepos and locate main scripts.\nRestore packages with renv::restore() and run a full workflow (Rmd or Shiny).\nInspect outputs in outputs/ and review logs.\n(Bonus) Review how deployment works and how to configure a global cache.\n\n\n\n\n\nBy the end of this lesson, learners will:\n\nIdentify and choose an appropriate repository.\nExecute a full R workflow in VLab5.\n(Bonus) Understand package dependencies and renv logic."
+  },
+  {
+    "objectID": "md_out/first_draft_Datasets&WorkflowArchitecture.html",
+    "href": "md_out/first_draft_Datasets&WorkflowArchitecture.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "Module 3"
+  },
+  {
+    "objectID": "md_out/first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "href": "md_out/first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "title": "VLab5 Course",
+    "section": "Nominal Catch Dataset (FIRMS Level 0)",
+    "text": "Nominal Catch Dataset (FIRMS Level 0)\n\nTime span: 1918–2023.\nContent: Live-weight equivalent (metric tonnes), mainly retained catches.\nStratification: Year, fleet, gear, large area, species.\nUse case: Benchmark of global tuna catch volumes.\nDOI: 10.5281/zenodo.5745958."
+  },
+  {
+    "objectID": "md_out/first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "href": "md_out/first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "title": "VLab5 Course",
+    "section": "Geo-referenced Catch Datasets",
+    "text": "Geo-referenced Catch Datasets\n\nFIRMS Level 0\n\nTime span: 1950–2023.\nResolution: 1°/5° grid, monthly.\nContent: Catches from all t-RFMOs, harmonized.\nDOI: 10.5281/zenodo.5747174.\n\n\n\nIRD Level 2\n\nFurther processed to align geo-referenced data with nominal totals.\nIncludes raising, updating of strata, and better handling of IATTC observer vs logbook data.\nWarning: Not suitable for quota/legality studies due to uncertainty in precise georeferencing.\nCode: Full workflow at geoflow-tunaatlas.\nDOI: 10.5281/zenodo.15496164."
+  },
+  {
+    "objectID": "md_out/first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "href": "md_out/first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "title": "VLab5 Course",
+    "section": "Effort Dataset (IRD Level 0)",
+    "text": "Effort Dataset (IRD Level 0)\n\nTime span: 1950–2023.\nContent: 23 different measurement units, no aggregation.\nSpecificities: Duplicates exist (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS). End-users must harmonize depending on research needs.\nDOI: 10.5281/zenodo.15496164."
+  },
+  {
+    "objectID": "md_out/exploring-global-tuna-atlas-data-via-shiny.html",
+    "href": "md_out/exploring-global-tuna-atlas-data-via-shiny.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nObjective: Learn how to interact with processed GTA datasets through dynamic Shiny applications, understand the benefits/limits of each app, and how CWP-formatted datasets fit in.\nPrerequisite: Good understanding of GTA datasets (Levels, effort, CPUE).\nPresentation: Hands-on demo + self‑exploration + short quiz.\nOutcome: Learners can use a Shiny app to explore GTA datasets with or without writing code.\n\n\n\n\nShiny apps can be accessed in two ways:\n\nFrom the Shiny Apps tab in VLab → directly launch stable or dev versions of available apps.\nFrom the repository in ~/GitHubRepos → open the .Rproj, restore packages, and run shiny::runApp().\n\n\nAll Shiny apps have stable and dev versions, except darwin_core_viewer which is only available as a stable version in the Shiny Apps tab.\n\n\n\n\nIf you’re not (yet) a VLab5 member, you can still run the Shiny app locally using Docker.\n\nNote: Docker images can be large and the app may require several GB of RAM.\n\ndocker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny> #(first time only)\ndocker run --rm --name tunaatlas \\\n  -p 3838:3838 \\\n  ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>\nand then open http://127.0.0.1:3838/\n\n\n\n\n\n\n\ntunaatlas_pie_map_shiny (stable + dev)\nPurpose: Visualize any dataset in CWP format (catch/effort) with interactive maps and plots.\nDocs: See repo README for supported schemas, required columns, and examples.\nGitHub: https://github.com/firms-gta/tunaatlas_pie_map_shiny\nshiny_compare_tunaatlas_datasets (stable + dev)\nPurpose: Compare harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).\nDocs: README describes how to reference DOIs and comparison keys.\nGitHub: https://github.com/firms-gta/shiny_compare_fisheries_datasets\n\n\n\n\n\ndarwin_core_viewer (stable only)\nPurpose: Minimal viewer for Darwin Core biodiversity data (maps + plots). Good template for custom viewers.\nDocs: README covers expected Darwin Core fields (e.g., scientificName, eventDate, decimalLatitude/Longitude).\nGitHub: https://github.com/firms-gta/darwin_core_viewer\n\n\n\n\n\n\n\n\n\nFrom the Shiny Apps tab, open the stable version (recommended).\n(Alternatively, run locally with shiny::runApp() after restoring packages.)\n\nA formatted dataset is already loaded. You can as well choose a different dataset to explore in the ‘Choose dataset’ panel.\nFilter → by species, gear, year range, area.\n\nVisualize → interactive map (e.g., 5° grid) + plots; export as needed (see README).\n\nStrengths: quick exploration, map‑centric, supports broad CWP datasets.\nLimits: depends on schema conformity; heavy datasets may be slow.\n\n\n\n\nFrom the Shiny Apps tab, open dev or stable version.\n\nDatasets are already loaded from DOIs. If you want to explore other datasets, just update the DOI.csv file in the repository.\n\nChoose keys (year/area/gear/species).\n\nInspect differences → tables/plots of differences, coverage, and changes.\n\nStrengths: release comparisons, quick differences across versions.\nLimits: assumes comparable schemas; interpret differencies carefully as the differences of processes for each datasets are complex.\n\n\n\n\n\nStrengths\n\nLower barrier to entry — no code needed.\n\nFast exploratory analysis & visual quality assurance.\n\nStandardized filters/views reduce errors.\n\nLimitations\n\nLess flexible than writing code for bespoke analytics.\n\nPerformance can degrade on very large datasets.\n\nSchema assumptions must be respected (CWP format)."
+  },
+  {
+    "objectID": "md_moodle/about.html",
+    "href": "md_moodle/about.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "About"
+  },
+  {
+    "objectID": "md_moodle/deploy-repos-in-vlab-rstudioserver.html",
+    "href": "md_moodle/deploy-repos-in-vlab-rstudioserver.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nThis optional guide is for advanced users who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab.\n\n\n\n\nThe deployment process is documented in this D4Science support ticket:\nhttps://support.d4science.org/issues/23536#note-15\nThe RStudio server setup for VLab5 is managed in the following repository:\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nKey files include:\n\n07_vlab5_github_repositories.sh — defines which GitHub repositories (stable/dev) are preloaded into the environment.\nView script\nDockerfile — defines the RStudio server Docker image and how repositories and dependencies are installed.\nView Dockerfile\n\n\n⚠️ This is more technical and system-level. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough.\n\n\n\n\n\nWhen building custom RStudio Docker images for your own VLab, it is possible to preconfigure a shared global cache for renv. This ensures that all projects within the VLab use the same package cache, saving time and storage.\nThis is done by adding a line to .Renviron.site during Docker build:\n\nDockerfile code:\n\n\nRUN echo 'RENV_PATHS_CACHE=\"~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\"' \\\n  >> \"${R_HOME}/etc/Renviron.site\"\n\nReference: https://support.d4science.org/issues/29739\n\n\n\nYou can set RENV_PATHS_CACHE to any directory, depending on your VLab setup.\n\nUsing ~/blue-cloud-dataspace/ is recommended: it is accessible across all users and all VLab instances (though slightly slower than local storage).\n\n.Renviron.site ensures the cache is global to the image — every repository opened in RStudio will reuse this shared cache.\n\nEffectively: - Each repository still has its own renv.lock file (to ensure reproducibility).\n- But the package binaries are stored once in the shared cache, instead of reinstalling them for every project.\n\n\n\n\n\nIf you want to deploy the same setup as VLab5 in your own VLab, here are the essentials to look at and adapt per VLab:\n\nD4Science ticket (reference implementation & notes):\n\nSee: https://support.d4science.org/issues/23536#note-15\n(Contains key decisions & parameters used for the Fisheries Atlas VLab RStudio.)\n\nRStudio Server image for D4Science (to adapt):\n\nRepo: https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5\nFiles to review:\n\nDockerfile\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile\n07_vlab5_github_repositories.sh (preloads the course repositories)\nhttps://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh\n\n\n\n\nIf this is interesting for your team, we can do a short technical walkthrough per VLab, since each environment may require minor adjustments (base image, permissions, storage mounts, etc.).\n\n\n\n\n\n\nBasic users: You don’t need to worry about this — VLab5 is already configured.\n\nAdvanced users: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global renv cache.\n\nBest practice: Use a cache in blue-cloud-dataspace for shared accessibility across all VLab instances.\n\n\n✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case."
+  },
+  {
+    "objectID": "md_moodle/exploring-global-tuna-atlas-data-via-shiny.html",
+    "href": "md_moodle/exploring-global-tuna-atlas-data-via-shiny.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nObjective: Learn how to interact with processed GTA datasets through dynamic Shiny applications, understand the benefits/limits of each app, and how CWP-formatted datasets fit in.\nPrerequisite: Good understanding of GTA datasets (Levels, effort, CPUE).\nPresentation: Hands-on demo + self‑exploration + short quiz.\nOutcome: Learners can use a Shiny app to explore GTA datasets with or without writing code.\n\n\n\n\nShiny apps can be accessed in two ways:\n\nFrom the Shiny Apps tab in VLab → directly launch stable or dev versions of available apps.\nFrom the repository in ~/GitHubRepos → open the .Rproj, restore packages, and run shiny::runApp().\n\n\nAll Shiny apps have stable and dev versions, except darwin_core_viewer which is only available as a stable version in the Shiny Apps tab.\n\n\n\n\nIf you’re not (yet) a VLab5 member, you can still run the Shiny app locally using Docker.\n\nNote: Docker images can be large and the app may require several GB of RAM.\n\n\nBash code:\n\n\ndocker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny> #(first time only)\ndocker run --rm --name tunaatlas \\\n  -p 3838:3838 \\\n  ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny>\n\nand then open http://127.0.0.1:3838/\n\n\n\n\n\n\n\ntunaatlas_pie_map_shiny (stable + dev)\nPurpose: Visualize any dataset in CWP format (catch/effort) with interactive maps and plots.\nDocs: See repo README for supported schemas, required columns, and examples.\nGitHub: https://github.com/firms-gta/tunaatlas_pie_map_shiny\nshiny_compare_tunaatlas_datasets (stable + dev)\nPurpose: Compare harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).\nDocs: README describes how to reference DOIs and comparison keys.\nGitHub: https://github.com/firms-gta/shiny_compare_fisheries_datasets\n\n\n\n\n\ndarwin_core_viewer (stable only)\nPurpose: Minimal viewer for Darwin Core biodiversity data (maps + plots). Good template for custom viewers.\nDocs: README covers expected Darwin Core fields (e.g., scientificName, eventDate, decimalLatitude/Longitude).\nGitHub: https://github.com/firms-gta/darwin_core_viewer\n\n\n\n\n\n\n\n\n\nFrom the Shiny Apps tab, open the stable version (recommended).\n(Alternatively, run locally with shiny::runApp() after restoring packages.)\n\nA formatted dataset is already loaded. You can as well choose a different dataset to explore in the ‘Choose dataset’ panel.\nFilter → by species, gear, year range, area.\n\nVisualize → interactive map (e.g., 5° grid) + plots; export as needed (see README).\n\nStrengths: quick exploration, map‑centric, supports broad CWP datasets.\nLimits: depends on schema conformity; heavy datasets may be slow.\n\n\n\n\nFrom the Shiny Apps tab, open dev or stable version.\n\nDatasets are already loaded from DOIs. If you want to explore other datasets, just update the DOI.csv file in the repository.\n\nChoose keys (year/area/gear/species).\n\nInspect differences → tables/plots of differences, coverage, and changes.\n\nStrengths: release comparisons, quick differences across versions.\nLimits: assumes comparable schemas; interpret differencies carefully as the differences of processes for each datasets are complex.\n\n\n\n\n\nStrengths\n\nLower barrier to entry — no code needed.\n\nFast exploratory analysis & visual quality assurance.\n\nStandardized filters/views reduce errors.\n\nLimitations\n\nLess flexible than writing code for bespoke analytics.\n\nPerformance can degrade on very large datasets.\n\nSchema assumptions must be respected (CWP format)."
+  },
+  {
+    "objectID": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html",
+    "href": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "Module 3"
+  },
+  {
+    "objectID": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "href": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#nominal-catch-dataset-firms-level-0",
+    "title": "VLab5 Course",
+    "section": "Nominal Catch Dataset (FIRMS Level 0)",
+    "text": "Nominal Catch Dataset (FIRMS Level 0)\n\nTime span: 1918–2023.\nContent: Live-weight equivalent (metric tonnes), mainly retained catches.\nStratification: Year, fleet, gear, large area, species.\nUse case: Benchmark of global tuna catch volumes.\nDOI: 10.5281/zenodo.5745958."
+  },
+  {
+    "objectID": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "href": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#geo-referenced-catch-datasets",
+    "title": "VLab5 Course",
+    "section": "Geo-referenced Catch Datasets",
+    "text": "Geo-referenced Catch Datasets\n\nFIRMS Level 0\n\nTime span: 1950–2023.\nResolution: 1°/5° grid, monthly.\nContent: Catches from all t-RFMOs, harmonized.\nDOI: 10.5281/zenodo.5747174.\n\n\n\nIRD Level 2\n\nFurther processed to align geo-referenced data with nominal totals.\nIncludes raising, updating of strata, and better handling of IATTC observer vs logbook data.\nWarning: Not suitable for quota/legality studies due to uncertainty in precise georeferencing.\nCode: Full workflow at geoflow-tunaatlas.\nDOI: 10.5281/zenodo.15496164."
+  },
+  {
+    "objectID": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "href": "md_moodle/first_draft_Datasets&WorkflowArchitecture.html#effort-dataset-ird-level-0",
+    "title": "VLab5 Course",
+    "section": "Effort Dataset (IRD Level 0)",
+    "text": "Effort Dataset (IRD Level 0)\n\nTime span: 1950–2023.\nContent: 23 different measurement units, no aggregation.\nSpecificities: Duplicates exist (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS). End-users must harmonize depending on research needs.\nDOI: 10.5281/zenodo.15496164."
+  },
+  {
+    "objectID": "md_moodle/index.html",
+    "href": "md_moodle/index.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "vlab5-course\nThis website contains several tutorial and courses related to the Global Tuna Atlas datasets, the related shiny apps and the use of the Vlab5 of the BlueCloud 2026 project."
+  },
+  {
+    "objectID": "md_moodle/intro-rstudio.html",
+    "href": "md_moodle/intro-rstudio.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Fisheries Atlas Course Team: Grasset Bastien, Barde Julien\n\n\nThis short notebook will guide you through the key features and technical setup of the RStudio Server in VLab5.\n\n\nTo begin working in VLab5 with R workflows, start by navigating to the Analytics section on the platform.\nYou have two main options to launch an RStudio session:\n\nRStudio on D4Science (Start) – This is the default environment. It includes all preloaded repositories you’ll use in this course (both stable and dev versions). It has limited RAM compared to the second option.\nRStudio on GoogleCloud (Start) – This environment offers more RAM and computing power, which can be useful for heavier computations. However, it does not include the preloaded repositories by default. If you use it, you’ll need to manually configure and copy the necessary projects.\n\nOnce you launch either version, you’ll enter a standard RStudio Server interface directly in your browser.\nRStudio is organized into four panes:\n\nTop-left: Script editor\nBottom-left: Console and Terminal\n\nThe Console is where you type and run R code interactively.\nThe Terminal provides access to a Unix shell, useful for running system commands (e.g., Git, file management).\nThe Background Jobs tab (when visible) lets you launch long-running scripts without blocking the console. You can track progress and logs independently.\n\n\n\n🧩 These tabs are modular: you can show or hide panes using the menu bar → View > Panes or via the small gear icons in the top-right of each panel.\n\n\nTop-right: Environment, History, Git, Connections, Build, Tutorial\n\nThe Environment tab lists all current objects (datasets, models, functions).\nHistory tracks all commands you’ve run.\nGit appears if the project is under version control.\nBuild is used for R packages or Quarto/Bookdown projects.\nTutorial can show RStudio tutorials if available.\n\nBottom-right: Files, Plots, Packages, Help, and Viewer\n\nThis pane lets you navigate directories, visualize plots, install/view packages, access help pages, and render HTML outputs.\n\n\nTo explore the technical setup of your session, run the following lines of code in the R console:\n\n\n\n\n\n\nR code:\n\n\nR.version.string\n\n\nOutput:\n\n\n[1] \"R version 4.2.3 (2023-03-15)\"\n\n\n\n\n\nR code:\n\n\nrstudioapi::versionInfo()\n\nThis returns information such as: - version: RStudio version installed (e.g., 2023.3.0.386) - release_name: Code name for the release (e.g., Cherry Blossom) - mode: Whether you’re on the server version\n\n\n\n\nR code:\n\n\nSys.info()\n\n\nOutput:\n\n\n                                                          sysname \n                                                          \"Linux\" \n                                                          release \n                                             \"4.15.0-189-generic\" \n                                                          version \n                   \"#200-Ubuntu SMP Wed Jun 22 19:53:37 UTC 2022\" \n                                                         nodename \n\"jupyter-bastien-2egrasset65011--rname-2d-52-53tudio-53erver-4fp\" \n                                                          machine \n                                                         \"x86_64\" \n                                                            login \n                                                        \"unknown\" \n                                                             user \n                                                         \"jovyan\" \n                                                   effective_user \n                                                         \"jovyan\" \n\nYou’ll see OS-level details such as: - sysname: Operating system - release: Kernel version - machine: Architecture (usually x86_64) - user: Your current user session (likely jovyan)\n\n\n\n\nR code:\n\n\n# Note: this uses system-level shell command\nsystem(\"free -g\")\n\nThis command shows approximate memory allocation: - total: Total memory available (e.g., 125 GB) - used and available: What’s currently in use or free\n\n⚠️ Note: The number you see in “available” RAM may be lower (e.g., 32 GB) due to container quotas or dynamic allocation. The full infrastructure may have more memory, but your session may be limited based on demand and environment.\n📊 To get a user-friendly view of the actual allocated RAM, go to the top-right Environment panel in RStudio and click “Memory usage report”. This tool gives you a live snapshot of RAM used by your session.\n\n\n\n\n\nR code:\n\n\ninstalled.packages()[1:20, c(\"Package\", \"Version\")]\n\n\nOutput:\n\n\n            Package       Version \nantiword    \"antiword\"    \"1.3.4\" \nbase64enc   \"base64enc\"   \"0.1-3\" \nbslib       \"bslib\"       \"0.7.0\" \ncachem      \"cachem\"      \"1.0.8\" \ncli         \"cli\"         \"3.6.2\" \ncommonmark  \"commonmark\"  \"2.0.0\" \ndigest      \"digest\"      \"0.6.35\"\nevaluate    \"evaluate\"    \"0.23\"  \nfastmap     \"fastmap\"     \"1.1.1\" \nfontawesome \"fontawesome\" \"0.5.2\" \nfs          \"fs\"          \"1.6.3\" \nglue        \"glue\"        \"1.7.0\" \nhighr       \"highr\"       \"0.10\"  \nhtmltools   \"htmltools\"   \"0.5.8\" \njquerylib   \"jquerylib\"   \"0.1.4\" \njsonlite    \"jsonlite\"    \"1.8.8\" \nknitr       \"knitr\"       \"1.45\"  \nlifecycle   \"lifecycle\"   \"1.0.4\" \nlitedown    \"litedown\"    \"0.7\"   \nmagrittr    \"magrittr\"    \"2.0.3\" \n\nThis shows the first 20 installed packages and their versions. You can increase the number for a full list.\n\n\n\n\nR code:\n\n\n# Try loading a utility package\nrequire(antiword)\n\n\nOutput:\n\n\nLoading required package: antiword\n\nIf successful, this confirms that the package and its dependencies are correctly installed.\n\n\n\n\n\n\nAll environments and package lists may evolve over time.\nThe VLab infrastructure will be updated regularly to keep compatibility with the course materials.\nYou can always re-run this notebook to verify your session.\n\n\nNext step: Now that you know your environment, proceed to Project Organization and explore the available repositories!"
+  },
+  {
+    "objectID": "md_moodle/lesson-3-5-overview.html",
+    "href": "md_moodle/lesson-3-5-overview.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\n\nEstimated duration: 30 minutes\nFormat: lab notebook (Explainer video + real-time walkthrough incoming)\nPrerequisites: Access to VLab5, completion of VLab5 platform orientation.\n\n\n\n\n\nIntro to RStudio in VLab5\nintro-rstudio.qmd — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).\nProject Organization\nproject-organization.qmd — Pre-installed repositories in ~/GitHubRepos, stable vs dev structure, quick terminal command to list repos, README locations.\nRunning scripts in a loaded repository\nrunning-scripts-in-loaded-repo.qmd — Open .Rproj, run renv::restore(), render example Rmd (summary_catch.Rmd in geoflow-tunaatlas), pattern for Shiny apps (shiny::runApp()).\nDeploy repos in your own VLab (Bonus)\ndeploy-repos-in-vlab-rstudioserver.qmd — High-level notes for advanced users: RStudio Server image, preload script, global renv cache at image build-time, and optional per-project/per-user cache notes.\n\n\n\n\n\nBy the end of this lesson, learners will be able to:\n\nNavigate the VLab5 RStudio environment confidently.\nUnderstand the structure of project repositories, including stable vs dev versions.\nUse renv::restore() to initialize a reproducible R environment.\nExecute a complete R script within VLab5.\n(Bonus) Understand how the shared package cache works within the infrastructure.\n(Bonus) Deploy a repo in their own VLab environment if needed.\n\n\n\n\n\n\nLaunch RStudio (D4Science or Google Cloud) and inspect the environment.\nExplore pre-installed repos in ~/GitHubRepos and locate main scripts.\nRestore packages with renv::restore() and run a full workflow (Rmd or Shiny).\nInspect outputs in outputs/ and review logs.\n(Bonus) Review how deployment works and how to configure a global cache.\n\n\n\n\n\nBy the end of this lesson, learners will:\n\nIdentify and choose an appropriate repository.\nExecute a full R workflow in VLab5.\n(Bonus) Understand package dependencies and renv logic."
+  },
+  {
+    "objectID": "md_moodle/project-organization.html",
+    "href": "md_moodle/project-organization.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "All project repositories used in this course are pre-installed in your environment.\n\n\nProjects are located in:\n\nBash code:\n\n\n~/GitHubRepos\n\nTo view the full list of repositories (including dev and stable subfolders), you can run the following in the Terminal:\n\nBash code:\n\n\nfind ~/GitHubRepos -maxdepth 2 -exec ls -ld {} \\;\n\nThis will show the folder structure and help you identify which projects are available.\n\n\n\n\nSome repositories include only a dev version → they are currently under development.\nOthers include both:\n\nstable/: the latest release from the main branch.\ndev/: the most recent push to the dev branch.\n\n\n\n\n\n\n\n\nRepository\nVersions\nDescription\nMain Script\nGitHub\n\n\n\n\ngeoflow-tunaatlas\nstable + dev\nPrepares the Global Tuna Atlas datasets (Levels 0, 1, 2; effort and CPUE) and deploys them to Zenodo. Also contains Dockerfiles for downloading source datasets and running workflows.\nlaunching_jsons_creating_GTA.R\nGitHub\n\n\ntunaatlas_pie_map_shiny\nstable + dev\nA Shiny app for visualizing any dataset in CWP format with various plots and maps.\nglobal.R\nGitHub\n\n\nshiny_compare_tunaatlas_datasets\ndev only\nA Shiny app to compare GTA datasets from zenodo DOIs.\nglobal.R\nGitHub\n\n\ndarwin_core_viewer\ndev only\nA basic Shiny app to visualize biodiversity data using the Darwin Core data format. Provides maps and plots. Designed as a starting point for custom apps.\napp.R\nGitHub\n\n\n\n\n📌 Documentation for each project is available in the README.md files within the folders, and on the respective GitHub repositories.\n\n\nYou can open and explore any of these projects directly in RStudio by navigating to the appropriate folder using the Files tab, or via setwd(\"~/GitHubRepos/<project>/<version>/<project>\") in your console.\nReady to run your first workflow? Jump to the next section Running Rscripts in a loaded project about the running of some scripts in the Vlab infrastructure of BlueCloud 2026."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html",
+    "href": "md_moodle/renv-cache-path.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure) ================ VLab Course Team"
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#why-use-a-personal-renv-cache-setting",
+    "href": "md_moodle/renv-cache-path.html#why-use-a-personal-renv-cache-setting",
+    "title": "VLab5 Course",
+    "section": "Why use a personal renv cache setting?",
+    "text": "Why use a personal renv cache setting?\n\nAvoid reinstalling the same packages for every project.\n\nSpeed up renv::restore() across projects by reusing binaries.\n\nKeep full reproducibility (each project still uses its own renv.lock)."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
+    "href": "md_moodle/renv-cache-path.html#option-a-set-a-user-level-cache-in-.renviron",
+    "title": "VLab5 Course",
+    "section": "Option A — Set a user-level cache in ~/.Renviron",
+    "text": "Option A — Set a user-level cache in ~/.Renviron\nCreate (or edit) a file named ~/.Renviron and add:\n\nR code:\n\n\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\n\nThen restart R (Session → Restart R). From now on, all your projects will use this cache automatically.\nNotes:\n\nThe path can be any directory you can read/write.\n\nUsing a location under ~/blue-cloud-dataspace/ makes the cache accessible across workspaces on the infrastructure (shared but possibly a bit slower than other folders from the workspace).\nTo avoid issues caused by cache corruption or accidental deletions (since the cache folders are shared), you can isolate your project libraries from the mutual cache using:\n\n\nR code:\n\n\nrenv::isolate()\n\nThis command copies all the required packages directly into the renv folder of your project. Be cautious when running this locally, as it can significantly increase disk usage."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
+    "href": "md_moodle/renv-cache-path.html#option-b-set-a-project-level-cache-in-project.renviron",
+    "title": "VLab5 Course",
+    "section": "Option B — Set a project-level cache in <project>/.Renviron",
+    "text": "Option B — Set a project-level cache in <project>/.Renviron\nIf you prefer to scope the cache setting to a single project, create a file named .Renviron in the project root (next to .Rproj) with:\n\nR code:\n\n\nRENV_PATHS_CACHE=~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\n\nRestart R inside the project. Only this project will use that cache."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#verify-your-configuration",
+    "href": "md_moodle/renv-cache-path.html#verify-your-configuration",
+    "title": "VLab5 Course",
+    "section": "Verify your configuration",
+    "text": "Verify your configuration\nRun these checks in the R console:\n\nR code:\n\n\n# What cache path is currently active?\nSys.getenv(\"RENV_PATHS_CACHE\")\n\n# Where does renv think the cache lives?\nrenv::paths$cache()\n\n# Project environment status (optional)\nrenv::status()\n\nIf you change ~/.Renviron or <project>/.Renviron, restart R to apply."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#using-the-cache-with-projects",
+    "href": "md_moodle/renv-cache-path.html#using-the-cache-with-projects",
+    "title": "VLab5 Course",
+    "section": "Using the cache with projects",
+    "text": "Using the cache with projects\nInside any project (after opening the .Rproj):\n\nR code:\n\n\nrenv::restore()   # will reuse packages from the shared cache when versions match\n\nPackages required by renv.lock will be linked or installed once into the cache and reused next time."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#good-practices-caveats",
+    "href": "md_moodle/renv-cache-path.html#good-practices-caveats",
+    "title": "VLab5 Course",
+    "section": "Good practices & caveats",
+    "text": "Good practices & caveats\n\nKeep the cache path stable; moving it breaks existing links.\n\nIf the cache becomes very large, you can clean unused entries with renv::cache_clean() (advanced).\n\nThe cache is per R version; upgrading R may create a new cache tree.\n\nShared locations improve reuse across projects and users, but network storage can be slower than local disk."
+  },
+  {
+    "objectID": "md_moodle/renv-cache-path.html#notes-on-group-specific-caches",
+    "href": "md_moodle/renv-cache-path.html#notes-on-group-specific-caches",
+    "title": "VLab5 Course",
+    "section": "Notes on group-specific caches",
+    "text": "Notes on group-specific caches\nIn this course, we configured our cache in:\n\nR code:\n\n\n~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv\n\nbecause it is the one we use in the Vlab 5.\nBut you are free to define a different cache path that matches your own setup:\n\nA cache specific to your group of projects\nA cache specific to your VLab instance\n\nThis flexibility lets different groups share a cache internally while keeping separation from other workspaces."
+  },
+  {
+    "objectID": "md_moodle/running-scripts-in-loaded-repo.html",
+    "href": "md_moodle/running-scripts-in-loaded-repo.html",
+    "title": "VLab5 Course",
+    "section": "",
+    "text": "VLab Course Team\nBefore running any code in a repository, make sure you are inside the correct R project (.Rproj). This activates project-specific settings (including renv) and sets the working directory properly.\n\n\n\nOpen a project using one of these options:\n\nFrom the Files pane (bottom-right): navigate to the repository folder and click the .Rproj file.\nProgrammatically (requires rstudioapi):\n\n\nR code:\n\n\n\nif (!requireNamespace(\"rstudioapi\", quietly = TRUE)) install.packages(\"rstudioapi\")\nrstudioapi::openProject(\"~/GitHubRepos/geoflow-tunaatlas/stable\")\n\n\nOpening the .Rproj ensures that renv is activated via the project’s .Rprofile and that your working directory is correct.\n\n\n\n\n\nThe renv package manages project-specific R environments to guarantee reproducibility. It records exact package versions in renv.lock and restores them on any machine.\nRun this once per project:\n\nR code:\n\n\nrenv::restore()\n\nWhat this does:\n\nInstalls missing packages or links them from VLab’s shared cache (fast).\nAligns your session’s packages with the versions expected by the project.\n\nUseful tips:\n\nR code:\n\n\n# Check environment status (optional)\nrenv::status()\n\n# If prompted after updates, restart your R session\nif (requireNamespace(\"rstudioapi\", quietly = TRUE)) rstudioapi::restartSession()\n\n\n✅ Always run renv::restore() when you open a new repository.\nℹ️ A later section of this course dives deeper into renv, shared caches in VLab, and linking multiple repos to a common cache directory.\n\nIf you want to use the cache renv with your own projects or within your Vlab feel free to follow this tutorial renv cache path.\n\n\n\n\n\n\nThe file summary_catch.Rmd is an R Markdown document that allows you to explore catch datasets and generate visual outputs like maps and plots. A similar file is also available for effort data.\nYou can render the entire report at once using:\n\nR code:\n\n\nrmarkdown::render(\"summary_catch.Rmd\")\n\nHowever, for learning purposes, we recommend exploring the file chunk-by-chunk to understand each step in the workflow.\nOpen the file in the RStudio editor and review each code block, which typically includes: - Data loading from zenodo, or in the VLab from existing folder (to avoid re-downloading data) - Data transformation and filtering - Visualization with maps and plots - Output generation\n\n\n\nExecuting the full .Rmd will generate an HTML report and may also create visual outputs or data files, often saved in the same directory or an outputs/ subfolder.\nNote: geoflow-tunaatlas is the most complex repository used in this course. It contains several scripts, workflows, and Docker-related files beyond the .Rmd example shown here.\n\n\n\n\n\nFor all of the other repositories in this course: - tunaatlas_pie_map_shiny - shiny_compare_tunaatlas_datasets - darwin_core_viewer the usage is much simpler. You typically only need two commands to get started:\n\nR code:\n\n\nrenv::restore()\nshiny::runApp()\n\nThese repositories are Shiny apps that can be launched directly after restoring the environment.\nYou’re now ready to explore and execute workflows and Shiny apps across all repositories in VLab!"
+  },
+  {
+    "objectID": "reproductibility.html",
+    "href": "reproductibility.html",
+    "title": "Lesson — Why reproducibility matters in GTA workflows",
+    "section": "",
+    "text": "By the end of this lesson, learners will be able to:\n\nExplain why reproducibility is a key principle in scientific data workflows.\n\nUnderstand the role of DOIs and the FAIR principles.\n\nRecognize how reproducibility is implemented in the Global Tuna Atlas (GTA) workflows.\n\nIdentify what parts of the workflow are not reproducible, and why."
+  },
+  {
+    "objectID": "reproductibility.html#rstudio-server-in-vlab5",
+    "href": "reproductibility.html#rstudio-server-in-vlab5",
+    "title": "Lesson — Why reproducibility matters in GTA workflows",
+    "section": "RStudio Server in VLab5",
+    "text": "RStudio Server in VLab5\nProvides the same environment (same RStudio version and resources) for all learners and users."
+  },
+  {
+    "objectID": "reproductibility.html#renv-package",
+    "href": "reproductibility.html#renv-package",
+    "title": "Lesson — Why reproducibility matters in GTA workflows",
+    "section": "renv package",
+    "text": "renv package\nManages R dependencies by locking package versions in renv.lock, ensuring analyses run identically across sessions.\n# Restore all packages for a project\nrenv::restore()"
+  },
+  {
+    "objectID": "reproductibility.html#docker-images",
+    "href": "reproductibility.html#docker-images",
+    "title": "Lesson — Why reproducibility matters in GTA workflows",
+    "section": "Docker images",
+    "text": "Docker images\nProvide portable containers that encapsulate code, packages, and system dependencies.\nThis ensures the same workflow runs identically on any machine."
+  },
+  {
+    "objectID": "workflow-architecture.html",
+    "href": "workflow-architecture.html",
+    "title": "Lesson - GTA Workflow Architecture",
+    "section": "",
+    "text": "This lesson summarizes how Global Tuna Atlas (GTA) datasets are built and versioned, how Level 2 products derive from Level 0, and how reproducibility is enforced with the geoflow framework and Docker.\n\nLevel 0 → Level 2: Level 2 datasets are derived products built from Level 0 (harmonized sources) by applying additional, documented processing (e.g., raising, strata updates). Level 2 better matches nominal totals but is not appropriate for quota/legality studies because precise geo‑referencing uncertainty remains in some cases.\nAutomation: The end‑to‑end pipeline is orchestrated with the geoflow R package (tasks, flows, inputs/outputs).\n\nReproducibility: Each dataset build is backed by a Dockerfile bundling data access, code, and package dependencies; outputs are archived with DOIs on Zenodo, with an attached PDF documenting every step and its impact.\n\n\n\nTooling: the geoflow package\nGTA uses geoflow to declare and execute workflows as flows of tasks with explicit inputs/outputs and metadata.\n\nFlows define provenance (which step produced which output, with which parameters/options).\n\nOutputs (datasets, reports) are exported and published with DOIs on zenodo and in geoserver, geonetwork and database.\n\n\n\n\nReproducibility with Docker\nEach dataset family (e.g., Level 0 nominal, Level 0/2 geo‑referenced, effort) ships a Dockerfile that encapsulates:\n\nCode (repositories + pinned versions),\nR packages (via renv), and\nBuild scripts that produce the final dataset.\n\nThis guarantees that a dataset release can be recreated bit‑for‑bit provided the same inputs.\n\n\n\nPer‑release PDF (impact of each step)\nFor each IRD Zenodo release, a PDF report is attached that:\n\nLists every workflow step (ingest → harmonize → raise → aggregate/align → QA/QC),\n\nDetails parameters and assumptions, and\n\nExplains the impact on the data (e.g., percent changes, coverage adjustments, strata updates).\n\nThis documentation is the human‑readable complement to the machine‑readable provenance stored in flow definitions and logs.\n\n\n\nQuick run patterns\n# 1) Open the R project and restore exact dependencies\nrenv::restore()\n\n2) TO DO\n\n\n\nKey takeaways\n\nLevel 2 is derived from Level 0 through documented, reproducible steps (geoflow).\n\nDocker + renv ensure anyone can rebuild with the same environment.\n\nEach dataset ships with a Dockerfile and scripts to generate the release.\n\nIRD Zenodo records include a PDF documenting each step and its impact on data."
   }
 ]

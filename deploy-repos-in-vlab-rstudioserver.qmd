@@ -1,5 +1,5 @@
 ---
-title: "Bonus (Advanced): Deploy repositories in your own VLab"
+title: "Advanced: Deploy repositories in your own VLab"
 author: "VLab Course Team"
 format:
   html:

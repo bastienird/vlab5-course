@@ -1,4 +1,4 @@
-Bonus (Advanced): Deploy repositories in your own VLab
+Advanced: Deploy repositories in your own VLab
 ================
 VLab Course Team
 

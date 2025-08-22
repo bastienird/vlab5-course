@@ -1,5 +1,5 @@
 ---
-title: "Bonus Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)"
+title: "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)"
 author: "VLab Course Team"
 format:
   html:

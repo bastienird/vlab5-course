@@ -1,4 +1,4 @@
-Bonus Personal renv cache on RStudio Server (BlueCloud 2026
+Advanced: Personal renv cache on RStudio Server (BlueCloud 2026
 infrastructure)
 ================
 VLab Course Team

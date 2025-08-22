@@ -14,7 +14,7 @@ VLab Course Team
 
 ------------------------------------------------------------------------
 
-## Quick Start in VLab5
+## Quick start in VLab5
 
 Shiny apps can be accessed in **two ways**:
 
