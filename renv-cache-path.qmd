@@ -1,11 +1,6 @@
 ---
 title: "Advanced: Personal renv cache on RStudio Server (BlueCloud 2026 infrastructure)"
 author: "VLab Course Team"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-engine: knitr
 ---
 
 > This independent note explains how **any RStudio Server user on the infrastructure** can use a **shared/global `renv` cache** without modifying Docker images or course repositories.

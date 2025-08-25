@@ -4015,7 +4015,7 @@ vertical-align: -.125em;
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-global-tuna-atlas--vlab5">    
         <li>
-    <a class="dropdown-item" href="./first_draft_Datasets&amp;WorkflowArchitecture.html">
+    <a class="dropdown-item" href="./DatasetsWorkflowArchitecture.html">
  <span class="dropdown-text">Lesson 3.1 — Intro to Global Tuna Atlas</span></a>
   </li>  
         <li>
@@ -4050,7 +4050,7 @@ vertical-align: -.125em;
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./first_draft_Datasets&amp;WorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Intro to Global Tuna Atlas</a>
+            <a href="./DatasetsWorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Intro to Global Tuna Atlas</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -4058,7 +4058,7 @@ vertical-align: -.125em;
       <ul id class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./first_draft_Datasets&amp;WorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</a>
+  <a href="./DatasetsWorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4139,9 +4139,12 @@ vertical-align: -.125em;
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#deployment-of-rstudio-server-in-a-vlab" id="toc-deployment-of-rstudio-server-in-a-vlab" class="nav-link active" data-scroll-target="#deployment-of-rstudio-server-in-a-vlab">1) Deployment of RStudio Server in a VLab</a></li>
-  <li><a href="#managing-a-global-renv-cache-in-docker-images" id="toc-managing-a-global-renv-cache-in-docker-images" class="nav-link" data-scroll-target="#managing-a-global-renv-cache-in-docker-images">2) Managing a Global <code>renv</code> cache in Docker images</a></li>
+  <li><a href="#managing-a-global-renv-cache-in-docker-images" id="toc-managing-a-global-renv-cache-in-docker-images" class="nav-link" data-scroll-target="#managing-a-global-renv-cache-in-docker-images">2) Managing a Global <code>renv</code> cache in Docker images</a>
+  <ul class="collapse">
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key points:</a></li>
+  </ul></li>
   <li><a href="#the-truly-simple-path-what-to-consider" id="toc-the-truly-simple-path-what-to-consider" class="nav-link" data-scroll-target="#the-truly-simple-path-what-to-consider">3) The truly simple path (what to consider)</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">4) Summary</a></li>
   </ul>
@@ -4211,8 +4214,12 @@ vertical-align: -.125em;
 </li>
 <li><code>.Renviron.site</code> ensures the cache is <strong>global to the image</strong> — every repository opened in RStudio will reuse this shared cache.</li>
 </ul>
-<p>Effectively: - Each repository still has its own <code>renv.lock</code> file (to ensure reproducibility).<br>
-- But the <strong>package binaries</strong> are stored once in the shared cache, instead of reinstalling them for every project.</p>
+<p>Effectively:</p>
+<ul>
+<li>Each repository still has its own <code>renv.lock</code> file (to ensure reproducibility).<br>
+</li>
+<li>But the <strong>package binaries</strong> are stored once in the shared cache, instead of reinstalling them for every project.</li>
+</ul>
 <hr>
 </section>
 </section>
@@ -4245,8 +4252,7 @@ https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheri
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">4) Summary</h2>
 <ul>
-<li><strong>Basic users</strong>: You don’t need to worry about this — VLab5 is already configured.<br>
-</li>
+<li><strong>Basic users</strong>: You don’t need to worry about this — VLab5 is already configured.</li>
 <li><strong>Advanced users</strong>: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global <code>renv</code> cache.<br>
 </li>
 <li><strong>Best practice</strong>: Use a cache in <code>blue-cloud-dataspace</code> for shared accessibility across all VLab instances.</li>

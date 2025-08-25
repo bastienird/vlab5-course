@@ -1,11 +1,6 @@
 ---
 title: "Overview"
 author: "VLab Course Team"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-engine: knitr
 ---
 
 > **Estimated duration:** 30 minutes   

@@ -1,8 +1,6 @@
 ---
 title: "Introduction to VLab5 and RStudio Server"
 author: "VLab Fisheries Atlas Course Team: Grasset Bastien, Barde Julien"
-format: html
-engine: knitr
 ---
 
 ```{r setup, include=FALSE}

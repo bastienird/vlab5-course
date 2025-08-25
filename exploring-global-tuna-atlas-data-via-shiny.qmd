@@ -1,11 +1,6 @@
 ---
 title: "Exploring Global Tuna Atlas Data via Shiny (15 min)"
 author: "VLab Course Team"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-engine: knitr
 ---
 
 > **Objective:** Learn how to interact with processed GTA datasets through dynamic **Shiny** applications, understand the **benefits/limits** of each app, and how CWP-formatted datasets fit in.  

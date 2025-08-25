@@ -11,7 +11,7 @@ website:
         text: Home
       - text: "Global Tuna Atlas & VLab5"
         menu:
-          - href: first_draft_Datasets&WorkflowArchitecture.qmd
+          - href: DatasetsWorkflowArchitecture.qmd
             text: "Lesson 3.1 — Intro to Global Tuna Atlas"
           - href: lesson-3-5-overview.qmd
             text: "Lesson 3.2 — Running R Workflows in VLab5"
@@ -24,9 +24,9 @@ website:
       collapse-level: 1
       contents:
         - text: "Lesson 3.1 — Intro to Global Tuna Atlas"
-          href: first_draft_Datasets&WorkflowArchitecture.qmd
+          href: DatasetsWorkflowArchitecture.qmd
           contents:
-            - first_draft_Datasets&WorkflowArchitecture.qmd
+            - DatasetsWorkflowArchitecture.qmd
             - workflow-architecture.qmd
             - role-of-cwp-standards.qmd
             - reproductibility.qmd
@@ -55,37 +55,3 @@ format:
     link-external: true
     link-external-icon: true
     smooth-scroll: true
-
-profiles:
-  - id: solo
-    project:
-      type: default
-      output-dir: docs/solo
-      render:
-        - "*.qmd"
-        - "!index.qmd"
-    execute:
-      freeze: auto
-    format:
-      html:
-        embed-resources: true
-        toc: true
-        page-navigation: false
-        page-layout: article
-        # pas de navbar/sidebar dans ce profil
-    website:
-      # désactive le chrome de site pour éviter toute interférence
-      title: null
-      navbar: false
-
-  - id: md
-    project:
-      type: default
-      output-dir: md_out
-      render:
-        - "*.qmd"
-        - "!index.qmd"
-    format:
-      gfm:
-        output-ext: md
-        

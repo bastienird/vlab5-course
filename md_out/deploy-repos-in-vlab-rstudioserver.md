@@ -61,10 +61,12 @@ Reference: <https://support.d4science.org/issues/29739>
 - `.Renviron.site` ensures the cache is **global to the image** — every
   repository opened in RStudio will reuse this shared cache.
 
-Effectively: - Each repository still has its own `renv.lock` file (to
-ensure reproducibility).  
+Effectively:
+
+- Each repository still has its own `renv.lock` file (to ensure
+  reproducibility).  
 - But the **package binaries** are stored once in the shared cache,
-instead of reinstalling them for every project.
+  instead of reinstalling them for every project.
 
 ------------------------------------------------------------------------
 
@@ -96,7 +98,7 @@ here are the essentials to look at and adapt per VLab:
 ## 4) Summary
 
 - **Basic users**: You don’t need to worry about this — VLab5 is already
-  configured.  
+  configured.
 - **Advanced users**: You can adapt the Dockerfile and scripts for your
   own VLab deployment, preload specific repos, and configure a global
   `renv` cache.  

@@ -1,3 +1,6 @@
+Project organization
+================
+VLab Course Team
 
 ## Project organization
 

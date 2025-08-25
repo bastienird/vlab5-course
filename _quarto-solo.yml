@@ -1,17 +1,16 @@
 project:
-  type: default           # pas "website"  pas de chrome de site
-  output-dir: docs/solo     # toutes les pages autonomes ici, dans docs pour que ça soit accessible
+  type: default
+  output-dir: solo_build
   render:
     - "*.qmd"
-    - "!index.qmd"        
+    - "!index.qmd"
 
 execute:
-  freeze: auto            # réutilise les résultats déjà calculés
+  freeze: auto
 
 format:
   html:
-    embed-resources: true # un seul fichier .html par page
+    embed-resources: true
     toc: true
     page-navigation: false
-    # (optionnel) mise en page plus “document”
     page-layout: article

@@ -1,12 +1,6 @@
 ---
 title: "Lesson - GTA Workflow Architecture"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-copy: true
-    code-overflow: wrap
-  gfm: default
+author: "VLab Course Team"
 ---
 
 This lesson summarizes how Global Tuna Atlas (GTA) datasets are built and versioned, how **Level 2** products derive from **Level 0**, and how reproducibility is enforced with the **geoflow** framework and **Docker**.

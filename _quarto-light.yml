@@ -1,0 +1,16 @@
+project:
+  type: default
+  output-dir: light_build
+  render:
+    - "*.qmd"
+    - "!index.qmd"
+
+format:
+  html:
+    theme: none
+    embed-resources: false
+    toc: false
+    code-overflow: wrap
+    code-copy: false
+    link-external: false
+    smooth-scroll: false

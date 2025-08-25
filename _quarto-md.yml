@@ -1,6 +1,13 @@
 project:
+  type: default
   output-dir: md_out
+  render:
+    - "*.qmd"
+    - "!index.qmd"
 
 format:
   gfm:
     output-ext: md
+
+execute:
+  freeze: auto

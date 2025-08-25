@@ -1,12 +1,6 @@
 ---
 title: "Lesson — Why reproducibility matters in GTA workflows"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-copy: true
-    code-overflow: wrap
-  gfm: default
+author: "VLab Course Team"
 ---
 
 # Objectives

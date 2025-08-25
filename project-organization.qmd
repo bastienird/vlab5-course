@@ -1,3 +1,8 @@
+---
+title: "Project organization"
+author: "VLab Course Team"
+---
+
 ## Project organization
 
 All project repositories used in this course are **pre-installed** in your environment.

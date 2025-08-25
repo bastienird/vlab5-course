@@ -1,10 +1,6 @@
 ---
 title: "Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture"
-author: "Module 3"
-format:
-  html:
-    toc: true
-    toc-depth: 3
+author: "VLab Course Team"
 ---
 
 # 🎯 Objectives 

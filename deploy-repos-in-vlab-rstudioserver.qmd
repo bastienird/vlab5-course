@@ -1,11 +1,6 @@
 ---
 title: "Advanced: Deploy repositories in your own VLab"
 author: "VLab Course Team"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-engine: knitr
 ---
 
 > This optional guide is for **advanced users** who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab.
@@ -50,6 +45,7 @@ Reference: <https://support.d4science.org/issues/29739>
 - `.Renviron.site` ensures the cache is **global to the image** — every repository opened in RStudio will reuse this shared cache.
 
 Effectively:
+
 - Each repository still has its own `renv.lock` file (to ensure reproducibility).  
 - But the **package binaries** are stored once in the shared cache, instead of reinstalling them for every project.
 
@@ -76,7 +72,8 @@ If you want to deploy **the same setup** as VLab5 in *your own* VLab, here are t
 ---
 
 ## 4) Summary
-- **Basic users**: You don’t need to worry about this — VLab5 is already configured.  
+
+- **Basic users**: You don’t need to worry about this — VLab5 is already configured.
 - **Advanced users**: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global `renv` cache.  
 - **Best practice**: Use a cache in `blue-cloud-dataspace` for shared accessibility across all VLab instances.  
 
