@@ -38,7 +38,7 @@ VLab Course Team
 
 ------------------------------------------------------------------------
 
-## 🎯 Learning objectives
+## Learning objectives
 
 By the end of this lesson, learners will be able to:
 

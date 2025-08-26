@@ -130,12 +130,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 <h1 id="how-reproducibility-is-implemented-in-gta-workflows">2. How reproducibility is implemented in GTA workflows</h1>
 <h2 id="rstudio-server-on-vlab5" class="anchored">RStudio Server on VLab5</h2>
-<p>VLab5 provides a <strong>uniform RStudio environment</strong> (same RStudio version, OS image, system libs), which avoids “it works on my machine” issues and makes demos consistent across learners. Use it when you want: - A pre-configured R/RStudio environment for everyone. - Stable system libraries (GDAL/PROJ, curl, etc.) aligned with the course. - Shared instructions: the same scripts and relative paths work for all users.</p>
+<p>VLab5 provides a <strong>uniform RStudio environment</strong> (same RStudio version, OS image, system libs), which avoids “it works on my machine” issues and makes demos consistent across learners. Use it when you want:</p>
+<ul>
+<li>A pre-configured R/RStudio environment for everyone.</li>
+<li>Stable system libraries (GDAL/PROJ, curl, etc.) aligned with the course.</li>
+<li>Shared instructions: the same scripts and relative paths work for all users.</li>
+</ul>
 <p>Alternative: you can run exactly the same steps <strong>locally</strong> in RStudio; the workflows and scripts are identical.</p>
 <h2 id="dois-and-zenodo" class="anchored">DOIs and Zenodo</h2>
 <p><strong>DOIs (Digital Object Identifiers)</strong> provide a <strong>permanent, citable identifier</strong> for each dataset release.<br>
-In GTA, every public release is archived on <strong>Zenodo</strong>, which mints: - a <strong>version DOI</strong> (e.g., 10.5281/zenodo.15496164) for that exact snapshot, and - a <strong>concept DOI</strong> (stable “latest” record) that always points to the newest version.</p>
-<p><strong>Why we use them</strong> - Stable citation in papers and reports, - Long-term preservation of files and metadata, - Clear versioning for reproducibility (each run points to a specific DOI).</p>
+In GTA, every public release is archived on <strong>Zenodo</strong>, which mints:</p>
+<ul>
+<li>a <strong>version DOI</strong> (e.g., 10.5281/zenodo.15496164) for that exact snapshot, and</li>
+<li>a <strong>concept DOI</strong> (stable “latest” record) that always points to the newest version.</li>
+</ul>
+<p><strong>Why we use them</strong></p>
+<ul>
+<li>Stable citation in papers and reports,</li>
+<li>Long-term preservation of files and metadata,</li>
+<li>Clear versioning for reproducibility (each run points to a specific DOI).</li>
+</ul>
 <p><strong>How to cite (example)</strong> Use the <strong>version DOI</strong> in methods/results, and the <strong>concept DOI</strong> in general references.</p>
 <blockquote>
 <p>Global Tuna Atlas (IRD release). <em>Level-2 geo-referenced catch</em>, Zenodo,<br>

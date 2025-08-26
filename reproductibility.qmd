@@ -34,6 +34,7 @@ The **FAIR principles** (Findable, Accessible, Interoperable, Reusable) provide 
 ## RStudio Server on VLab5
 
 VLab5 provides a **uniform RStudio environment** (same RStudio version, OS image, system libs), which avoids “it works on my machine” issues and makes demos consistent across learners. Use it when you want:
+
 - A pre-configured R/RStudio environment for everyone.
 - Stable system libraries (GDAL/PROJ, curl, etc.) aligned with the course.
 - Shared instructions: the same scripts and relative paths work for all users.
@@ -44,10 +45,12 @@ Alternative: you can run exactly the same steps **locally** in RStudio; the work
 
 **DOIs (Digital Object Identifiers)** provide a **permanent, citable identifier** for each dataset release.  
 In GTA, every public release is archived on **Zenodo**, which mints:
+
 - a **version DOI** (e.g., 10.5281/zenodo.15496164) for that exact snapshot, and
 - a **concept DOI** (stable "latest" record) that always points to the newest version.
 
 **Why we use them**
+
 - Stable citation in papers and reports,
 - Long-term preservation of files and metadata,
 - Clear versioning for reproducibility (each run points to a specific DOI).

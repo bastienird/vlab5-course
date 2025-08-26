@@ -40,7 +40,7 @@ It also shares best practices in:
 The GTA builds on CWP foundations by:
 
 - Applying **harmonized vocabularies** and species coding systems in **Level 0 datasets**.
-- Structuring processed outputs (Level 2) using standardized classifications for interoperability.
+- Structuring processed outputs using standardized classifications for interoperability.
 
 This ensures that GTA outputs are **FAIR-aligned** and can integrate seamlessly with global fisheries systems.
 

@@ -13,3 +13,5 @@ md_moodle/
 ims_pkg/
 *.zip
 *.mbz
+light/
+docs/light/*.html
