@@ -1,5 +1,5 @@
 ---
-title: "Lesson - GTA Workflow Architecture"
+title: "GTA Workflow Architecture"
 author: "VLab Course Team"
 ---
 
@@ -11,45 +11,69 @@ This lesson summarizes how Global Tuna Atlas (GTA) datasets are built and versio
 
 ---
 
-# Tooling: the `geoflow` package
+# Per-release PDF (impact of each step)
 
-GTA uses **geoflow** to declare and execute workflows as **flows** of **tasks** with explicit inputs/outputs and metadata.
+For **each IRD Zenodo release**, the dataset is built using the workflow script
+[`create_global_tuna_atlas_dataset_v2025.R`](https://github.com/firms-gta/geoflow-tunaatlas/blob/master/tunaatlas_scripts/generation/create_global_tuna_atlas_dataset_v2025.R)
+from the `firms-gta/geoflow-tunaatlas` repository.
 
-- Flows define **provenance** (which step produced which output, with which parameters/options).  
-- Outputs (datasets, reports) are exported and published with **DOIs** on zenodo and in geoserver, geonetwork and database.
+During the build, the **CWP.dataset** R package generates an **automated PDF report** that:
+- lists every workflow step (ingest → harmonize → raise → aggregate/align → QA/QC),
+- records the **parameters and assumptions** used,
+- and quantifies the **impact on the data** (e.g., percent changes, coverage adjustments, strata updates).
+
+Example: [PDF impact report](https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf).
+
+This documentation is the human-readable complement to the machine-readable provenance stored in flow definitions and logs.
+
 
 ---
 
-# Reproducibility with Docker
+## Workflow automation with `geoflow`
 
-Each dataset family (e.g., Level 0 nominal, Level 0/2 geo‑referenced, effort) ships a **Dockerfile** that encapsulates:
+To ensure reproducibility and traceability, GTA workflows are implemented with the **`geoflow`** R package. `geoflow` structures pipelines into a series of **tasks** with explicit inputs, outputs, and metadata.
 
-1. **Code** (repositories + pinned versions),
-2. **R packages** (via `renv`), and
-3. **Build scripts** that produce the final dataset.
+In practice, the list of datasets to build and publish is maintained in a **machine-readable entities table** (CSV).  
+For GTA, see the entities file:
+[`geoflow_entities_tuna_global_datasets_IRD_level1_2022 - IRD_level2.csv`](https://github.com/firms-gta/geoflow-tunaatlas/blob/master/geoflow_entities_tuna_global_datasets_IRD_level1_2022%20-%20IRD_level2.csv).
 
-This guarantees that a dataset release can be **recreated bit‑for‑bit** provided the same inputs.
----
+This **entities CSV** drives the run by declaring, for each dataset ("entity"):
+- **Identification & description**: identifier, title, short abstract.
+- **Inputs**: where to read source data (e.g., DOI URLs, RFMO downloads, private paths when applicable).
+- **Processing hints**: task names/parameters, expected temporal/spatial aggregations.
+- **Outputs**: target formats and locations (file names, folders).
+- **Publication targets**: Zenodo (community/concept DOI), and, when relevant, GeoServer/GeoNetwork/database destinations.
+- **Metadata**: licensing, keywords, contacts, temporal/spatial coverage, version/release info.
 
-# Per‑release PDF (impact of each step)
+During execution, `geoflow`:
+1. **Reads** the entities CSV and instantiates the flow of tasks per entity,
+2. **Runs** the declared steps (ingest → harmonize → raise → aggregate → QA/QC),
+3. **Exports** data and generates human-readable reports,
+4. **Publishes** outputs with persistent identifiers (DOIs) and records machine-readable provenance.
 
-For **each IRD Zenodo release**, a **PDF report** is attached that:
+Benefits of this approach:
+- Precise tracking of **data provenance** (which task produced what, with which parameters),
+- Automated export and **DOI-based publication** on Zenodo,
+- Optional integration with **GeoServer**/**GeoNetwork** and databases,
+- A single CSV "source of truth" versioned in Git to review changes to datasets and metadata.
 
-- Lists **every workflow step** (ingest → harmonize → raise → aggregate/align → QA/QC),  
-- Details **parameters and assumptions**, and  
-- Explains the **impact on the data** (e.g., percent changes, coverage adjustments, strata updates).
 
-This documentation is the human‑readable complement to the machine‑readable provenance stored in flow definitions and logs.
 
 ---
 
 # Quick run patterns
 
 ```r
+
 # 1) Open the R project and restore exact dependencies
 renv::restore()
 
-2) TO DO
+# Create level 2 datasets
+
+source('level_2_catch_local.R')
+
+# Create effort datasets
+targets::tar_make(script = "_targets_efforts.R")
 
 ```
 
@@ -58,6 +82,6 @@ renv::restore()
 # Key takeaways
 
 - **Level 2** is derived from **Level 0** through documented, reproducible steps (geoflow).  
-- **Docker + renv** ensure anyone can rebuild with the *same environment*.  
-- **Each dataset** ships with a **Dockerfile** and **scripts** to generate the release.  
 - **IRD Zenodo records** include a **PDF** documenting each step and its **impact on data**.
+
+

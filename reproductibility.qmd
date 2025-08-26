@@ -1,16 +1,16 @@
 ---
-title: "Lesson — Why reproducibility matters in GTA workflows"
+title: "Why reproducibility matters in GTA workflows"
 author: "VLab Course Team"
 ---
 
-# Objectives
+<!-- # Objectives -->
 
-By the end of this lesson, learners will be able to:
+<!-- By the end of this lesson, learners will be able to: -->
 
-- Explain why **reproducibility** is a key principle in scientific data workflows.  
-- Understand the role of **DOIs** and the **FAIR principles**.  
-- Recognize how reproducibility is implemented in the Global Tuna Atlas (GTA) workflows.  
-- Identify what parts of the workflow are *not* reproducible, and why.  
+<!-- - Explain why **reproducibility** is a key principle in scientific data workflows.   -->
+<!-- - Understand the role of **DOIs** and the **FAIR principles**.   -->
+<!-- - Recognize how reproducibility is implemented in the Global Tuna Atlas (GTA) workflows.   -->
+<!-- - Identify what parts of the workflow are *not* reproducible, and why.   -->
 
 ---
 
@@ -26,28 +26,82 @@ In fisheries data, reproducibility ensures that:
 
 The **FAIR principles** (Findable, Accessible, Interoperable, Reusable) provide a framework to guarantee these goals.  
 
-**DOIs (Digital Object Identifiers)** are used in GTA to make datasets **citable and permanent**.  
-
 ---
 
 # 2. How reproducibility is implemented in GTA workflows
 
-## RStudio Server in VLab5
 
-Provides the *same environment* (same RStudio version and resources) for all learners and users.  
+## RStudio Server on VLab5
 
-## `renv` package
-Manages R dependencies by locking package versions in `renv.lock`, ensuring analyses run identically across sessions.  
+VLab5 provides a **uniform RStudio environment** (same RStudio version, OS image, system libs), which avoids “it works on my machine” issues and makes demos consistent across learners. Use it when you want:
+- A pre-configured R/RStudio environment for everyone.
+- Stable system libraries (GDAL/PROJ, curl, etc.) aligned with the course.
+- Shared instructions: the same scripts and relative paths work for all users.
+
+Alternative: you can run exactly the same steps **locally** in RStudio; the workflows and scripts are identical.
+
+## DOIs and Zenodo
+
+**DOIs (Digital Object Identifiers)** provide a **permanent, citable identifier** for each dataset release.  
+In GTA, every public release is archived on **Zenodo**, which mints:
+- a **version DOI** (e.g., 10.5281/zenodo.15496164) for that exact snapshot, and
+- a **concept DOI** (stable "latest" record) that always points to the newest version.
+
+**Why we use them**
+- Stable citation in papers and reports,
+- Long-term preservation of files and metadata,
+- Clear versioning for reproducibility (each run points to a specific DOI).
+
+**How to cite (example)**
+Use the **version DOI** in methods/results, and the **concept DOI** in general references.
+
+> Global Tuna Atlas (IRD release). *Level-2 geo-referenced catch*, Zenodo,  
+> **DOI:** 10.5281/zenodo.15496164 (versioned); concept DOI: 10.5281/zenodo.15496164
+
+**BibTeX (template)**
+
+```bibtex
+@dataset{gta_level2_2025,
+  title   = {Global Tuna Atlas — Level 2 Geo-referenced Catch},
+  author  = {{GTA Team}},
+  year    = {2025},
+  version = {2025.1},
+  doi     = {10.5281/zenodo.15496164},
+  url     = {https://doi.org/10.5281/zenodo.15496164},
+  publisher = {Zenodo},
+  note    = {Use the version DOI for exact reproducibility}
+}
+
+```
+
+
+---
+
+## Dependency management with `renv`
+
+`renv` captures the **exact package versions** used in the project (`renv.lock`), making analyses reproducible across sessions and machines. https://rstudio.github.io/renv/
+
+**Restore the environment (recommended):**
 
 ```r
-# Restore all packages for a project
+
+# Restore all packages declared in renv.lock
 renv::restore()
+
 ```
 
 ## Docker images
 
-Provide portable containers that encapsulate code, packages, and system dependencies.  
-This ensures the same workflow runs identically on any machine.  
+The following datasets:  Level 2 geo‑referenced, effort ship a **Dockerfile** that encapsulates:
+
+1. **Code** (repositories + pinned versions),
+2. **R packages** (via `renv`), and
+3. **Build scripts** that produce the final dataset.
+
+This guarantees that a dataset release can be **recreated bit‑for‑bit** provided the same inputs.
+
+At this stage, Level 0 and effort datasets still rely on datasets manually collected from tRFMO websites, some of which are stored in a private Google Drive folder and not publicly accessible.
+Consequently, only Level 2 datasets can currently be fully built using open DOI-based sources, without relying on restricted files.
 
 ---
 
@@ -64,3 +118,8 @@ Instead, reproducibility is achieved by providing:
 
 Each user could, if needed, set up their *own database instance* locally.  
 
+# Key takeaways
+
+- **Docker + renv** ensure anyone can rebuild with the *same environment*.  
+- **Each dataset** ships with a **Dockerfile** and **scripts** to generate the release.  
+- **Level 0 and effort datasets** are partially dependent on non-public sources (e.g., Google Drive).

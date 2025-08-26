@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Overview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="lesson-3-5-overview_files/libs/quarto-html/tabby.min.js"></script>
+<script src="lesson-3-5-overview_files/libs/quarto-html/popper.min.js"></script>
+<script src="lesson-3-5-overview_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lesson-3-5-overview_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lesson-3-5-overview_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lesson-3-5-overview_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="lesson-3-5-overview_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="lesson-3-5-overview_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Overview</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<blockquote>
+<p><strong>Estimated duration:</strong> 30 minutes</p>
+<p><strong>Format:</strong> lab notebook (Explainer video + real-time walkthrough incoming)</p>
+<p><strong>Prerequisites:</strong> Access to VLab5, completion of VLab5 platform orientation.</p>
+</blockquote>
+<hr>
+<h2 id="course-map-pages" class="anchored">Course map (Pages)</h2>
+<ul>
+<li><p><strong>Intro to RStudio in VLab5</strong><br>
+<code>intro-rstudio.qmd</code> — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).</p></li>
+<li><p><strong>Project Organization</strong><br>
+<code>project-organization.qmd</code> — Pre-installed repositories in <code>~/GitHubRepos</code>, stable vs dev structure, quick terminal command to list repos, README locations.</p></li>
+<li><p><strong>Running scripts in a loaded repository</strong><br>
+<code>running-scripts-in-loaded-repo.qmd</code> — Open <code>.Rproj</code>, run <code>renv::restore()</code>, render example Rmd (<code>summary_catch.Rmd</code> in <code>geoflow-tunaatlas</code>), pattern for Shiny apps (<code>shiny::runApp()</code>).</p></li>
+<li><p><strong>Deploy repos in your own VLab (Bonus)</strong><br>
+<code>deploy-repos-in-vlab-rstudioserver.qmd</code> — High-level notes for advanced users: RStudio Server image, preload script, global <code>renv</code> cache at image build-time, and optional per-project/per-user cache notes.</p></li>
+</ul>
+<hr>
+<h2 id="learning-objectives" class="anchored">🎯 Learning objectives</h2>
+<p>By the end of this lesson, learners will be able to:</p>
+<ul>
+<li>Navigate the VLab5 RStudio environment confidently.</li>
+<li>Understand the structure of project repositories, including <strong>stable vs dev</strong> versions.</li>
+<li>Use <code>renv::restore()</code> to initialize a <strong>reproducible</strong> R environment.</li>
+<li>Execute a complete R script within VLab5.</li>
+<li><em>(Bonus)</em> Understand how the <strong>shared package cache</strong> works within the infrastructure.</li>
+<li><em>(Bonus)</em> Deploy a repo in their <strong>own VLab</strong> environment if needed.</li>
+</ul>
+<hr>
+<h2 id="what-you-will-do" class="anchored">What you will do</h2>
+<ul>
+<li>Launch RStudio (D4Science or Google Cloud) and inspect the environment.</li>
+<li>Explore pre-installed repos in <code>~/GitHubRepos</code> and locate main scripts.</li>
+<li>Restore packages with <code>renv::restore()</code> and run a full workflow (Rmd or Shiny).</li>
+<li>Inspect outputs in <code>outputs/</code> and review logs.</li>
+<li><em>(Bonus)</em> Review how deployment works and how to configure a global cache.</li>
+</ul>
+<hr>
+<h2 id="expected-outcome" class="anchored">Expected outcome</h2>
+<p>By the end of this lesson, learners will:</p>
+<ul>
+<li>Identify and choose an appropriate repository.</li>
+<li>Execute a full R workflow in VLab5.</li>
+<li><em>(Bonus)</em> Understand package dependencies and <code>renv</code> logic.</li>
+</ul>
+<hr>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

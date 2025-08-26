@@ -1,0 +1,146 @@
+---
+title: "Global Tuna Atlas datasets and workflow architecture"
+author: "VLab Course Team"
+---
+
+# Overview of the Global Tuna Atlas datasets and workflow architecture
+
+The **Global Tuna Atlas (GTA)** integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). GTA workflows aim to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, Reusable) and reproducible.
+
+The dataset families include:
+
+- **Nominal catches** (annual, aggregated by fleet, gear, species, large area).
+- **Geo-referenced catches** (monthly, 1°/5° grids).
+- **Effort datasets** (multiple measurement units, kept unaggregated to preserve semantics).
+- **Derived CPUE datasets** (catch-per-unit-effort on matched strata).
+
+Each dataset is produced using harmonized formats based on **CWP standards** and reproducible scripts available in:
+
+- Level 2 & Effort (IRD): <https://github.com/firms-gta/geoflow-tunaatlas>  
+- Level 0 (FIRMS): <https://github.com/firms-gta/geoflow-gta>
+
+---
+
+# Presentation of dataset specificities
+
+## Nominal Catch Dataset (FIRMS Level 0)
+- **Time span:** 1918–2023  
+- **Content:** Live-weight equivalent (metric tonnes), mainly retained catches  
+- **Stratification:** Year, fleet, gear, large area, species  
+- **Use case:** Benchmark of global tuna catch volumes  
+- **DOI:** <https://doi.org/10.5281/zenodo.5745958>
+
+## Geo-referenced Catch Datasets
+
+### FIRMS Level 0
+- **Time span:** 1950–2023  
+- **Resolution:** 1°/5° grid, monthly  
+- **Content:** Catches from all t-RFMOs, harmonized  
+- **DOI:** <https://doi.org/10.5281/zenodo.5747174>
+
+### IRD Level 2
+- Further processed to align geo-referenced totals with nominal totals  
+- Includes raising, strata updates, and handling of observer vs logbook data (e.g., IATTC)  
+- **Warning:** Not suitable for quota/legality studies due to uncertainty in precise georeferencing  
+- **Code:** <https://github.com/firms-gta/geoflow-tunaatlas>  
+- **DOI:** <https://doi.org/10.5281/zenodo.15496164>
+
+## Effort Dataset (IRD Level 0)
+- **Time span:** 1950–2023  
+- **Content:** 23 different measurement units; no aggregation  
+- **Specificities:** Known duplicates/parallel series (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS)—end-users must harmonize for their analysis  
+- **DOI:** <https://doi.org/10.5281/zenodo.15496164>
+
+---
+
+## Exploration resources
+
+- Example Rmd notebooks (in the L2/Effort repo):  
+
+  - Exploring Level 2 catch: <https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd>  
+  - Exploring Level 0 effort: <https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd>
+  
+- Shiny apps:  
+
+  - <https://github.com/firms-gta/shiny_compare_fisheries_datasets>  
+  - <https://github.com/firms-gta/tunaatlas_pie_map_shiny>
+
+---
+
+# GTA Workflow Architecture (Level 0 → Level 2)
+
+- **Level 0 → Level 2**: Level 2 datasets are *derived products* built from Level 0 (harmonized sources) by applying documented processing (e.g., **raising** to nominal totals, **strata updates**, harmonization, QA/QC). Level 2 aligns better with nominal totals but is **not appropriate for quota/legality studies** because precise geo-referencing uncertainty can remain.
+
+---
+
+# Per-release PDF (impact of each step)
+
+For **each IRD Zenodo release**, the dataset is built using the workflow script  
+[`create_global_tuna_atlas_dataset_v2025.R`](https://github.com/firms-gta/geoflow-tunaatlas/blob/master/tunaatlas_scripts/generation/create_global_tuna_atlas_dataset_v2025.R)
+from the `firms-gta/geoflow-tunaatlas` repository.
+
+During the build, the **CWP.dataset** R package generates an **automated PDF report** that:
+
+- lists every workflow step (ingest → harmonize → raise → aggregate/align → QA/QC),
+- records the **parameters and assumptions** used,
+- and quantifies the **impact on the data** (e.g., percent changes, coverage adjustments, strata updates).
+
+Example: <https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf>
+
+This documentation complements the machine-readable provenance stored in flow definitions and logs.
+
+---
+
+# Workflow automation with `geoflow`
+
+To ensure reproducibility and traceability, GTA workflows are implemented with the **`geoflow`** R package, which structures pipelines into **tasks** with explicit inputs, outputs, and metadata.
+
+In practice, the list of datasets to build and publish is maintained in a **machine-readable entities table (CSV)**.  
+For GTA, see:
+[`geoflow_entities_tuna_global_datasets_IRD_level1_2022 - IRD_level2.csv`](https://github.com/firms-gta/geoflow-tunaatlas/blob/master/geoflow_entities_tuna_global_datasets_IRD_level1_2022%20-%20IRD_level2.csv).
+
+The **entities CSV** drives each run by declaring, for every dataset ("entity"):
+
+- Identification & description (id, title, abstract)
+- Inputs (DOI URLs, RFMO downloads, private paths when applicable)
+- Processing hints (task names/parameters, expected temporal/spatial aggregations)
+- Outputs (target formats/locations)
+- Publication targets (Zenodo community/concept DOI; optionally GeoServer/GeoNetwork/database)
+- Metadata (license, keywords, contacts, temporal/spatial coverage, version/release info)
+
+**Execution flow with `geoflow`:**
+
+1. Read the entities CSV and instantiate the flow of tasks per entity  
+2. Run steps (ingest → harmonize → raise → aggregate → QA/QC)  
+3. Export data and generate human-readable reports  
+4. Publish outputs with DOIs and record machine-readable provenance
+
+**Benefits:**
+
+- Precise tracking of **data provenance** (which task produced what, with which parameters)
+- Automated export and **DOI-based publication** (Zenodo)
+- Optional integration with **GeoServer/GeoNetwork** and databases
+- A single, versioned CSV “source of truth” for datasets and metadata
+
+---
+
+# Quick run patterns
+
+```r
+
+# 2) Create Level 2 datasets
+# - Downloads required DOI resources when needed
+# - Applies raising and strata updates to align with nominal totals
+# - Generates an impact PDF via CWP.dataset (per-release)
+source("level_2_catch_local.R")
+
+
+```
+
+# Key takeaways
+
+- Level 2 is derived from Level 0 through documented, reproducible steps (geoflow).
+- IRD Zenodo records include a PDF documenting each step and its impact on data.
+- The entities CSV defines what to build/publish and underpins traceable, automated runs.
+
+

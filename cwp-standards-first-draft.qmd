@@ -1,0 +1,58 @@
+---
+title: "Role of CWP Standards in GTA Draft"
+author: "VLab Course Team"
+---
+
+<!-- ## Objectives -->
+
+<!-- By the end of this lesson, learners will be able to: -->
+
+<!-- - Describe what the **CWP (Coordinating Working Party on Fishery Statistics)** is. -->
+<!-- - Understand its role in establishing **global statistical standards** for fisheries data. -->
+<!-- - Recognize how GTA aligns with CWP standards for harmonization and interoperability. -->
+
+---
+
+## 1. Introduction to the CWP
+
+The **Coordinating Working Party on Fishery Statistics (CWP)**, under FAO’s leadership, is the main international forum for agreeing on:
+
+- **Common definitions, classifications, and standards** for capturing fishery and aquaculture statistics.
+- It develops methods, reduces workload for national statistical offices, and promotes harmonization across regions.  https://openknowledge.fao.org/server/api/core/bitstreams/a7f3993f-1af1-4e65-8b91-036d12a34458/content
+
+---
+
+## 2. What CWP offers — Handbook & best practices
+
+The **CWP Handbook of Fishery Statistics** provides:
+
+- Standard terminology for **catch**, **fishing effort**, and **aquaculture** data.
+- Classifications like the **ASFIS list** (species codes), and structured data exchange protocols.  
+
+It also shares best practices in:
+
+- Harmonization, geospatial standards, managing sensitive/confidential data, and workflows.  
+
+---
+
+## 3. Alignment with GTA workflows
+
+The GTA builds on CWP foundations by:
+
+- Applying **harmonized vocabularies** and species coding systems in **Level 0 datasets**.
+- Structuring processed outputs (Level 2) using standardized classifications for interoperability.
+
+This ensures that GTA outputs are **FAIR-aligned** and can integrate seamlessly with global fisheries systems.
+
+---
+
+<!-- ## 4. Summary -->
+
+<!-- | Key CWP Contributions | How GTA benefits | -->
+<!-- |------------------------|------------------| -->
+<!-- | Shared definitions & species codes | Consistent taxonomy across datasets | -->
+<!-- | Data harmonization protocols | Efficient aggregation of multi-source data | -->
+<!-- | Best practices in data workflows | Interoperable and FAIR-compliant outputs | -->
+
+<!-- --- -->
+

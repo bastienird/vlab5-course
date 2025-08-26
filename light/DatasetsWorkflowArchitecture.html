@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Global Tuna Atlas datasets and workflow architecture</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="DatasetsWorkflowArchitecture_files/libs/quarto-html/tabby.min.js"></script>
+<script src="DatasetsWorkflowArchitecture_files/libs/quarto-html/popper.min.js"></script>
+<script src="DatasetsWorkflowArchitecture_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="DatasetsWorkflowArchitecture_files/libs/quarto-html/anchor.min.js"></script>
+<link href="DatasetsWorkflowArchitecture_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="DatasetsWorkflowArchitecture_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="DatasetsWorkflowArchitecture_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="DatasetsWorkflowArchitecture_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Global Tuna Atlas datasets and workflow architecture</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<!-- # Objectives  -->
+<!-- By the end of this lesson, you should be able to: -->
+<!-- - Distinguish nominal, geo-referenced, effort, and CPUE datasets. -->
+<!-- - Understand the GTA workflow architecture and reproducibility principles. -->
+<!-- - Recognize specificities and caveats for each dataset (e.g., raising rules, effort unit heterogeneity). -->
+<!-- - Locate the code and repositories to reproduce or customize GTA datasets. -->
+<h1 id="overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture">Overview of the Global Tuna Atlas datasets and workflow architecture</h1>
+<p>The <strong>Global Tuna Atlas (GTA)</strong> integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). The GTA workflows are designed to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, and Reusable) and reproducible.</p>
+<p>The workflow architecture includes:</p>
+<ul>
+<li><strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area).</li>
+<li><strong>Geo-referenced catches</strong> (monthly, fine spatial resolution: 1° or 5°).</li>
+<li><strong>Effort datasets</strong> (various measurement units, unaggregated to preserve semantics).</li>
+<li><strong>Derived CPUE datasets</strong> (catch-per-unit-effort).</li>
+</ul>
+<p>Each dataset is produced using harmonized formats based on <a href="https://www.fao.org/3/cc6734en/cc6734en.pdf">CWP standards</a> and reproducible scripts available in the <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas repository for level 2 and efforts (IRD)</a> and <a href="https://github.com/firms-gta/geoflow-gta">geoflow-tunaatlas repository for level 0 (FIRMS)</a>.</p>
+<hr>
+<h1 id="presentation-of-dataset-specificities">Presentation of dataset specificities</h1>
+<h2 id="nominal-catch-dataset-firms-level-0" class="anchored">Nominal Catch Dataset (FIRMS Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1918–2023.</li>
+<li><strong>Content:</strong> Live-weight equivalent (metric tonnes), mainly retained catches.</li>
+<li><strong>Stratification:</strong> Year, fleet, gear, large area, species.</li>
+<li><strong>Use case:</strong> Benchmark of global tuna catch volumes.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.5745958">10.5281/zenodo.5745958</a>.</li>
+</ul>
+<h2 id="geo-referenced-catch-datasets" class="anchored">Geo-referenced Catch Datasets</h2>
+<h3 id="firms-level-0" class="anchored">FIRMS Level 0</h3>
+<ul>
+<li><strong>Time span:</strong> 1950–2023.</li>
+<li><strong>Resolution:</strong> 1°/5° grid, monthly.</li>
+<li><strong>Content:</strong> Catches from all t-RFMOs, harmonized.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.5747174">10.5281/zenodo.5747174</a>.</li>
+</ul>
+<h3 id="ird-level-2" class="anchored">IRD Level 2</h3>
+<ul>
+<li>Further processed to align geo-referenced data with nominal totals.</li>
+<li>Includes raising, updating of strata, and better handling of IATTC observer vs logbook data.</li>
+<li><strong>Warning:</strong> Not suitable for quota/legality studies due to uncertainty in precise georeferencing.</li>
+<li><strong>Code:</strong> Full workflow at <a href="https://github.com/firms-gta/geoflow-tunaatlas">geoflow-tunaatlas</a>.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.15496164">10.5281/zenodo.15496164</a>.</li>
+</ul>
+<h2 id="effort-dataset-ird-level-0" class="anchored">Effort Dataset (IRD Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1950–2023.</li>
+<li><strong>Content:</strong> 23 different measurement units, no aggregation.</li>
+<li><strong>Specificities:</strong> Duplicates exist (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS). End-users must harmonize depending on research needs.</li>
+<li><strong>DOI:</strong> <a href="https://zenodo.org/doi/10.5281/zenodo.15496164">10.5281/zenodo.15496164</a>.</li>
+</ul>
+<hr>
+<p>If you want to explore some of the CWP datasets, some .Rmd are available in [this repository] (https://github.com/firms-gta/geoflow-tunaatlas), <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd">exploring level 2 catch data</a> <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd">exploring level 0 effort data</a> as well as shiny apps <a href="https://github.com/firms-gta/shiny_compare_fisheries_datasets">here</a> and <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny">here</a>.</p>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

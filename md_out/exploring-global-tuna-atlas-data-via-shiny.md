@@ -35,7 +35,16 @@ locally using Docker.
 > **Note:** Docker images can be large and the app may require several
 > GB of RAM.
 
+> We **strongly recommend** running this Shiny app on **VLab5 RStudio
+> Server** because it can require **a lot of RAM** (often **32 GB**,
+> depending on dataset size and filters). VLab5 provides:
+
+> - a consistent environment (R/RStudio, system libs),
+> - higher memory availability than many laptops,
+> - fewer installation issues (GDAL/PROJ, curl, etc. already present).
+
 ``` bash
+
 docker pull ghcr.io/<name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny> #(first time only)
 docker run --rm --name tunaatlas \
   -p 3838:3838 \
@@ -46,32 +55,36 @@ and then open http://127.0.0.1:3838/
 
 ------------------------------------------------------------------------
 
-## 📦 Shiny Apps in this lesson
+## Shiny Apps in this lesson
 
 ### Main apps (available in Shiny Apps tab)
 
 - **tunaatlas_pie_map_shiny** (stable + dev)  
   *Purpose:* Visualize **any dataset in CWP format** (catch/effort) with
   interactive **maps and plots**.  
-  *Docs:* See repo **README** for supported schemas, required columns,
-  and examples.  
   *GitHub:* <https://github.com/firms-gta/tunaatlas_pie_map_shiny>
+  *Vlab5:*
+  <https://blue-cloud.d4science.org/group/globalfisheriesatlas/global-tuna-atlas>
+  *Docs:* See repo **README** for supported schemas, required columns,
+  and examples.
 
 - **shiny_compare_tunaatlas_datasets** (stable + dev)  
   *Purpose:* **Compare** harmonized GTA datasets (e.g., different Zenodo
   DOIs / releases / parameters).  
-  *Docs:* README describes how to reference DOIs and comparison keys.  
-  *GitHub:*
-  <https://github.com/firms-gta/shiny_compare_fisheries_datasets>
+  *GitHub:* <https://github.com/firms-gta/tunaatlas_pie_map_shiny>
+  *Vlab5:*
+  <https://blue-cloud.d4science.org/group/globalfisheriesatlas/comparison-globaltunaatlas-datasets>
+  *Docs:* README describes how to reference DOIs and comparison keys.
 
 ### Additional app
 
 - **darwin_core_viewer** (stable only)  
   *Purpose:* Minimal viewer for **Darwin Core** biodiversity data
   (maps + plots). Good **template** for custom viewers.  
+  *GitHub:* <https://github.com/firms-gta/darwin_core_viewer> *Vlab5:*
+  <https://blue-cloud.d4science.org/group/globalfisheriesatlas/darwin-core-viewer>
   *Docs:* README covers expected Darwin Core fields (e.g.,
-  `scientificName`, `eventDate`, `decimalLatitude/Longitude`).  
-  *GitHub:* <https://github.com/firms-gta/darwin_core_viewer>
+  `scientificName`, `eventDate`, `decimalLatitude/Longitude`).
 
 ------------------------------------------------------------------------
 

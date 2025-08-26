@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Global Tuna Atlas datasets and workflow architecture</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="datasetworkflowarchitecture-all_files/libs/quarto-html/tabby.min.js"></script>
+<script src="datasetworkflowarchitecture-all_files/libs/quarto-html/popper.min.js"></script>
+<script src="datasetworkflowarchitecture-all_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="datasetworkflowarchitecture-all_files/libs/quarto-html/anchor.min.js"></script>
+<link href="datasetworkflowarchitecture-all_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="datasetworkflowarchitecture-all_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="datasetworkflowarchitecture-all_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="datasetworkflowarchitecture-all_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Global Tuna Atlas datasets and workflow architecture</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<h1 id="overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture">Overview of the Global Tuna Atlas datasets and workflow architecture</h1>
+<p>The <strong>Global Tuna Atlas (GTA)</strong> integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). GTA workflows aim to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, Reusable) and reproducible.</p>
+<p>The dataset families include:</p>
+<ul>
+<li><strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area).</li>
+<li><strong>Geo-referenced catches</strong> (monthly, 1°/5° grids).</li>
+<li><strong>Effort datasets</strong> (multiple measurement units, kept unaggregated to preserve semantics).</li>
+<li><strong>Derived CPUE datasets</strong> (catch-per-unit-effort on matched strata).</li>
+</ul>
+<p>Each dataset is produced using harmonized formats based on <strong>CWP standards</strong> and reproducible scripts available in:</p>
+<ul>
+<li>Level 2 &amp; Effort (IRD): <a href="https://github.com/firms-gta/geoflow-tunaatlas" class="uri">https://github.com/firms-gta/geoflow-tunaatlas</a><br>
+</li>
+<li>Level 0 (FIRMS): <a href="https://github.com/firms-gta/geoflow-gta" class="uri">https://github.com/firms-gta/geoflow-gta</a></li>
+</ul>
+<hr>
+<h1 id="presentation-of-dataset-specificities">Presentation of dataset specificities</h1>
+<h2 id="nominal-catch-dataset-firms-level-0" class="anchored">Nominal Catch Dataset (FIRMS Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1918–2023<br>
+</li>
+<li><strong>Content:</strong> Live-weight equivalent (metric tonnes), mainly retained catches<br>
+</li>
+<li><strong>Stratification:</strong> Year, fleet, gear, large area, species<br>
+</li>
+<li><strong>Use case:</strong> Benchmark of global tuna catch volumes<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.5745958" class="uri">https://doi.org/10.5281/zenodo.5745958</a></li>
+</ul>
+<h2 id="geo-referenced-catch-datasets" class="anchored">Geo-referenced Catch Datasets</h2>
+<h3 id="firms-level-0" class="anchored">FIRMS Level 0</h3>
+<ul>
+<li><strong>Time span:</strong> 1950–2023<br>
+</li>
+<li><strong>Resolution:</strong> 1°/5° grid, monthly<br>
+</li>
+<li><strong>Content:</strong> Catches from all t-RFMOs, harmonized<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.5747174" class="uri">https://doi.org/10.5281/zenodo.5747174</a></li>
+</ul>
+<h3 id="ird-level-2" class="anchored">IRD Level 2</h3>
+<ul>
+<li>Further processed to align geo-referenced totals with nominal totals<br>
+</li>
+<li>Includes raising, strata updates, and handling of observer vs logbook data (e.g., IATTC)<br>
+</li>
+<li><strong>Warning:</strong> Not suitable for quota/legality studies due to uncertainty in precise georeferencing<br>
+</li>
+<li><strong>Code:</strong> <a href="https://github.com/firms-gta/geoflow-tunaatlas" class="uri">https://github.com/firms-gta/geoflow-tunaatlas</a><br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.15496164" class="uri">https://doi.org/10.5281/zenodo.15496164</a></li>
+</ul>
+<h2 id="effort-dataset-ird-level-0" class="anchored">Effort Dataset (IRD Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1950–2023<br>
+</li>
+<li><strong>Content:</strong> 23 different measurement units; no aggregation<br>
+</li>
+<li><strong>Specificities:</strong> Known duplicates/parallel series (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS)—end-users must harmonize for their analysis<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.15496164" class="uri">https://doi.org/10.5281/zenodo.15496164</a></li>
+</ul>
+<hr>
+<h2 id="exploration-resources" class="anchored">Exploration resources</h2>
+<ul>
+<li><p>Example Rmd notebooks (in the L2/Effort repo):</p>
+<ul>
+<li>Exploring Level 2 catch: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd" class="uri">https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd</a><br>
+</li>
+<li>Exploring Level 0 effort: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd" class="uri">https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd</a></li>
+</ul></li>
+<li><p>Shiny apps:</p>
+<ul>
+<li><a href="https://github.com/firms-gta/shiny_compare_fisheries_datasets" class="uri">https://github.com/firms-gta/shiny_compare_fisheries_datasets</a><br>
+</li>
+<li><a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a></li>
+</ul></li>
+</ul>
+<hr>
+<h1 id="gta-workflow-architecture-level-0-level-2">GTA Workflow Architecture (Level 0 → Level 2)</h1>
+<ul>
+<li><strong>Level 0 → Level 2</strong>: Level 2 datasets are <em>derived products</em> built from Level 0 (harmonized sources) by applying documented processing (e.g., <strong>raising</strong> to nominal totals, <strong>strata updates</strong>, harmonization, QA/QC). Level 2 aligns better with nominal totals but is <strong>not appropriate for quota/legality studies</strong> because precise geo-referencing uncertainty can remain.</li>
+</ul>
+<hr>
+<h1 id="per-release-pdf-impact-of-each-step">Per-release PDF (impact of each step)</h1>
+<p>For <strong>each IRD Zenodo release</strong>, the dataset is built using the workflow script<br>
+<a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/tunaatlas_scripts/generation/create_global_tuna_atlas_dataset_v2025.R"><code>create_global_tuna_atlas_dataset_v2025.R</code></a> from the <code>firms-gta/geoflow-tunaatlas</code> repository.</p>
+<p>During the build, the <strong>CWP.dataset</strong> R package generates an <strong>automated PDF report</strong> that:</p>
+<ul>
+<li>lists every workflow step (ingest → harmonize → raise → aggregate/align → QA/QC),</li>
+<li>records the <strong>parameters and assumptions</strong> used,</li>
+<li>and quantifies the <strong>impact on the data</strong> (e.g., percent changes, coverage adjustments, strata updates).</li>
+</ul>
+<p>Example: <a href="https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf" class="uri">https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf</a></p>
+<p>This documentation complements the machine-readable provenance stored in flow definitions and logs.</p>
+<hr>
+<h1 id="workflow-automation-with-geoflow">Workflow automation with <code>geoflow</code></h1>
+<p>To ensure reproducibility and traceability, GTA workflows are implemented with the <strong><code>geoflow</code></strong> R package, which structures pipelines into <strong>tasks</strong> with explicit inputs, outputs, and metadata.</p>
+<p>In practice, the list of datasets to build and publish is maintained in a <strong>machine-readable entities table (CSV)</strong>.<br>
+For GTA, see: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/geoflow_entities_tuna_global_datasets_IRD_level1_2022%20-%20IRD_level2.csv"><code>geoflow_entities_tuna_global_datasets_IRD_level1_2022 - IRD_level2.csv</code></a>.</p>
+<p>The <strong>entities CSV</strong> drives each run by declaring, for every dataset (“entity”):</p>
+<ul>
+<li>Identification &amp; description (id, title, abstract)</li>
+<li>Inputs (DOI URLs, RFMO downloads, private paths when applicable)</li>
+<li>Processing hints (task names/parameters, expected temporal/spatial aggregations)</li>
+<li>Outputs (target formats/locations)</li>
+<li>Publication targets (Zenodo community/concept DOI; optionally GeoServer/GeoNetwork/database)</li>
+<li>Metadata (license, keywords, contacts, temporal/spatial coverage, version/release info)</li>
+</ul>
+<p><strong>Execution flow with <code>geoflow</code>:</strong></p>
+<ol type="1">
+<li>Read the entities CSV and instantiate the flow of tasks per entity<br>
+</li>
+<li>Run steps (ingest → harmonize → raise → aggregate → QA/QC)<br>
+</li>
+<li>Export data and generate human-readable reports<br>
+</li>
+<li>Publish outputs with DOIs and record machine-readable provenance</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Precise tracking of <strong>data provenance</strong> (which task produced what, with which parameters)</li>
+<li>Automated export and <strong>DOI-based publication</strong> (Zenodo)</li>
+<li>Optional integration with <strong>GeoServer/GeoNetwork</strong> and databases</li>
+<li>A single, versioned CSV “source of truth” for datasets and metadata</li>
+</ul>
+<hr>
+<h1 id="quick-run-patterns">Quick run patterns</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Create Level 2 datasets</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Downloads required DOI resources when needed</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Applies raising and strata updates to align with nominal totals</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - Generates an impact PDF via CWP.dataset (per-release)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"level_2_catch_local.R"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+<h1 id="key-takeaways">Key takeaways</h1>
+<ul>
+<li>Level 2 is derived from Level 0 through documented, reproducible steps (geoflow).</li>
+<li>IRD Zenodo records include a PDF documenting each step and its impact on data.</li>
+<li>The entities CSV defines what to build/publish and underpins traceable, automated runs.</li>
+</ul>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

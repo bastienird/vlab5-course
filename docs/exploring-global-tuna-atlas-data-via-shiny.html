@@ -4016,15 +4016,15 @@ vertical-align: -.125em;
     <ul class="dropdown-menu" aria-labelledby="nav-menu-global-tuna-atlas--vlab5">    
         <li>
     <a class="dropdown-item" href="./DatasetsWorkflowArchitecture.html">
- <span class="dropdown-text">Lesson 3.1 — Intro to Global Tuna Atlas</span></a>
+ <span class="dropdown-text">Lesson 1 — Intro to Global Tuna Atlas</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lesson-3-5-overview.html">
- <span class="dropdown-text">Lesson 3.2 — Running R Workflows in VLab5</span></a>
+ <span class="dropdown-text">Lesson 2 — Running R Workflows in VLab5</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./exploring-global-tuna-atlas-data-via-shiny.html">
- <span class="dropdown-text">Lesson 3.3 — Exploring GTA data via Shiny</span></a>
+ <span class="dropdown-text">Lesson 3 — Exploring GTA data via Shiny</span></a>
   </li>  
     </ul>
   </li>
@@ -4050,7 +4050,7 @@ vertical-align: -.125em;
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./DatasetsWorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Intro to Global Tuna Atlas</a>
+            <a href="./datasetworkflowarchitecture-all.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Intro to Global Tuna Atlas</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -4058,20 +4058,22 @@ vertical-align: -.125em;
       <ul id class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./DatasetsWorkflowArchitecture.html" class="sidebar-item-text sidebar-link">Lesson 3.1 — Global Tuna Atlas datasets and workflow architecture</a>
+  <a href="./datasetworkflowarchitecture-all.html" class="sidebar-item-text sidebar-link">Global Tuna Atlas datasets and workflow architecture</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow-architecture.html" class="sidebar-item-text sidebar-link">Lesson - GTA Workflow Architecture</a>
+  <a href="./cpue-dataset.html" class="sidebar-item-text sidebar-link">CPUE code and derivation</a>
   </div>
 </li>
           <li class="sidebar-item">
-  role-of-cwp-standards.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./reproductibility.html" class="sidebar-item-text sidebar-link">Why reproducibility matters in GTA workflows</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reproductibility.html" class="sidebar-item-text sidebar-link">Lesson — Why reproducibility matters in GTA workflows</a>
+  <a href="./cwp-standards-first-draft.html" class="sidebar-item-text sidebar-link">Role of CWP Standards in GTA Draft</a>
   </div>
 </li>
       </ul>
@@ -4142,7 +4144,7 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#quick-start-in-vlab5" id="toc-quick-start-in-vlab5" class="nav-link active" data-scroll-target="#quick-start-in-vlab5">Quick start in VLab5</a></li>
   <li><a href="#outside-vlab-5" id="toc-outside-vlab-5" class="nav-link" data-scroll-target="#outside-vlab-5">Outside Vlab 5</a></li>
-  <li><a href="#shiny-apps-in-this-lesson" id="toc-shiny-apps-in-this-lesson" class="nav-link" data-scroll-target="#shiny-apps-in-this-lesson">📦 Shiny Apps in this lesson</a>
+  <li><a href="#shiny-apps-in-this-lesson" id="toc-shiny-apps-in-this-lesson" class="nav-link" data-scroll-target="#shiny-apps-in-this-lesson">Shiny Apps in this lesson</a>
   <ul class="collapse">
   <li><a href="#main-apps-available-in-shiny-apps-tab" id="toc-main-apps-available-in-shiny-apps-tab" class="nav-link" data-scroll-target="#main-apps-available-in-shiny-apps-tab">Main apps (available in Shiny Apps tab)</a></li>
   <li><a href="#additional-app" id="toc-additional-app" class="nav-link" data-scroll-target="#additional-app">Additional app</a></li>
@@ -4206,26 +4208,35 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p><strong>Note:</strong> Docker images can be large and the app may require several GB of RAM.</p>
 </blockquote>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span> #<span class="er">(</span><span class="ex">first</span> time only<span class="kw">)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--name</span> tunaatlas <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 3838:3838 <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>We <strong>strongly recommend</strong> running this Shiny app on <strong>VLab5 RStudio Server</strong> because it can require <strong>a lot of RAM</strong> (often <strong>32 GB</strong>, depending on dataset size and filters). VLab5 provides:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>a consistent environment (R/RStudio, system libs),</li>
+<li>higher memory availability than many laptops,</li>
+<li>fewer installation issues (GDAL/PROJ, curl, etc. already present).</li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span> #<span class="er">(</span><span class="ex">first</span> time only<span class="kw">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--name</span> tunaatlas <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 3838:3838 <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then open http://127.0.0.1:3838/</p>
 <hr>
 </section>
 <section id="shiny-apps-in-this-lesson" class="level2">
-<h2 class="anchored" data-anchor-id="shiny-apps-in-this-lesson">📦 Shiny Apps in this lesson</h2>
+<h2 class="anchored" data-anchor-id="shiny-apps-in-this-lesson">Shiny Apps in this lesson</h2>
 <section id="main-apps-available-in-shiny-apps-tab" class="level3">
 <h3 class="anchored" data-anchor-id="main-apps-available-in-shiny-apps-tab">Main apps (available in Shiny Apps tab)</h3>
 <ul>
 <li><p><strong>tunaatlas_pie_map_shiny</strong> (stable + dev)<br>
 <em>Purpose:</em> Visualize <strong>any dataset in CWP format</strong> (catch/effort) with interactive <strong>maps and plots</strong>.<br>
-<em>Docs:</em> See repo <strong>README</strong> for supported schemas, required columns, and examples.<br>
-<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a></p></li>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/global-tuna-atlas" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/global-tuna-atlas</a> <em>Docs:</em> See repo <strong>README</strong> for supported schemas, required columns, and examples.</p></li>
 <li><p><strong>shiny_compare_tunaatlas_datasets</strong> (stable + dev)<br>
 <em>Purpose:</em> <strong>Compare</strong> harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).<br>
-<em>Docs:</em> README describes how to reference DOIs and comparison keys.<br>
-<em>GitHub:</em> <a href="https://github.com/firms-gta/shiny_compare_fisheries_datasets" class="uri">https://github.com/firms-gta/shiny_compare_fisheries_datasets</a></p></li>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/comparison-globaltunaatlas-datasets" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/comparison-globaltunaatlas-datasets</a> <em>Docs:</em> README describes how to reference DOIs and comparison keys.</p></li>
 </ul>
 </section>
 <section id="additional-app" class="level3">
@@ -4233,8 +4244,7 @@ vertical-align: -.125em;
 <ul>
 <li><strong>darwin_core_viewer</strong> (stable only)<br>
 <em>Purpose:</em> Minimal viewer for <strong>Darwin Core</strong> biodiversity data (maps + plots). Good <strong>template</strong> for custom viewers.<br>
-<em>Docs:</em> README covers expected Darwin Core fields (e.g., <code>scientificName</code>, <code>eventDate</code>, <code>decimalLatitude/Longitude</code>).<br>
-<em>GitHub:</em> <a href="https://github.com/firms-gta/darwin_core_viewer" class="uri">https://github.com/firms-gta/darwin_core_viewer</a></li>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/darwin_core_viewer" class="uri">https://github.com/firms-gta/darwin_core_viewer</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/darwin-core-viewer" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/darwin-core-viewer</a> <em>Docs:</em> README covers expected Darwin Core fields (e.g., <code>scientificName</code>, <code>eventDate</code>, <code>decimalLatitude/Longitude</code>).</li>
 </ul>
 <hr>
 </section>

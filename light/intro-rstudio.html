@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Fisheries Atlas Course Team: Grasset Bastien, Barde Julien">
+
+<title>Introduction to VLab5 and RStudio Server</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="intro-rstudio_files/libs/quarto-html/tabby.min.js"></script>
+<script src="intro-rstudio_files/libs/quarto-html/popper.min.js"></script>
+<script src="intro-rstudio_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="intro-rstudio_files/libs/quarto-html/anchor.min.js"></script>
+<link href="intro-rstudio_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="intro-rstudio_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="intro-rstudio_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="intro-rstudio_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Introduction to VLab5 and RStudio Server</h1>
+<p class="author">VLab Fisheries Atlas Course Team: Grasset Bastien, Barde Julien</p>
+
+</header>
+
+<h2 id="getting-started-with-rstudio-in-vlab5" class="anchored">Getting Started with RStudio in VLab5</h2>
+<p>This short notebook will guide you through the key features and technical setup of the RStudio Server in VLab5.</p>
+<h3 id="launching-the-environment" class="anchored">Launching the Environment</h3>
+<p>To begin working in VLab5 with R workflows, start by navigating to the <strong>Analytics</strong> section on the platform.</p>
+<p>You have two main options to launch an RStudio session:</p>
+<ol type="1">
+<li><strong>RStudio on D4Science (Start)</strong> – This is the default environment. It includes all preloaded repositories you’ll use in this course (both stable and dev versions). It has limited RAM compared to the second option.</li>
+<li><strong>RStudio on GoogleCloud (Start)</strong> – This environment offers more RAM and computing power, which can be useful for heavier computations. However, it does <em>not</em> include the preloaded repositories by default. If you use it, you’ll need to manually configure and copy the necessary projects.</li>
+</ol>
+<p>Once you launch either version, you’ll enter a standard <strong>RStudio Server interface</strong> directly in your browser.</p>
+<p>RStudio is organized into four panes:</p>
+<ul>
+<li><strong>Top-left</strong>: Script editor</li>
+<li><strong>Bottom-left</strong>: Console and Terminal
+<ul>
+<li>The <strong>Console</strong> is where you type and run R code interactively.</li>
+<li>The <strong>Terminal</strong> provides access to a Unix shell, useful for running system commands (e.g., Git, file management).</li>
+<li>The <strong>Background Jobs</strong> tab (when visible) lets you launch long-running scripts without blocking the console. You can track progress and logs independently.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>🧩 These tabs are modular: you can show or hide panes using the <strong>menu bar</strong> → <code>View &gt; Panes</code> or via the small gear icons in the top-right of each panel.</p>
+</blockquote>
+<ul>
+<li><strong>Top-right</strong>: Environment, History, Git, Connections, Build, Tutorial
+<ul>
+<li>The <strong>Environment</strong> tab lists all current objects (datasets, models, functions).</li>
+<li><strong>History</strong> tracks all commands you’ve run.</li>
+<li><strong>Git</strong> appears if the project is under version control.</li>
+<li><strong>Build</strong> is used for R packages or Quarto/Bookdown projects.</li>
+<li><strong>Tutorial</strong> can show RStudio tutorials if available.</li>
+</ul></li>
+<li><strong>Bottom-right</strong>: Files, Plots, Packages, Help, and Viewer
+<ul>
+<li>This pane lets you navigate directories, visualize plots, install/view packages, access help pages, and render HTML outputs.</li>
+</ul></li>
+</ul>
+<p>To explore the technical setup of your session, run the following lines of code in the R console:</p>
+<h3 id="verifying-the-technical-environment" class="anchored">Verifying the Technical Environment</h3>
+<h4 id="check-r-version" class="anchored">Check R Version</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "R version 4.2.3 (2023-03-15)"</code></pre>
+</div>
+</div>
+<h4 id="check-rstudio-version" class="anchored">Check RStudio Version</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
+</div>
+<p>This returns information such as: - <code>version</code>: RStudio version installed (e.g., <code>2023.3.0.386</code>) - <code>release_name</code>: Code name for the release (e.g., <code>Cherry Blossom</code>) - <code>mode</code>: Whether you’re on the server version</p>
+<h4 id="system-information" class="anchored">System Information</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.info</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                          sysname 
+                                                          "Linux" 
+                                                          release 
+                                             "4.15.0-189-generic" 
+                                                          version 
+                   "#200-Ubuntu SMP Wed Jun 22 19:53:37 UTC 2022" 
+                                                         nodename 
+"jupyter-bastien-2egrasset65011--rname-2d-52-53tudio-53erver-4fp" 
+                                                          machine 
+                                                         "x86_64" 
+                                                            login 
+                                                        "unknown" 
+                                                             user 
+                                                         "jovyan" 
+                                                   effective_user 
+                                                         "jovyan" </code></pre>
+</div>
+</div>
+<p>You’ll see OS-level details such as: - <code>sysname</code>: Operating system - <code>release</code>: Kernel version - <code>machine</code>: Architecture (usually <code>x86_64</code>) - <code>user</code>: Your current user session (likely <code>jovyan</code>)</p>
+<h4 id="ram-availability-in-gb" class="anchored">RAM Availability (in GB)</h4>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this uses system-level shell command</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">"free -g"</span>)</span></code></pre></div>
+<p>This command shows approximate memory allocation: - <code>total</code>: Total memory available (e.g., 125 GB) - <code>used</code> and <code>available</code>: What’s currently in use or free</p>
+<blockquote>
+<p>⚠️ <strong>Note</strong>: The number you see in “available” RAM may be lower (e.g., 32 GB) due to container quotas or dynamic allocation. The full infrastructure may have more memory, but your session may be limited based on demand and environment.</p>
+<p>📊 To get a user-friendly view of the actual allocated RAM, go to the <strong>top-right Environment panel</strong> in RStudio and click <strong>“Memory usage report”</strong>. This tool gives you a live snapshot of RAM used by your session.</p>
+</blockquote>
+<h4 id="list-of-installed-packages" class="anchored">List of Installed Packages</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="fu">c</span>(<span class="st">"Package"</span>, <span class="st">"Version"</span>)]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Package       Version 
+antiword    "antiword"    "1.3.4" 
+base64enc   "base64enc"   "0.1-3" 
+bslib       "bslib"       "0.7.0" 
+cachem      "cachem"      "1.0.8" 
+cli         "cli"         "3.6.2" 
+commonmark  "commonmark"  "2.0.0" 
+digest      "digest"      "0.6.35"
+evaluate    "evaluate"    "0.23"  
+fastmap     "fastmap"     "1.1.1" 
+fontawesome "fontawesome" "0.5.2" 
+fs          "fs"          "1.6.3" 
+glue        "glue"        "1.7.0" 
+highr       "highr"       "0.10"  
+htmltools   "htmltools"   "0.5.8" 
+jquerylib   "jquerylib"   "0.1.4" 
+jsonlite    "jsonlite"    "1.8.8" 
+knitr       "knitr"       "1.45"  
+lifecycle   "lifecycle"   "1.0.4" 
+litedown    "litedown"    "0.7"   
+magrittr    "magrittr"    "2.0.3" </code></pre>
+</div>
+</div>
+<p>This shows the first 20 installed packages and their versions. You can increase the number for a full list.</p>
+<h4 id="load-a-test-package-optional" class="anchored">Load a Test Package (optional)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try loading a utility package</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(antiword)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: antiword</code></pre>
+</div>
+</div>
+<p>If successful, this confirms that the package and its dependencies are correctly installed.</p>
+<hr>
+<h3 id="notes" class="anchored">Notes</h3>
+<ul>
+<li>All environments and package lists may evolve over time.</li>
+<li>The VLab infrastructure will be updated regularly to keep compatibility with the course materials.</li>
+<li>You can always re-run this notebook to verify your session.</li>
+</ul>
+<hr>
+<p><strong>Next step:</strong> Now that you know your environment, proceed to <a href="project-organization.qmd">Project Organization</a> and explore the available repositories!</p>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

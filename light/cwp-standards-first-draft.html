@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Role of CWP Standards in GTA Draft</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="cwp-standards-first-draft_files/libs/quarto-html/tabby.min.js"></script>
+<script src="cwp-standards-first-draft_files/libs/quarto-html/popper.min.js"></script>
+<script src="cwp-standards-first-draft_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="cwp-standards-first-draft_files/libs/quarto-html/anchor.min.js"></script>
+<link href="cwp-standards-first-draft_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="cwp-standards-first-draft_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="cwp-standards-first-draft_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="cwp-standards-first-draft_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Role of CWP Standards in GTA Draft</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<!-- ## Objectives -->
+<!-- By the end of this lesson, learners will be able to: -->
+<!-- - Describe what the **CWP (Coordinating Working Party on Fishery Statistics)** is. -->
+<!-- - Understand its role in establishing **global statistical standards** for fisheries data. -->
+<!-- - Recognize how GTA aligns with CWP standards for harmonization and interoperability. -->
+<hr>
+<h2 id="introduction-to-the-cwp" class="anchored">1. Introduction to the CWP</h2>
+<p>The <strong>Coordinating Working Party on Fishery Statistics (CWP)</strong>, under FAO’s leadership, is the main international forum for agreeing on:</p>
+<ul>
+<li><strong>Common definitions, classifications, and standards</strong> for capturing fishery and aquaculture statistics.</li>
+<li>It develops methods, reduces workload for national statistical offices, and promotes harmonization across regions. https://openknowledge.fao.org/server/api/core/bitstreams/a7f3993f-1af1-4e65-8b91-036d12a34458/content</li>
+</ul>
+<hr>
+<h2 id="what-cwp-offers-handbook-best-practices" class="anchored">2. What CWP offers — Handbook &amp; best practices</h2>
+<p>The <strong>CWP Handbook of Fishery Statistics</strong> provides:</p>
+<ul>
+<li>Standard terminology for <strong>catch</strong>, <strong>fishing effort</strong>, and <strong>aquaculture</strong> data.</li>
+<li>Classifications like the <strong>ASFIS list</strong> (species codes), and structured data exchange protocols.</li>
+</ul>
+<p>It also shares best practices in:</p>
+<ul>
+<li>Harmonization, geospatial standards, managing sensitive/confidential data, and workflows.</li>
+</ul>
+<hr>
+<h2 id="alignment-with-gta-workflows" class="anchored">3. Alignment with GTA workflows</h2>
+<p>The GTA builds on CWP foundations by:</p>
+<ul>
+<li>Applying <strong>harmonized vocabularies</strong> and species coding systems in <strong>Level 0 datasets</strong>.</li>
+<li>Structuring processed outputs (Level 2) using standardized classifications for interoperability.</li>
+</ul>
+<p>This ensures that GTA outputs are <strong>FAIR-aligned</strong> and can integrate seamlessly with global fisheries systems.</p>
+<hr>
+<!-- ## 4. Summary -->
+<!-- | Key CWP Contributions | How GTA benefits | -->
+<!-- |------------------------|------------------| -->
+<!-- | Shared definitions & species codes | Consistent taxonomy across datasets | -->
+<!-- | Data harmonization protocols | Efficient aggregation of multi-source data | -->
+<!-- | Best practices in data workflows | Interoperable and FAIR-compliant outputs | -->
+<!-- --- -->
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

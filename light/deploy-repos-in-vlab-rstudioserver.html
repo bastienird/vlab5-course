@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Advanced: Deploy repositories in your own VLab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/tabby.min.js"></script>
+<script src="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/popper.min.js"></script>
+<script src="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/anchor.min.js"></script>
+<link href="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="deploy-repos-in-vlab-rstudioserver_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Advanced: Deploy repositories in your own VLab</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<blockquote>
+<p>This optional guide is for <strong>advanced users</strong> who want to understand how the VLab5 RStudio environment itself is deployed and how to reproduce something similar in their own VLab.</p>
+</blockquote>
+<hr>
+<h2 id="deployment-of-rstudio-server-in-a-vlab" class="anchored">1) Deployment of RStudio Server in a VLab</h2>
+<p>The deployment process is documented in this D4Science support ticket:<br>
+<a href="https://support.d4science.org/issues/23536#note-15" class="uri">https://support.d4science.org/issues/23536#note-15</a></p>
+<p>The RStudio server setup for VLab5 is managed in the following repository:<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5" class="uri">https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5</a></p>
+<p>Key files include:</p>
+<ul>
+<li><strong>07_vlab5_github_repositories.sh</strong> — defines which GitHub repositories (stable/dev) are preloaded into the environment.<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh">View script</a></li>
+<li><strong>Dockerfile</strong> — defines the RStudio server Docker image and how repositories and dependencies are installed.<br>
+<a href="https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile">View Dockerfile</a></li>
+</ul>
+<blockquote>
+<p>⚠️ This is more <strong>technical and system-level</strong>. If you are interested in customizing or deploying your own RStudio VLab instance, we can schedule a dedicated walkthrough.</p>
+</blockquote>
+<hr>
+<h2 id="managing-a-global-renv-cache-in-docker-images" class="anchored">2) Managing a Global <code>renv</code> cache in Docker images</h2>
+<p>When building custom RStudio Docker images for your own VLab, it is possible to preconfigure a <strong>shared global cache</strong> for <code>renv</code>. This ensures that all projects within the VLab use the same package cache, saving time and storage.</p>
+<p>This is done by adding a line to <code>.Renviron.site</code> <strong>during Docker build</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">'RENV_PATHS_CACHE="~/blue-cloud-dataspace/GlobalFisheriesAtlas/cacheRenv"'</span> <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> <span class="st">"</span><span class="va">${R_HOME}</span><span class="st">/etc/Renviron.site"</span></span></code></pre></div>
+<p>Reference: <a href="https://support.d4science.org/issues/29739" class="uri">https://support.d4science.org/issues/29739</a></p>
+<h3 id="key-points" class="anchored">Key points:</h3>
+<ul>
+<li>You can set <code>RENV_PATHS_CACHE</code> to <strong>any directory</strong>, depending on your VLab setup.<br>
+</li>
+<li>Using <strong><code>~/blue-cloud-dataspace/</code></strong> is recommended: it is accessible across all users and all VLab instances (though slightly slower than local storage).<br>
+</li>
+<li><code>.Renviron.site</code> ensures the cache is <strong>global to the image</strong> — every repository opened in RStudio will reuse this shared cache.</li>
+</ul>
+<p>Effectively:</p>
+<ul>
+<li>Each repository still has its own <code>renv.lock</code> file (to ensure reproducibility).<br>
+</li>
+<li>But the <strong>package binaries</strong> are stored once in the shared cache, instead of reinstalling them for every project.</li>
+</ul>
+<hr>
+<h2 id="the-truly-simple-path-what-to-consider" class="anchored">3) The truly simple path (what to consider)</h2>
+<p>If you want to deploy <strong>the same setup</strong> as VLab5 in <em>your own</em> VLab, here are the essentials to look at and adapt per VLab:</p>
+<ol type="1">
+<li><strong>D4Science ticket (reference implementation &amp; notes):</strong>
+<ul>
+<li>See: https://support.d4science.org/issues/23536#note-15<br>
+<em>(Contains key decisions &amp; parameters used for the Fisheries Atlas VLab RStudio.)</em></li>
+</ul></li>
+<li><strong>RStudio Server image for D4Science (to adapt):</strong>
+<ul>
+<li>Repo: https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5</li>
+<li>Files to review:
+<ul>
+<li><code>Dockerfile</code><br>
+https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile</li>
+<li><code>07_vlab5_github_repositories.sh</code> (preloads the course repositories)<br>
+https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh</li>
+</ul></li>
+</ul></li>
+</ol>
+<blockquote>
+<p>If this is interesting for your team, we can do a short technical walkthrough per VLab, since each environment may require minor adjustments (base image, permissions, storage mounts, etc.).</p>
+</blockquote>
+<hr>
+<h2 id="summary" class="anchored">4) Summary</h2>
+<ul>
+<li><strong>Basic users</strong>: You don’t need to worry about this — VLab5 is already configured.</li>
+<li><strong>Advanced users</strong>: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global <code>renv</code> cache.<br>
+</li>
+<li><strong>Best practice</strong>: Use a cache in <code>blue-cloud-dataspace</code> for shared accessibility across all VLab instances.</li>
+</ul>
+<blockquote>
+<p>✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case.</p>
+</blockquote>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

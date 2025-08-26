@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="VLab Course Team">
+
+<title>Exploring Global Tuna Atlas Data via Shiny (15 min)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/tabby.min.js"></script>
+<script src="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/popper.min.js"></script>
+<script src="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/anchor.min.js"></script>
+<link href="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="exploring-global-tuna-atlas-data-via-shiny_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Exploring Global Tuna Atlas Data via Shiny (15 min)</h1>
+<p class="author">VLab Course Team</p>
+
+</header>
+
+<blockquote>
+<p><strong>Objective:</strong> Learn how to interact with processed GTA datasets through dynamic <strong>Shiny</strong> applications, understand the <strong>benefits/limits</strong> of each app, and how CWP-formatted datasets fit in.<br>
+<strong>Prerequisite:</strong> Good understanding of GTA datasets (Levels, effort, CPUE).<br>
+<strong>Presentation:</strong> Hands-on demo + self‑exploration + short quiz.<br>
+<strong>Outcome:</strong> Learners can use a Shiny app to explore GTA datasets <strong>with or without writing code</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="quick-start-in-vlab5" class="anchored">Quick start in VLab5</h2>
+<p>Shiny apps can be accessed in <strong>two ways</strong>:</p>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong> in VLab → directly launch stable or dev versions of available apps.</li>
+<li>From the repository in <code>~/GitHubRepos</code> → open the <code>.Rproj</code>, restore packages, and run <code>shiny::runApp()</code>.</li>
+</ol>
+<blockquote>
+<p>All Shiny apps have <strong>stable and dev versions</strong>, except <strong>darwin_core_viewer</strong> which is only available as a stable version in the Shiny Apps tab.</p>
+</blockquote>
+<h2 id="outside-vlab-5" class="anchored">Outside Vlab 5</h2>
+<p>If you’re not (yet) a VLab5 member, you can still run the Shiny app locally using Docker.</p>
+<blockquote>
+<p><strong>Note:</strong> Docker images can be large and the app may require several GB of RAM.</p>
+</blockquote>
+<blockquote>
+<p>We <strong>strongly recommend</strong> running this Shiny app on <strong>VLab5 RStudio Server</strong> because it can require <strong>a lot of RAM</strong> (often <strong>32 GB</strong>, depending on dataset size and filters). VLab5 provides:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>a consistent environment (R/RStudio, system libs),</li>
+<li>higher memory availability than many laptops,</li>
+<li>fewer installation issues (GDAL/PROJ, curl, etc. already present).</li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span> #<span class="er">(</span><span class="ex">first</span> time only<span class="kw">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--name</span> tunaatlas <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 3838:3838 <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ghcr.io/<span class="op">&lt;</span>name-of-the-shiny-app-repo-eg.firms-gta/tunaatlas_pie_map_shiny<span class="op">&gt;</span></span></code></pre></div>
+<p>and then open http://127.0.0.1:3838/</p>
+<hr>
+<h2 id="shiny-apps-in-this-lesson" class="anchored">Shiny Apps in this lesson</h2>
+<h3 id="main-apps-available-in-shiny-apps-tab" class="anchored">Main apps (available in Shiny Apps tab)</h3>
+<ul>
+<li><p><strong>tunaatlas_pie_map_shiny</strong> (stable + dev)<br>
+<em>Purpose:</em> Visualize <strong>any dataset in CWP format</strong> (catch/effort) with interactive <strong>maps and plots</strong>.<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/global-tuna-atlas" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/global-tuna-atlas</a> <em>Docs:</em> See repo <strong>README</strong> for supported schemas, required columns, and examples.</p></li>
+<li><p><strong>shiny_compare_tunaatlas_datasets</strong> (stable + dev)<br>
+<em>Purpose:</em> <strong>Compare</strong> harmonized GTA datasets (e.g., different Zenodo DOIs / releases / parameters).<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/comparison-globaltunaatlas-datasets" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/comparison-globaltunaatlas-datasets</a> <em>Docs:</em> README describes how to reference DOIs and comparison keys.</p></li>
+</ul>
+<h3 id="additional-app" class="anchored">Additional app</h3>
+<ul>
+<li><strong>darwin_core_viewer</strong> (stable only)<br>
+<em>Purpose:</em> Minimal viewer for <strong>Darwin Core</strong> biodiversity data (maps + plots). Good <strong>template</strong> for custom viewers.<br>
+<em>GitHub:</em> <a href="https://github.com/firms-gta/darwin_core_viewer" class="uri">https://github.com/firms-gta/darwin_core_viewer</a> <em>Vlab5:</em> <a href="https://blue-cloud.d4science.org/group/globalfisheriesatlas/darwin-core-viewer" class="uri">https://blue-cloud.d4science.org/group/globalfisheriesatlas/darwin-core-viewer</a> <em>Docs:</em> README covers expected Darwin Core fields (e.g., <code>scientificName</code>, <code>eventDate</code>, <code>decimalLatitude/Longitude</code>).</li>
+</ul>
+<hr>
+<h2 id="example-walkthroughs" class="anchored">Example walkthroughs</h2>
+<h3 id="a-explore-a-cwp-dataset-with-tunaatlas_pie_map_shiny" class="anchored">A) Explore a CWP dataset with <code>tunaatlas_pie_map_shiny</code></h3>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong>, open the stable version (recommended).<br>
+<em>(Alternatively, run locally with <code>shiny::runApp()</code> after restoring packages.)</em><br>
+</li>
+<li>A formatted dataset is already loaded. You can as well choose a different dataset to explore in the ‘Choose dataset’ panel.</li>
+<li><strong>Filter</strong> → by species, gear, year range, area.<br>
+</li>
+<li><strong>Visualize</strong> → interactive map (e.g., 5° grid) + plots; export as needed (see README).</li>
+</ol>
+<p><strong>Strengths</strong>: quick exploration, map‑centric, supports broad CWP datasets.<br>
+<strong>Limits</strong>: depends on schema conformity; heavy datasets may be slow.</p>
+<h3 id="b-compare-several-gta-releases-with-shiny_compare_tunaatlas_datasets" class="anchored">B) Compare several GTA releases with <code>shiny_compare_tunaatlas_datasets</code></h3>
+<ol type="1">
+<li>From the <strong>Shiny Apps tab</strong>, open dev or stable version.<br>
+</li>
+<li>Datasets are already loaded from DOIs. If you want to explore other datasets, just update the DOI.csv file in the repository.<br>
+</li>
+<li><strong>Choose keys</strong> (year/area/gear/species).<br>
+</li>
+<li><strong>Inspect differences</strong> → tables/plots of differences, coverage, and changes.</li>
+</ol>
+<p><strong>Strengths</strong>: release comparisons, quick differences across versions.<br>
+<strong>Limits</strong>: assumes comparable schemas; interpret differencies carefully as the differences of processes for each datasets are complex.</p>
+<hr>
+<h2 id="strengths-vs.-limitations-of-gui-tools" class="anchored">Strengths vs.&nbsp;limitations of GUI tools</h2>
+<p><strong>Strengths</strong></p>
+<ul>
+<li>Lower barrier to entry — no code needed.<br>
+</li>
+<li>Fast exploratory analysis &amp; visual quality assurance.<br>
+</li>
+<li>Standardized filters/views reduce errors.</li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>Less flexible than writing code for bespoke analytics.<br>
+</li>
+<li>Performance can degrade on very large datasets.<br>
+</li>
+<li>Schema assumptions must be respected (CWP format).</li>
+</ul>
+<!-- --- -->
+<!-- ## Optional: Where CWP fits -->
+<!-- - **CWP standards** (species, gear, area) are the **backbone** of harmonization.   -->
+<!-- - Shiny apps expect datasets that follow these codes; otherwise mapping fails or fields won’t populate.   -->
+<!-- - If you need a refresher, see Lesson **3.1** (standards & FAIR) or Module 1. -->
+<hr>
+<!-- ## Bonus: What is ShinyProxy? -->
+<!-- A container‑based platform for **hosting Shiny apps** at scale (auth, routing, resource control). The GTA apps can be served through ShinyProxy.   -->
+<!-- > Coordinate with your platform admin (e.g., **Julien Barde**) for deployment specifics (images, memory, user mapping).   -->
+<!-- > See each repo’s **README** for containerization notes or Dockerfiles. -->
+<!-- 📌 There is also a **Shiny App Deployment Guide**, but this will be covered in a **separate bonus lesson**. -->
+<!-- --- -->
+<!-- ## Mini Task + Quick Quiz -->
+<!-- **Task (5–10 min)**   -->
+<!-- - Launch `tunaatlas_pie_map_shiny` from the Shiny Apps tab, load a CWP catch dataset, filter for one species (e.g., `SKJ`) and 2015–2020, and export a plot. -->
+<!-- **Quiz (2 items)**   -->
+<!-- 1) Which constraint is **most** crucial for these apps to work?   -->
+<!-- - A) File naming   -->
+<!-- - B) CWP schema conformity ✅   -->
+<!-- - C) Folder depth   -->
+<!-- 2) `shiny_compare_tunaatlas_datasets` is mainly used to…   -->
+<!-- - A) Edit raw CSVs   -->
+<!-- - B) Compare DOI releases ✅   -->
+<!-- - C) Generate CPUE -->
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>
