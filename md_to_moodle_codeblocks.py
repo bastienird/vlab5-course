@@ -13,6 +13,42 @@ LABEL_MAP = {
 
 INDENT_RE = re.compile(r"^(?: {4,}|\t)")  # ligne “verbatim” (≥4 espaces ou 1 tab)
 
+def strip_top_title(md_text: str) -> str:
+    lines = md_text.splitlines()
+    i, n = 0, len(lines)
+
+    # 1) Front matter YAML éventuel au tout début
+    if i < n and lines[i].strip() == "---":
+        j = i + 1
+        while j < n and lines[j].strip() != "---":
+            j += 1
+        if j < n and lines[j].strip() == "---":
+            i = j + 1  # saute le bloc YAML
+
+    # Sauter lignes vides initiales
+    while i < n and lines[i].strip() == "":
+        i += 1
+
+    # 2) Titre H1 de type ATX: "# Mon titre"
+    if i < n and lines[i].lstrip().startswith("#"):
+        i += 1
+        while i < n and lines[i].strip() == "":
+            i += 1
+        return "\n".join(lines[i:]) + ("\n" if md_text.endswith("\n") else "")
+
+    # 3) Titre H1 de type Setext:
+    #    Mon titre
+    #    ========
+    if i + 1 < n and lines[i].strip() and re.match(r"^\s*=+\s*$", lines[i + 1]):
+        i += 2
+        while i < n and lines[i].strip() == "":
+            i += 1
+        return "\n".join(lines[i:]) + ("\n" if md_text.endswith("\n") else "")
+
+    # Sinon, inchangé
+    return md_text
+
+
 def parse_lang(token: str) -> str:
     if not token:
         return ""
@@ -121,6 +157,8 @@ def main():
     ap.add_argument("--dst", default="md_moodle", help="Dossier de sortie (par défaut: md_moodle)")
     ap.add_argument("--no-label", action="store_true", help="Ne pas ajouter les labels 'X code:' / 'Output:'")
     ap.add_argument("--no-output", action="store_true", help="Ne pas capturer l'output indenté après les blocs")
+    ap.add_argument("--keep-title", action="store_true",
+                help="Conserver le premier titre (# ... / Setext) au lieu de le retirer")
     args = ap.parse_args()
 
     src = Path(args.src)
@@ -131,9 +169,12 @@ def main():
     if not md_files:
         print(f"❌ Aucun .md trouvé dans {src.resolve()}")
         return
-
     for p in md_files:
         txt = p.read_text(encoding="utf-8")
+    
+        if not args.keep_title:
+            txt = strip_top_title(txt)  # <-- retire le front-matter et le H1 de tête
+    
         converted = transform(
             txt,
             add_label=not args.no_label,
@@ -142,7 +183,6 @@ def main():
         (dst / p.name).write_text(converted, encoding="utf-8")
         print(f"✔︎ {p.name} → {dst/p.name}")
 
-    print(f"\n✅ Terminé. Fichiers prêts pour Moodle dans: {dst.resolve()}")
 
 if __name__ == "__main__":
     main()
