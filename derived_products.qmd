@@ -6,7 +6,7 @@ author: "VLab Course Team"
 ## Overview
 This page summarizes **derived products** currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).
 
-> **Status note:** at present, **no DOI** has been assigned to these derived products. They are experimental/iterative and may evolve.
+> **Status note:** at present, **no DOI** has been assigned to these derived products. They are experimental/iterative/deprecated and may evolve.
 
 ---
 
@@ -40,7 +40,7 @@ cpue <- dplyr::mutate(joined,
 ---
 
 ## Level 1 (Harmonized Tons & Numbers)
-A **Level 1** product (prototype) harmonizes **weights (tons)** and **numbers of fish** onto a common structure, applying **conversion factors** where necessary.
+A **Level 1** product harmonizes **weights (tons)** and **numbers of fish** onto a common structure, applying **conversion factors** where necessary.
 
 **Key points**
 

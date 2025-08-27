@@ -30,7 +30,7 @@ website:
         - section: "Lesson 3.1 — Intro to Global Tuna Atlas"
           contents:
             - datasetworkflowarchitecture-all.qmd
-            - cpue-dataset.qmd
+            - derived_products.qmd
             - reproductibility.qmd
             - cwp-standards-first-draft.qmd
         - section: "Lesson 3.2 — Running R Workflows in VLab5"

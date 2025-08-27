@@ -95,7 +95,7 @@
     "href": "derived_products.html",
     "title": "Derived products",
     "section": "",
-    "text": "This page summarizes derived products currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).\n\nStatus note: at present, no DOI has been assigned to these derived products. They are experimental/iterative and may evolve."
+    "text": "This page summarizes derived products currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).\n\nStatus note: at present, no DOI has been assigned to these derived products. They are experimental/iterative/deprecated and may evolve."
   },
   {
     "objectID": "derived_products.html#cpue-catch-per-unit-effort",
@@ -109,7 +109,7 @@
     "href": "derived_products.html#level-1-harmonized-tons-numbers",
     "title": "Derived products",
     "section": "Level 1 (Harmonized Tons & Numbers)",
-    "text": "Level 1 (Harmonized Tons & Numbers)\nA Level 1 product (prototype) harmonizes weights (tons) and numbers of fish onto a common structure, applying conversion factors where necessary.\nKey points\n\nProvides side‑by‑side tons and numbers for the same strata.\nRelies on species/gear/region‑specific conversion factors (length‑weight, dress‑to‑live weight, etc.).\nScientific caveat: results depend strongly on the chosen conversion factors and their provenance. Assumptions must be documented and sensitivity analyses are recommended.\n\nIntended use - Comparative analyses where both biomass and counts are informative (e.g., standardizing indices, bycatch assessments)."
+    "text": "Level 1 (Harmonized Tons & Numbers)\nA Level 1 product harmonizes weights (tons) and numbers of fish onto a common structure, applying conversion factors where necessary.\nKey points\n\nProvides side‑by‑side tons and numbers for the same strata.\nRelies on species/gear/region‑specific conversion factors (length‑weight, dress‑to‑live weight, etc.).\nScientific caveat: results depend strongly on the chosen conversion factors and their provenance. Assumptions must be documented and sensitivity analyses are recommended.\n\nIntended use - Comparative analyses where both biomass and counts are informative (e.g., standardizing indices, bycatch assessments)."
   },
   {
     "objectID": "derived_products.html#crossdataset-analyses",
