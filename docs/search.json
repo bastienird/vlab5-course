@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "cpue-dataset.html",
-    "href": "cpue-dataset.html",
-    "title": "CPUE code and derivation",
-    "section": "",
-    "text": "The CPUE dataset is derived by combining catch (Level 0 or 2) with effort (Level 0) on common strata.\nFormula:\nCPUE = Catch / Effort \nfor each strata of the two datasets.\nIt is to be noted that the some stratas are present in only one of the datasets, meaning they are incomplete as efforts could be without catches but catches displayed without efforts point out issues in one of the two datasets.\n\nThe unit depends on the effort measure (e.g., mt / 1000 hooks).\nMultiple CPUE datasets can be created depending on the catch dataset that is used in the formula.\nScripts in CPUE script handle joining, raising, and outputting CPUE tables.\nOutputs are saved in standardized CWP formats, ready for visualization or publication."
-  },
-  {
     "objectID": "cwp-standards-first-draft.html#introduction-to-the-cwp",
     "href": "cwp-standards-first-draft.html#introduction-to-the-cwp",
     "title": "Role of CWP Standards in GTA Draft",
@@ -96,6 +89,34 @@
     "title": "Advanced: Deploy repositories in your own VLab",
     "section": "4) Summary",
     "text": "4) Summary\n\nBasic users: You don’t need to worry about this — VLab5 is already configured.\nAdvanced users: You can adapt the Dockerfile and scripts for your own VLab deployment, preload specific repos, and configure a global renv cache.\n\nBest practice: Use a cache in blue-cloud-dataspace for shared accessibility across all VLab instances.\n\n\n✅ If you are interested in deploying or customizing your own RStudio environment with these settings, reach out — we can provide a step-by-step session on adapting the Dockerfile and repository scripts for your use case."
+  },
+  {
+    "objectID": "derived_products.html",
+    "href": "derived_products.html",
+    "title": "Derived products",
+    "section": "",
+    "text": "This page summarizes derived products currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).\n\nStatus note: at present, no DOI has been assigned to these derived products. They are experimental/iterative and may evolve."
+  },
+  {
+    "objectID": "derived_products.html#cpue-catch-per-unit-effort",
+    "href": "derived_products.html#cpue-catch-per-unit-effort",
+    "title": "Derived products",
+    "section": "CPUE (Catch Per Unit Effort)",
+    "text": "CPUE (Catch Per Unit Effort)\nThe CPUE dataset is derived by combining catch and effort on a common analysis key (e.g., year × area × gear × species, optionally fishing_mode).\nFormula (per stratum):\nCPUE = Catch / Effort\nImportant considerations\n\nSome strata exist in only one input (catch or effort). Such strata are incomplete and are excluded or flagged during the join.\nThe unit depends on the effort measure (e.g., mt per 1000 hooks, mt per day, mt per set).\nMultiple CPUE variants are possible depending on the catch dataset used:\n\nCPUE from geo‑referenced catch (FIRMS L0 / IRD L2) + Effort L0.\nCPUE from nominal catch (for diagnostic purposes) + Effort L0.\n\nCurrent scripts (see CPUE step in the GTA launcher) handle joining and exporting standardized CWP‑compatible outputs.\n\nMinimal example (pseudo‑code)\nkeys <- c(\"time_start\",\"geographic_identifier\",\"gear_type\",\"species\")\njoined <- dplyr::inner_join(catch_tbl, effort_tbl, by = keys)\ncpue <- dplyr::mutate(joined,\n  cpue_value = measurement_value.x / measurement_value.y,\n  cpue_unit  = paste0(measurement_unit.x,\" per \", unique(measurement_unit.y))\n)"
+  },
+  {
+    "objectID": "derived_products.html#level-1-harmonized-tons-numbers",
+    "href": "derived_products.html#level-1-harmonized-tons-numbers",
+    "title": "Derived products",
+    "section": "Level 1 (Harmonized Tons & Numbers)",
+    "text": "Level 1 (Harmonized Tons & Numbers)\nA Level 1 product (prototype) harmonizes weights (tons) and numbers of fish onto a common structure, applying conversion factors where necessary.\nKey points\n\nProvides side‑by‑side tons and numbers for the same strata.\nRelies on species/gear/region‑specific conversion factors (length‑weight, dress‑to‑live weight, etc.).\nScientific caveat: results depend strongly on the chosen conversion factors and their provenance. Assumptions must be documented and sensitivity analyses are recommended.\n\nIntended use - Comparative analyses where both biomass and counts are informative (e.g., standardizing indices, bycatch assessments)."
+  },
+  {
+    "objectID": "derived_products.html#crossdataset-analyses",
+    "href": "derived_products.html#crossdataset-analyses",
+    "title": "Derived products",
+    "section": "Cross‑Dataset Analyses",
+    "text": "Cross‑Dataset Analyses\nBeyond single indicators, several crossings are valuable for QA and interpretation:\n\nNominal vs Geo‑referenced (consistency checks):\n\nCompare totals by year/species/gear to identify gaps or raising impacts.\nMap differences to detect spatial/temporal mismatches.\n\nEffort unit diagnostics (per gear, per RFMO):\n\nInventory effort units by stratum; flag potential duplicates (same stratum, different units).\nDecide on project‑specific unit preferences before aggregating.\n\nRaising diagnostics (IRD L2):\n\nInspect strata where georeferenced data were raised to match nominal.\nVerify rules (exact match vs UNK/NEI/99.9) and year completeness constraints.\n\n\nOutput patterns\n\nSummary dashboards (Shiny) for exploratory review."
   },
   {
     "objectID": "exploring-global-tuna-atlas-data-via-shiny.html",

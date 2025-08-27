@@ -8,7 +8,7 @@
 
 <meta name="author" content="VLab Course Team">
 
-<title>VLab5 Course - CPUE code and derivation</title>
+<title>VLab5 Course - Derived products</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4035,7 +4035,7 @@ vertical-align: -.125em;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">CPUE code and derivation</h1>
+      <h1 class="quarto-secondary-nav-title">Derived products</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -4050,22 +4050,20 @@ vertical-align: -.125em;
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lesson 3.1 — Intro to Global Tuna Atlas</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Lesson 3.1 — Intro to Global Tuna Atlas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datasetworkflowarchitecture-all.html" class="sidebar-item-text sidebar-link">Global Tuna Atlas datasets and workflow architecture</a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./cpue-dataset.html" class="sidebar-item-text sidebar-link active">CPUE code and derivation</a>
-  </div>
-</li>
+  cpue-dataset.qmd
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./reproductibility.html" class="sidebar-item-text sidebar-link">Why reproducibility matters in GTA workflows</a>
@@ -4138,14 +4136,23 @@ vertical-align: -.125em;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#cpue-catch-per-unit-effort" id="toc-cpue-catch-per-unit-effort" class="nav-link" data-scroll-target="#cpue-catch-per-unit-effort">CPUE (Catch Per Unit Effort)</a></li>
+  <li><a href="#level-1-harmonized-tons-numbers" id="toc-level-1-harmonized-tons-numbers" class="nav-link" data-scroll-target="#level-1-harmonized-tons-numbers">Level 1 (Harmonized Tons &amp; Numbers)</a></li>
+  <li><a href="#crossdataset-analyses" id="toc-crossdataset-analyses" class="nav-link" data-scroll-target="#crossdataset-analyses">Cross‑Dataset Analyses</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">CPUE code and derivation</h1>
+<h1 class="title d-none d-lg-block">Derived products</h1>
 </div>
 
 
@@ -4166,19 +4173,79 @@ vertical-align: -.125em;
 
 </header>
 
-<p>The <strong>CPUE dataset</strong> is derived by combining catch (Level 0 or 2) with effort (Level 0) on common strata.</p>
-<p><strong>Formula:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CPUE <span class="ot">=</span> Catch <span class="sc">/</span> Effort </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>for each strata of the two datasets.</p>
-<p>It is to be noted that the some stratas are present in only one of the datasets, meaning they are incomplete as efforts could be without catches but catches displayed without efforts point out issues in one of the two datasets.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This page summarizes <strong>derived products</strong> currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).</p>
+<blockquote class="blockquote">
+<p><strong>Status note:</strong> at present, <strong>no DOI</strong> has been assigned to these derived products. They are experimental/iterative and may evolve.</p>
+</blockquote>
+<hr>
+</section>
+<section id="cpue-catch-per-unit-effort" class="level2">
+<h2 class="anchored" data-anchor-id="cpue-catch-per-unit-effort">CPUE (Catch Per Unit Effort)</h2>
+<p>The <strong>CPUE dataset</strong> is derived by combining <strong>catch</strong> and <strong>effort</strong> on a common analysis key (e.g., year × area × gear × species, optionally fishing_mode).</p>
+<p><strong>Formula (per stratum):</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CPUE <span class="ot">=</span> Catch <span class="sc">/</span> Effort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Important considerations</strong></p>
 <ul>
-<li>The unit depends on the effort measure (e.g., mt / 1000 hooks).</li>
-<li>Multiple CPUE datasets can be created depending on the catch dataset that is used in the formula.</li>
-<li>Scripts in <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/9a58ec9394d79a937d903cd544443224d4478f89/launching_jsons_creating_GTA.R#L410">CPUE script</a> handle joining, raising, and outputting CPUE tables.</li>
-<li>Outputs are saved in standardized CWP formats, ready for visualization or publication.</li>
+<li>Some strata exist in only one input (catch <strong>or</strong> effort). Such strata are <strong>incomplete</strong> and are excluded or flagged during the join.</li>
+<li>The <strong>unit</strong> depends on the effort measure (e.g., <code>mt per 1000 hooks</code>, <code>mt per day</code>, <code>mt per set</code>).</li>
+<li>Multiple CPUE variants are possible depending on the <strong>catch dataset</strong> used:
+<ul>
+<li>CPUE from <strong>geo‑referenced catch</strong> (FIRMS L0 / IRD L2) + Effort L0.</li>
+<li>CPUE from <strong>nominal catch</strong> (for diagnostic purposes) + Effort L0.</li>
+</ul></li>
+<li>Current scripts (see CPUE step in the GTA launcher) handle joining and exporting standardized CWP‑compatible outputs.</li>
 </ul>
+<p><strong>Minimal example (pseudo‑code)</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>keys <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;time_start&quot;</span>,<span class="st">&quot;geographic_identifier&quot;</span>,<span class="st">&quot;gear_type&quot;</span>,<span class="st">&quot;species&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">inner_join</span>(catch_tbl, effort_tbl, <span class="at">by =</span> keys)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cpue <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(joined,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cpue_value =</span> measurement_value.x <span class="sc">/</span> measurement_value.y,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cpue_unit  =</span> <span class="fu">paste0</span>(measurement_unit.x,<span class="st">&quot; per &quot;</span>, <span class="fu">unique</span>(measurement_unit.y))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="level-1-harmonized-tons-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="level-1-harmonized-tons-numbers">Level 1 (Harmonized Tons &amp; Numbers)</h2>
+<p>A <strong>Level 1</strong> product (prototype) harmonizes <strong>weights (tons)</strong> and <strong>numbers of fish</strong> onto a common structure, applying <strong>conversion factors</strong> where necessary.</p>
+<p><strong>Key points</strong></p>
+<ul>
+<li>Provides side‑by‑side <strong>tons</strong> and <strong>numbers</strong> for the same strata.</li>
+<li>Relies on <strong>species/gear/region‑specific conversion factors</strong> (length‑weight, dress‑to‑live weight, etc.).</li>
+<li>Scientific caveat: results <strong>depend strongly</strong> on the chosen conversion factors and their provenance. Assumptions must be documented and sensitivity analyses are recommended.</li>
+</ul>
+<p><strong>Intended use</strong> - Comparative analyses where both biomass and counts are informative (e.g., standardizing indices, bycatch assessments).</p>
+<hr>
+</section>
+<section id="crossdataset-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="crossdataset-analyses">Cross‑Dataset Analyses</h2>
+<p>Beyond single indicators, several <strong>crossings</strong> are valuable for QA and interpretation:</p>
+<ul>
+<li><p><strong>Nominal vs Geo‑referenced</strong> (consistency checks):</p>
+<ul>
+<li>Compare totals by year/species/gear to identify gaps or raising impacts.</li>
+<li>Map differences to detect spatial/temporal mismatches.</li>
+</ul></li>
+<li><p><strong>Effort unit diagnostics</strong> (per gear, per RFMO):</p>
+<ul>
+<li>Inventory effort units by stratum; flag potential duplicates (same stratum, different units).</li>
+<li>Decide on project‑specific unit preferences before aggregating.</li>
+</ul></li>
+<li><p><strong>Raising diagnostics (IRD L2)</strong>:</p>
+<ul>
+<li>Inspect strata where georeferenced data were raised to match nominal.</li>
+<li>Verify rules (exact match vs UNK/NEI/99.9) and year completeness constraints.</li>
+</ul></li>
+</ul>
+<p><strong>Output patterns</strong></p>
+<ul>
+<li>Summary dashboards (Shiny) for exploratory review.</li>
+</ul>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

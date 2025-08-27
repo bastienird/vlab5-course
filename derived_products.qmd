@@ -1,0 +1,79 @@
+---
+title: "Derived products"
+author: "VLab Course Team"
+---
+
+## Overview
+This page summarizes **derived products** currently produced (or planned) from the Global Tuna Atlas workflows. These products build on the harmonized catch and effort datasets and enable analytical use cases (indicators, comparisons, reconciliations).
+
+> **Status note:** at present, **no DOI** has been assigned to these derived products. They are experimental/iterative and may evolve.
+
+---
+
+## CPUE (Catch Per Unit Effort)
+The **CPUE dataset** is derived by combining **catch** and **effort** on a common analysis key (e.g., year × area × gear × species, optionally fishing_mode).
+
+**Formula (per stratum):**
+```r
+CPUE = Catch / Effort
+```
+
+**Important considerations**
+
+- Some strata exist in only one input (catch **or** effort). Such strata are **incomplete** and are excluded or flagged during the join.
+- The **unit** depends on the effort measure (e.g., `mt per 1000 hooks`, `mt per day`, `mt per set`).
+- Multiple CPUE variants are possible depending on the **catch dataset** used:
+  - CPUE from **geo‑referenced catch** (FIRMS L0 / IRD L2) + Effort L0.
+  - CPUE from **nominal catch** (for diagnostic purposes) + Effort L0.
+- Current scripts (see CPUE step in the GTA launcher) handle joining and exporting standardized CWP‑compatible outputs.
+
+**Minimal example (pseudo‑code)**
+```r
+keys <- c("time_start","geographic_identifier","gear_type","species")
+joined <- dplyr::inner_join(catch_tbl, effort_tbl, by = keys)
+cpue <- dplyr::mutate(joined,
+  cpue_value = measurement_value.x / measurement_value.y,
+  cpue_unit  = paste0(measurement_unit.x," per ", unique(measurement_unit.y))
+)
+```
+
+---
+
+## Level 1 (Harmonized Tons & Numbers)
+A **Level 1** product (prototype) harmonizes **weights (tons)** and **numbers of fish** onto a common structure, applying **conversion factors** where necessary.
+
+**Key points**
+
+- Provides side‑by‑side **tons** and **numbers** for the same strata.
+- Relies on **species/gear/region‑specific conversion factors** (length‑weight, dress‑to‑live weight, etc.).
+- Scientific caveat: results **depend strongly** on the chosen conversion factors and their provenance. Assumptions must be documented and sensitivity analyses are recommended.
+
+**Intended use**
+- Comparative analyses where both biomass and counts are informative (e.g., standardizing indices, bycatch assessments).
+
+---
+
+## Cross‑Dataset Analyses
+Beyond single indicators, several **crossings** are valuable for QA and interpretation:
+
+- **Nominal vs Geo‑referenced** (consistency checks):
+
+  - Compare totals by year/species/gear to identify gaps or raising impacts.
+  - Map differences to detect spatial/temporal mismatches.
+  
+- **Effort unit diagnostics** (per gear, per RFMO):
+
+  - Inventory effort units by stratum; flag potential duplicates (same stratum, different units).
+  - Decide on project‑specific unit preferences before aggregating.
+  
+- **Raising diagnostics (IRD L2)**:
+
+  - Inspect strata where georeferenced data were raised to match nominal.
+  - Verify rules (exact match vs UNK/NEI/99.9) and year completeness constraints.
+
+**Output patterns**
+
+- Summary dashboards (Shiny) for exploratory review.
+
+---
+
