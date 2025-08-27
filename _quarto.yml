@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!light/"
+    - "!deprecated/"
 
 website:
   title: "VLab5 Course"
@@ -11,7 +15,7 @@ website:
         text: Home
       - text: "Global Tuna Atlas & VLab5"
         menu:
-          - href: DatasetsWorkflowArchitecture.qmd
+          - href: datasetworkflowarchitecture-all.qmd
             text: "Lesson 1 — Intro to Global Tuna Atlas"
           - href: lesson-3-5-overview.qmd
             text: "Lesson 2 — Running R Workflows in VLab5"
