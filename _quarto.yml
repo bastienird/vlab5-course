@@ -13,7 +13,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: "Global Tuna Atlas & VLab5"
+      - text: "Global Tuna Atlas and VLab5"
         menu:
           - href: datasetworkflowarchitecture-all.qmd
             text: "Lesson 1 — Intro to Global Tuna Atlas"
@@ -27,17 +27,13 @@ website:
       style: docked
       collapse-level: 1
       contents:
-        - text: "Lesson 3.1 — Intro to Global Tuna Atlas"
-          href: datasetworkflowarchitecture-all.qmd
+        - section: "Lesson 3.1 — Intro to Global Tuna Atlas"
           contents:
-            # - DatasetsWorkflowArchitecture.qmd
             - datasetworkflowarchitecture-all.qmd
             - cpue-dataset.qmd
             - reproductibility.qmd
-            # - workflow-architecture.qmd
             - cwp-standards-first-draft.qmd
-        - text: "Lesson 3.2 — Running R Workflows in VLab5"
-          href: lesson-3-5-overview.qmd
+        - section: "Lesson 3.2 — Running R Workflows in VLab5"
           contents:
             - lesson-3-5-overview.qmd
             - intro-rstudio.qmd
@@ -45,10 +41,10 @@ website:
             - running-scripts-in-loaded-repo.qmd
             - renv-cache-path.qmd
             - deploy-repos-in-vlab-rstudioserver.qmd
-        - text: "Lesson 3.3 — Exploring GTA data via Shiny"
-          href: exploring-global-tuna-atlas-data-via-shiny.qmd
+        - section: "Lesson 3.3 — Exploring GTA data via Shiny"
           contents:
             - exploring-global-tuna-atlas-data-via-shiny.qmd
+
 
 format:
   html:

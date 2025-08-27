@@ -3,7 +3,7 @@
 set -e  # stop if error
 
 echo "🌐 Rendering main site..."
-quarto render
+quarto render --no-cache
 
 # ----- SOLO -----
 echo "🔧 Rendering SOLO..."

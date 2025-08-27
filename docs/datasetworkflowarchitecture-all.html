@@ -8,7 +8,7 @@
 
 <meta name="author" content="VLab Course Team">
 
-<title>VLab5 Course - Overview</title>
+<title>VLab5 Course - Global Tuna Atlas datasets and workflow architecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,69 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 
 
@@ -3972,7 +4035,7 @@ vertical-align: -.125em;
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Overview</h1>
+      <h1 class="quarto-secondary-nav-title">Global Tuna Atlas datasets and workflow architecture</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -3987,15 +4050,15 @@ vertical-align: -.125em;
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Lesson 3.1 — Intro to Global Tuna Atlas</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lesson 3.1 — Intro to Global Tuna Atlas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datasetworkflowarchitecture-all.html" class="sidebar-item-text sidebar-link">Global Tuna Atlas datasets and workflow architecture</a>
+  <a href="./datasetworkflowarchitecture-all.html" class="sidebar-item-text sidebar-link active">Global Tuna Atlas datasets and workflow architecture</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4017,15 +4080,15 @@ vertical-align: -.125em;
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Lesson 3.2 — Running R Workflows in VLab5</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Lesson 3.2 — Running R Workflows in VLab5</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lesson-3-5-overview.html" class="sidebar-item-text sidebar-link active">Overview</a>
+  <a href="./lesson-3-5-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4079,10 +4142,23 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-map-pages" id="toc-course-map-pages" class="nav-link active" data-scroll-target="#course-map-pages">Course map (Pages)</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li><a href="#what-you-will-do" id="toc-what-you-will-do" class="nav-link" data-scroll-target="#what-you-will-do">What you will do</a></li>
-  <li><a href="#expected-outcome" id="toc-expected-outcome" class="nav-link" data-scroll-target="#expected-outcome">Expected outcome</a></li>
+  <li><a href="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" id="toc-overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="nav-link active" data-scroll-target="#overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture">Overview of the Global Tuna Atlas datasets and workflow architecture</a></li>
+  <li><a href="#presentation-of-dataset-specificities" id="toc-presentation-of-dataset-specificities" class="nav-link" data-scroll-target="#presentation-of-dataset-specificities">Presentation of dataset specificities</a>
+  <ul class="collapse">
+  <li><a href="#nominal-catch-dataset-firms-level-0" id="toc-nominal-catch-dataset-firms-level-0" class="nav-link" data-scroll-target="#nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</a></li>
+  <li><a href="#geo-referenced-catch-datasets" id="toc-geo-referenced-catch-datasets" class="nav-link" data-scroll-target="#geo-referenced-catch-datasets">Geo-referenced Catch Datasets</a>
+  <ul class="collapse">
+  <li><a href="#firms-level-0" id="toc-firms-level-0" class="nav-link" data-scroll-target="#firms-level-0">FIRMS Level 0</a></li>
+  <li><a href="#ird-level-2" id="toc-ird-level-2" class="nav-link" data-scroll-target="#ird-level-2">IRD Level 2</a></li>
+  </ul></li>
+  <li><a href="#effort-dataset-ird-level-0" id="toc-effort-dataset-ird-level-0" class="nav-link" data-scroll-target="#effort-dataset-ird-level-0">Effort Dataset (IRD Level 0)</a></li>
+  <li><a href="#exploration-resources" id="toc-exploration-resources" class="nav-link" data-scroll-target="#exploration-resources">Exploration resources</a></li>
+  </ul></li>
+  <li><a href="#gta-workflow-architecture-level-0-level-2" id="toc-gta-workflow-architecture-level-0-level-2" class="nav-link" data-scroll-target="#gta-workflow-architecture-level-0-level-2">GTA Workflow Architecture (Level 0 → Level 2)</a></li>
+  <li><a href="#per-release-pdf-impact-of-each-step" id="toc-per-release-pdf-impact-of-each-step" class="nav-link" data-scroll-target="#per-release-pdf-impact-of-each-step">Per-release PDF (impact of each step)</a></li>
+  <li><a href="#workflow-automation-with-geoflow" id="toc-workflow-automation-with-geoflow" class="nav-link" data-scroll-target="#workflow-automation-with-geoflow">Workflow automation with <code>geoflow</code></a></li>
+  <li><a href="#quick-run-patterns" id="toc-quick-run-patterns" class="nav-link" data-scroll-target="#quick-run-patterns">Quick run patterns</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -4091,7 +4167,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Overview</h1>
+<h1 class="title d-none d-lg-block">Global Tuna Atlas datasets and workflow architecture</h1>
 </div>
 
 
@@ -4112,59 +4188,172 @@ vertical-align: -.125em;
 
 </header>
 
-<blockquote class="blockquote">
-<p><strong>Estimated duration:</strong> 30 minutes</p>
-<p><strong>Format:</strong> lab notebook (Explainer video + real-time walkthrough incoming)</p>
-<p><strong>Prerequisites:</strong> Access to VLab5, completion of VLab5 platform orientation.</p>
-</blockquote>
-<hr>
-<section id="course-map-pages" class="level2">
-<h2 class="anchored" data-anchor-id="course-map-pages">Course map (Pages)</h2>
+<section id="overview-of-the-global-tuna-atlas-datasets-and-workflow-architecture" class="level1">
+<h1>Overview of the Global Tuna Atlas datasets and workflow architecture</h1>
+<p>The <strong>Global Tuna Atlas (GTA)</strong> integrates catch and effort data from all five tuna Regional Fisheries Management Organizations (t-RFMOs). GTA workflows aim to make tuna fisheries data FAIR (Findable, Accessible, Interoperable, Reusable) and reproducible.</p>
+<p>The dataset families include:</p>
 <ul>
-<li><p><strong>Intro to RStudio in VLab5</strong><br>
-<code>intro-rstudio.qmd</code> — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).</p></li>
-<li><p><strong>Project Organization</strong><br>
-<code>project-organization.qmd</code> — Pre-installed repositories in <code>~/GitHubRepos</code>, stable vs dev structure, quick terminal command to list repos, README locations.</p></li>
-<li><p><strong>Running scripts in a loaded repository</strong><br>
-<code>running-scripts-in-loaded-repo.qmd</code> — Open <code>.Rproj</code>, run <code>renv::restore()</code>, render example Rmd (<code>summary_catch.Rmd</code> in <code>geoflow-tunaatlas</code>), pattern for Shiny apps (<code>shiny::runApp()</code>).</p></li>
-<li><p><strong>Deploy repos in your own VLab (Bonus)</strong><br>
-<code>deploy-repos-in-vlab-rstudioserver.qmd</code> — High-level notes for advanced users: RStudio Server image, preload script, global <code>renv</code> cache at image build-time, and optional per-project/per-user cache notes.</p></li>
+<li><strong>Nominal catches</strong> (annual, aggregated by fleet, gear, species, large area).</li>
+<li><strong>Geo-referenced catches</strong> (monthly, 1°/5° grids).</li>
+<li><strong>Effort datasets</strong> (multiple measurement units, kept unaggregated to preserve semantics).</li>
+<li><strong>Derived CPUE datasets</strong> (catch-per-unit-effort on matched strata).</li>
+</ul>
+<p>Each dataset is produced using harmonized formats based on <strong>CWP standards</strong> and reproducible scripts available in:</p>
+<ul>
+<li>Level 2 &amp; Effort (IRD): <a href="https://github.com/firms-gta/geoflow-tunaatlas" class="uri">https://github.com/firms-gta/geoflow-tunaatlas</a><br>
+</li>
+<li>Level 0 (FIRMS): <a href="https://github.com/firms-gta/geoflow-gta" class="uri">https://github.com/firms-gta/geoflow-gta</a></li>
 </ul>
 <hr>
 </section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
-<p>By the end of this lesson, learners will be able to:</p>
+<section id="presentation-of-dataset-specificities" class="level1">
+<h1>Presentation of dataset specificities</h1>
+<section id="nominal-catch-dataset-firms-level-0" class="level2">
+<h2 class="anchored" data-anchor-id="nominal-catch-dataset-firms-level-0">Nominal Catch Dataset (FIRMS Level 0)</h2>
 <ul>
-<li>Navigate the VLab5 RStudio environment confidently.</li>
-<li>Understand the structure of project repositories, including <strong>stable vs dev</strong> versions.</li>
-<li>Use <code>renv::restore()</code> to initialize a <strong>reproducible</strong> R environment.</li>
-<li>Execute a complete R script within VLab5.</li>
-<li><em>(Bonus)</em> Understand how the <strong>shared package cache</strong> works within the infrastructure.</li>
-<li><em>(Bonus)</em> Deploy a repo in their <strong>own VLab</strong> environment if needed.</li>
+<li><strong>Time span:</strong> 1918–2023<br>
+</li>
+<li><strong>Content:</strong> Live-weight equivalent (metric tonnes), mainly retained catches<br>
+</li>
+<li><strong>Stratification:</strong> Year, fleet, gear, large area, species<br>
+</li>
+<li><strong>Use case:</strong> Benchmark of global tuna catch volumes<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.5745958" class="uri">https://doi.org/10.5281/zenodo.5745958</a></li>
+</ul>
+</section>
+<section id="geo-referenced-catch-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="geo-referenced-catch-datasets">Geo-referenced Catch Datasets</h2>
+<section id="firms-level-0" class="level3">
+<h3 class="anchored" data-anchor-id="firms-level-0">FIRMS Level 0</h3>
+<ul>
+<li><strong>Time span:</strong> 1950–2023<br>
+</li>
+<li><strong>Resolution:</strong> 1°/5° grid, monthly<br>
+</li>
+<li><strong>Content:</strong> Catches from all t-RFMOs, harmonized<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.5747174" class="uri">https://doi.org/10.5281/zenodo.5747174</a></li>
+</ul>
+</section>
+<section id="ird-level-2" class="level3">
+<h3 class="anchored" data-anchor-id="ird-level-2">IRD Level 2</h3>
+<ul>
+<li>Further processed to align geo-referenced totals with nominal totals<br>
+</li>
+<li>Includes raising, strata updates, and handling of observer vs logbook data (e.g., IATTC)<br>
+</li>
+<li><strong>Warning:</strong> Not suitable for quota/legality studies due to uncertainty in precise georeferencing<br>
+</li>
+<li><strong>Code:</strong> <a href="https://github.com/firms-gta/geoflow-tunaatlas" class="uri">https://github.com/firms-gta/geoflow-tunaatlas</a><br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.15496164" class="uri">https://doi.org/10.5281/zenodo.15496164</a></li>
+</ul>
+</section>
+</section>
+<section id="effort-dataset-ird-level-0" class="level2">
+<h2 class="anchored" data-anchor-id="effort-dataset-ird-level-0">Effort Dataset (IRD Level 0)</h2>
+<ul>
+<li><strong>Time span:</strong> 1950–2023<br>
+</li>
+<li><strong>Content:</strong> 23 different measurement units; no aggregation<br>
+</li>
+<li><strong>Specificities:</strong> Known duplicates/parallel series (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS)—end-users must harmonize for their analysis<br>
+</li>
+<li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.15496164" class="uri">https://doi.org/10.5281/zenodo.15496164</a></li>
 </ul>
 <hr>
 </section>
-<section id="what-you-will-do" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-will-do">What you will do</h2>
+<section id="exploration-resources" class="level2">
+<h2 class="anchored" data-anchor-id="exploration-resources">Exploration resources</h2>
 <ul>
-<li>Launch RStudio (D4Science or Google Cloud) and inspect the environment.</li>
-<li>Explore pre-installed repos in <code>~/GitHubRepos</code> and locate main scripts.</li>
-<li>Restore packages with <code>renv::restore()</code> and run a full workflow (Rmd or Shiny).</li>
-<li>Inspect outputs in <code>outputs/</code> and review logs.</li>
-<li><em>(Bonus)</em> Review how deployment works and how to configure a global cache.</li>
+<li><p>Example Rmd notebooks (in the L2/Effort repo):</p>
+<ul>
+<li>Exploring Level 2 catch: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd" class="uri">https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_catch.Rmd</a><br>
+</li>
+<li>Exploring Level 0 effort: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd" class="uri">https://github.com/firms-gta/geoflow-tunaatlas/blob/master/summary_effort.Rmd</a></li>
+</ul></li>
+<li><p>Shiny apps:</p>
+<ul>
+<li><a href="https://github.com/firms-gta/shiny_compare_fisheries_datasets" class="uri">https://github.com/firms-gta/shiny_compare_fisheries_datasets</a><br>
+</li>
+<li><a href="https://github.com/firms-gta/tunaatlas_pie_map_shiny" class="uri">https://github.com/firms-gta/tunaatlas_pie_map_shiny</a></li>
+</ul></li>
 </ul>
 <hr>
 </section>
-<section id="expected-outcome" class="level2">
-<h2 class="anchored" data-anchor-id="expected-outcome">Expected outcome</h2>
-<p>By the end of this lesson, learners will:</p>
+</section>
+<section id="gta-workflow-architecture-level-0-level-2" class="level1">
+<h1>GTA Workflow Architecture (Level 0 → Level 2)</h1>
 <ul>
-<li>Identify and choose an appropriate repository.</li>
-<li>Execute a full R workflow in VLab5.</li>
-<li><em>(Bonus)</em> Understand package dependencies and <code>renv</code> logic.</li>
+<li><strong>Level 0 → Level 2</strong>: Level 2 datasets are <em>derived products</em> built from Level 0 (harmonized sources) by applying documented processing (e.g., <strong>raising</strong> to nominal totals, <strong>strata updates</strong>, harmonization, QA/QC). Level 2 aligns better with nominal totals but is <strong>not appropriate for quota/legality studies</strong> because precise geo-referencing uncertainty can remain.</li>
 </ul>
 <hr>
+</section>
+<section id="per-release-pdf-impact-of-each-step" class="level1">
+<h1>Per-release PDF (impact of each step)</h1>
+<p>For <strong>each IRD Zenodo release</strong>, the dataset is built using the workflow script<br>
+<a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/tunaatlas_scripts/generation/create_global_tuna_atlas_dataset_v2025.R"><code>create_global_tuna_atlas_dataset_v2025.R</code></a> from the <code>firms-gta/geoflow-tunaatlas</code> repository.</p>
+<p>During the build, the <strong>CWP.dataset</strong> R package generates an <strong>automated PDF report</strong> that:</p>
+<ul>
+<li>lists every workflow step (ingest → harmonize → raise → aggregate/align → QA/QC),</li>
+<li>records the <strong>parameters and assumptions</strong> used,</li>
+<li>and quantifies the <strong>impact on the data</strong> (e.g., percent changes, coverage adjustments, strata updates).</li>
+</ul>
+<p>Example: <a href="https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf" class="uri">https://zenodo.org/record/15496164/files/Recap_of_the_process.pdf</a></p>
+<p>This documentation complements the machine-readable provenance stored in flow definitions and logs.</p>
+<hr>
+</section>
+<section id="workflow-automation-with-geoflow" class="level1">
+<h1>Workflow automation with <code>geoflow</code></h1>
+<p>To ensure reproducibility and traceability, GTA workflows are implemented with the <strong><code>geoflow</code></strong> R package, which structures pipelines into <strong>tasks</strong> with explicit inputs, outputs, and metadata.</p>
+<p>In practice, the list of datasets to build and publish is maintained in a <strong>machine-readable entities table (CSV)</strong>.<br>
+For GTA, see: <a href="https://github.com/firms-gta/geoflow-tunaatlas/blob/master/geoflow_entities_tuna_global_datasets_IRD_level1_2022%20-%20IRD_level2.csv"><code>geoflow_entities_tuna_global_datasets_IRD_level1_2022 - IRD_level2.csv</code></a>.</p>
+<p>The <strong>entities CSV</strong> drives each run by declaring, for every dataset (“entity”):</p>
+<ul>
+<li>Identification &amp; description (id, title, abstract)</li>
+<li>Inputs (DOI URLs, RFMO downloads, private paths when applicable)</li>
+<li>Processing hints (task names/parameters, expected temporal/spatial aggregations)</li>
+<li>Outputs (target formats/locations)</li>
+<li>Publication targets (Zenodo community/concept DOI; optionally GeoServer/GeoNetwork/database)</li>
+<li>Metadata (license, keywords, contacts, temporal/spatial coverage, version/release info)</li>
+</ul>
+<p><strong>Execution flow with <code>geoflow</code>:</strong></p>
+<ol type="1">
+<li>Read the entities CSV and instantiate the flow of tasks per entity<br>
+</li>
+<li>Run steps (ingest → harmonize → raise → aggregate → QA/QC)<br>
+</li>
+<li>Export data and generate human-readable reports<br>
+</li>
+<li>Publish outputs with DOIs and record machine-readable provenance</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Precise tracking of <strong>data provenance</strong> (which task produced what, with which parameters)</li>
+<li>Automated export and <strong>DOI-based publication</strong> (Zenodo)</li>
+<li>Optional integration with <strong>GeoServer/GeoNetwork</strong> and databases</li>
+<li>A single, versioned CSV “source of truth” for datasets and metadata</li>
+</ul>
+<hr>
+</section>
+<section id="quick-run-patterns" class="level1">
+<h1>Quick run patterns</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Create Level 2 datasets</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Downloads required DOI resources when needed</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Applies raising and strata updates to align with nominal totals</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - Generates an impact PDF via CWP.dataset (per-release)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;level_2_catch_local.R&quot;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="key-takeaways" class="level1">
+<h1>Key takeaways</h1>
+<ul>
+<li>Level 2 is derived from Level 0 through documented, reproducible steps (geoflow).</li>
+<li>IRD Zenodo records include a PDF documenting each step and its impact on data.</li>
+<li>The entities CSV defines what to build/publish and underpins traceable, automated runs.</li>
+</ul>
 
 
 </section>

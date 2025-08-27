@@ -4,7 +4,6 @@
 .Ruserdata
 
 /.quarto/
-docs/*.html
 !docs/solo/
 !docs/.nojekyll
 !docs/CNAME
