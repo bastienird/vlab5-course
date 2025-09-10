@@ -1,5 +1,5 @@
 ---
-title: "Exploring Global Tuna Atlas Data via Shiny (15 min)"
+title: "Exploring Global Tuna Atlas data via Shiny"
 author: "VLab Course Team"
 ---
 
@@ -18,6 +18,9 @@ Shiny apps can be accessed in **two ways**:
 2. From the repository in `~/GitHubRepos` → open the `.Rproj`, restore packages, and run `shiny::runApp()`.
 
 > All Shiny apps have **stable and dev versions**, except **darwin_core_viewer** which is only available as a stable version in the Shiny Apps tab.
+> **Note:** Depending on your level of write access, you may not be able to access the development version.  
+> If you would like access, please contact us.  
+> Please note that the list of deployed Shiny applications may evolve over time.
 
 ## Outside Vlab 5
 

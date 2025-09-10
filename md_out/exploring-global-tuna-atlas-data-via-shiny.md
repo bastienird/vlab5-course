@@ -1,4 +1,4 @@
-Exploring Global Tuna Atlas Data via Shiny (15 min)
+Exploring Global Tuna Atlas data via Shiny
 ================
 VLab Course Team
 

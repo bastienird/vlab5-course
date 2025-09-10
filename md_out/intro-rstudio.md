@@ -10,19 +10,22 @@ technical setup of the RStudio Server in VLab5.
 ### Launching the Environment
 
 To begin working in VLab5 with R workflows, start by navigating to the
-**Analytics** section on the platform.
+[**Analytics**](https://blue-cloud.d4science.org/group/globalfisheriesatlas/analytics).
+section on the platform.
 
 You have two main options to launch an RStudio session:
 
-1.  **RStudio on D4Science (Start)** – This is the default environment.
-    It includes all preloaded repositories you’ll use in this course
-    (both stable and dev versions). It has limited RAM compared to the
-    second option.
-2.  **RStudio on GoogleCloud (Start)** – This environment offers more
-    RAM and computing power, which can be useful for heavier
-    computations. However, it does *not* include the preloaded
-    repositories by default. If you use it, you’ll need to manually
-    configure and copy the necessary projects.
+1.  [**RStudio on D4Science
+    (Start)**](https://blue-cloud.d4science.org/group/globalfisheriesatlas/rstudio-4-start)
+    – This is the default environment. It includes all preloaded
+    repositories you’ll use in this course (both stable and dev
+    versions). It has limited RAM compared to the second option.
+2.  [**RStudio on GoogleCloud
+    (Start)**](https://blue-cloud.d4science.org/group/globalfisheriesatlas/start-rstudio-at-googlecloud)
+    – This environment offers more RAM and computing power, which can be
+    useful for heavier computations. However, it does *not* include the
+    preloaded repositories by default. If you use it, you’ll need to
+    manually configure and copy the necessary projects.
 
 Once you launch either version, you’ll enter a standard **RStudio Server
 interface** directly in your browser.
@@ -177,7 +180,3 @@ correctly installed.
 - You can always re-run this notebook to verify your session.
 
 ------------------------------------------------------------------------
-
-**Next step:** Now that you know your environment, proceed to [Project
-Organization](project-organization.qmd) and explore the available
-repositories!
