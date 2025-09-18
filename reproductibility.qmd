@@ -65,7 +65,7 @@ Use the **version DOI** in methods/results, and the **concept DOI** in general r
 
 ```bibtex
 @dataset{gta_level2_2025,
-  title   = {Global Tuna Atlas — Level 2 Geo-referenced Catch},
+  title   = {Global Tuna Atlas - Level 2 Geo-referenced Catch},
   author  = {{GTA Team}},
   year    = {2025},
   version = {2025.1},

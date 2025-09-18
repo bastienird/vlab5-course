@@ -7,7 +7,7 @@ Before running any code in a repository, make sure you are **inside the correct 
 
 ---
 
-## Step 1 — Open the project (`.Rproj`)
+## Step 1 - Open the project (`.Rproj`)
 
 Open a project using one of these options:
 
@@ -23,7 +23,7 @@ rstudioapi::openProject("~/GitHubRepos/geoflow-tunaatlas/stable")
 
 ---
 
-## Step 2 — Restore the Project environment with `renv`
+## Step 2 - Restore the Project environment with `renv`
 
 The [`renv` package](https://rstudio.github.io/renv/) manages **project-specific R environments** to guarantee **reproducibility**. It records exact package versions in `renv.lock` and restores them on any machine.
 
@@ -85,6 +85,7 @@ Note: `geoflow-tunaatlas` is the most complex repository used in this course. It
 ## Other repositories
 
 For all of the other repositories in this course: 
+
 - `tunaatlas_pie_map_shiny`
 - `shiny_compare_tunaatlas_datasets`
 - `darwin_core_viewer`

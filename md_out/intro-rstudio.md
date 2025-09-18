@@ -75,9 +75,11 @@ R.version.string
 rstudioapi::versionInfo()
 ```
 
-This returns information such as: - `version`: RStudio version installed
-(e.g., `2023.3.0.386`) - `release_name`: Code name for the release
-(e.g., `Cherry Blossom`) - `mode`: Whether you’re on the server version
+This returns information such as:
+
+- `version`: RStudio version installed (e.g., `2023.3.0.386`)
+- `release_name`: Code name for the release (e.g., `Cherry Blossom`)
+- `mode`: Whether you’re on the server version
 
 #### System Information
 
@@ -102,9 +104,12 @@ Sys.info()
                                                        effective_user 
                                                              "jovyan" 
 
-You’ll see OS-level details such as: - `sysname`: Operating system -
-`release`: Kernel version - `machine`: Architecture (usually `x86_64`) -
-`user`: Your current user session (likely `jovyan`)
+You’ll see OS-level details such as:
+
+- `sysname`: Operating system
+- `release`: Kernel version
+- `machine`: Architecture (usually `x86_64`)
+- `user`: Your current user session (likely `jovyan`)
 
 #### RAM Availability (in GB)
 
@@ -113,9 +118,10 @@ You’ll see OS-level details such as: - `sysname`: Operating system -
 system("free -g")
 ```
 
-This command shows approximate memory allocation: - `total`: Total
-memory available (e.g., 125 GB) - `used` and `available`: What’s
-currently in use or free
+This command shows approximate memory allocation:
+
+- `total`: Total memory available (e.g., 125 GB)
+- `used` and `available`: What’s currently in use or free
 
 > ⚠️ **Note**: The number you see in “available” RAM may be lower (e.g.,
 > 32 GB) due to container quotas or dynamic allocation. The full

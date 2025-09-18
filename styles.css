@@ -1,1 +1,11 @@
-/* css styles */
+.partner-logos {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+}
+.partner-logos img {
+  height: 56px;  /* ajuste la taille */
+  object-fit: contain;
+}

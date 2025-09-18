@@ -25,7 +25,11 @@ Shiny apps can be accessed in **two ways**:
 
 > All Shiny apps have **stable and dev versions**, except
 > **darwin_core_viewer** which is only available as a stable version in
-> the Shiny Apps tab.
+> the Shiny Apps tab. **Note:** Depending on your level of write access,
+> you may not be able to access the development version.  
+> If you would like access, please contact us.  
+> Please note that the list of deployed Shiny applications may evolve
+> over time.
 
 ## Outside Vlab 5
 
@@ -125,7 +129,7 @@ as the differences of processes for each datasets are complex.
 
 **Strengths**
 
-- Lower barrier to entry — no code needed.  
+- Lower barrier to entry - no code needed.  
 - Fast exploratory analysis & visual quality assurance.  
 - Standardized filters/views reduce errors.
 

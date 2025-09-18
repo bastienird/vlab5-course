@@ -14,16 +14,16 @@ author: "VLab Course Team"
 ## Course map (Pages)
 
 - **Intro to RStudio in VLab5**  
-  `intro-rstudio.qmd` — Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).
+  `intro-rstudio.qmd` - Launch options (D4Science vs Google Cloud), RStudio panes (Console, Terminal, Environment, Files/Plots/Packages/Help/Viewer), system checks (R/RStudio versions, RAM).
 
 - **Project Organization**  
-  `project-organization.qmd` — Pre-installed repositories in `~/GitHubRepos`, stable vs dev structure, quick terminal command to list repos, README locations.
+  `project-organization.qmd` - Pre-installed repositories in `~/GitHubRepos`, stable vs dev structure, quick terminal command to list repos, README locations.
 
 - **Running scripts in a loaded repository**  
-  `running-scripts-in-loaded-repo.qmd` — Open `.Rproj`, run `renv::restore()`, render example Rmd (`summary_catch.Rmd` in `geoflow-tunaatlas`), pattern for Shiny apps (`shiny::runApp()`).
+  `running-scripts-in-loaded-repo.qmd` - Open `.Rproj`, run `renv::restore()`, render example Rmd (`summary_catch.Rmd` in `geoflow-tunaatlas`), pattern for Shiny apps (`shiny::runApp()`).
 
 - **Deploy repos in your own VLab (Bonus)**  
-  `deploy-repos-in-vlab-rstudioserver.qmd` — High-level notes for advanced users: RStudio Server image, preload script, global `renv` cache at image build-time, and optional per-project/per-user cache notes.
+  `deploy-repos-in-vlab-rstudioserver.qmd` - High-level notes for advanced users: RStudio Server image, preload script, global `renv` cache at image build-time, and optional per-project/per-user cache notes.
 
 ---
 

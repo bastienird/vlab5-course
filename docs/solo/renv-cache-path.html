@@ -2609,8 +2609,8 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#why-use-a-personal-renv-cache-setting" id="toc-why-use-a-personal-renv-cache-setting" class="nav-link active" data-scroll-target="#why-use-a-personal-renv-cache-setting">Why use a personal <code>renv</code> cache setting?</a></li>
-  <li><a href="#option-a-set-a-user-level-cache-in-.renviron" id="toc-option-a-set-a-user-level-cache-in-.renviron" class="nav-link" data-scroll-target="#option-a-set-a-user-level-cache-in-.renviron">Option A — Set a user-level cache in <code>~/.Renviron</code></a></li>
-  <li><a href="#option-b-set-a-project-level-cache-in-project.renviron" id="toc-option-b-set-a-project-level-cache-in-project.renviron" class="nav-link" data-scroll-target="#option-b-set-a-project-level-cache-in-project.renviron">Option B — Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></a></li>
+  <li><a href="#option-a---set-a-user-level-cache-in-.renviron" id="toc-option-a---set-a-user-level-cache-in-.renviron" class="nav-link" data-scroll-target="#option-a---set-a-user-level-cache-in-.renviron">Option A - Set a user-level cache in <code>~/.Renviron</code></a></li>
+  <li><a href="#option-b---set-a-project-level-cache-in-project.renviron" id="toc-option-b---set-a-project-level-cache-in-project.renviron" class="nav-link" data-scroll-target="#option-b---set-a-project-level-cache-in-project.renviron">Option B - Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></a></li>
   <li><a href="#verify-your-configuration" id="toc-verify-your-configuration" class="nav-link" data-scroll-target="#verify-your-configuration">Verify your configuration</a></li>
   <li><a href="#using-the-cache-with-projects" id="toc-using-the-cache-with-projects" class="nav-link" data-scroll-target="#using-the-cache-with-projects">Using the cache with projects</a></li>
   <li><a href="#good-practices-caveats" id="toc-good-practices-caveats" class="nav-link" data-scroll-target="#good-practices-caveats">Good practices &amp; caveats</a></li>
@@ -2657,8 +2657,8 @@ vertical-align: -.125em;
 </ul>
 <hr>
 </section>
-<section id="option-a-set-a-user-level-cache-in-.renviron" class="level2">
-<h2 class="anchored" data-anchor-id="option-a-set-a-user-level-cache-in-.renviron">Option A — Set a user-level cache in <code>~/.Renviron</code></h2>
+<section id="option-a---set-a-user-level-cache-in-.renviron" class="level2">
+<h2 class="anchored" data-anchor-id="option-a---set-a-user-level-cache-in-.renviron">Option A - Set a user-level cache in <code>~/.Renviron</code></h2>
 <p>Create (or edit) a file named <code>~/.Renviron</code> and add:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>RENV_PATHS_CACHE<span class="ot">=</span><span class="er">~/</span>blue<span class="sc">-</span>cloud<span class="sc">-</span>dataspace<span class="sc">/</span>GlobalFisheriesAtlas<span class="sc">/</span>cacheRenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then <strong>restart R</strong> (Session → Restart R). From now on, all your projects will use this cache automatically.</p>
@@ -2673,8 +2673,8 @@ vertical-align: -.125em;
 <p>This command copies all the required packages directly into the renv folder of your project. Be cautious when running this locally, as it can significantly increase disk usage.</p>
 <hr>
 </section>
-<section id="option-b-set-a-project-level-cache-in-project.renviron" class="level2">
-<h2 class="anchored" data-anchor-id="option-b-set-a-project-level-cache-in-project.renviron">Option B — Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></h2>
+<section id="option-b---set-a-project-level-cache-in-project.renviron" class="level2">
+<h2 class="anchored" data-anchor-id="option-b---set-a-project-level-cache-in-project.renviron">Option B - Set a project-level cache in <code>&lt;project&gt;/.Renviron</code></h2>
 <p>If you prefer to scope the cache setting to a <strong>single project</strong>, create a file named <code>.Renviron</code> in the <strong>project root</strong> (next to <code>.Rproj</code>) with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>RENV_PATHS_CACHE<span class="ot">=</span><span class="er">~/</span>blue<span class="sc">-</span>cloud<span class="sc">-</span>dataspace<span class="sc">/</span>GlobalFisheriesAtlas<span class="sc">/</span>cacheRenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Restart R inside the project. Only this project will use that cache.</p>

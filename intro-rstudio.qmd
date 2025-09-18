@@ -55,32 +55,40 @@ R.version.string
 
 #### Check RStudio Version
 ```{r, eval=FALSE}
+
 rstudioapi::versionInfo()
+
 ```
 
 This returns information such as:
+
 - `version`: RStudio version installed (e.g., `2023.3.0.386`)
 - `release_name`: Code name for the release (e.g., `Cherry Blossom`)
 - `mode`: Whether you're on the server version
 
 #### System Information
 ```{r}
+
 Sys.info()
+
 ```
 
 You’ll see OS-level details such as:
+
 - `sysname`: Operating system
 - `release`: Kernel version
 - `machine`: Architecture (usually `x86_64`)
 - `user`: Your current user session (likely `jovyan`)
 
 #### RAM Availability (in GB)
+
 ```{r, results='asis'}
 # Note: this uses system-level shell command
 system("free -g")
 ```
 
 This command shows approximate memory allocation:
+
 - `total`: Total memory available (e.g., 125 GB)
 - `used` and `available`: What’s currently in use or free
 
@@ -89,8 +97,11 @@ This command shows approximate memory allocation:
 > 📊 To get a user-friendly view of the actual allocated RAM, go to the **top-right Environment panel** in RStudio and click **"Memory usage report"**. This tool gives you a live snapshot of RAM used by your session.
 
 #### List of Installed Packages
+
 ```{r}
+
 installed.packages()[1:20, c("Package", "Version")]
+
 ```
 
 This shows the first 20 installed packages and their versions. You can increase the number for a full list.

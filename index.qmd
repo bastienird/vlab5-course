@@ -1,6 +1,60 @@
 ---
-title: "vlab5-course"
+title: "Fisheries Atlas - VLab5 Course"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    page-layout: full
+    css: styles.css
+lang: en
 ---
 
-This website contains several tutorial and courses related to the Global Tuna Atlas datasets, the related shiny apps and the use of the Vlab5 of the BlueCloud 2026 project.
+<!-- Header logos -->
+<div class="partner-logos">
+  <img src="assets/logos/logo_blue-cloud_2026.svg" alt="Blue-Cloud 2026" />
+  <img src="assets/logos/logo_IRD.svg" alt="IRD - Institut de recherche pour le développement" />
+    <img src="assets/logos/logo_VLab5.png" alt="VLab 5: Global Fisheries Atlas" />
+  <img src="assets/logos/eu-emblem.avif" alt="European Union emblem" />
+</div>
+
+## Welcome
+
+This website brings together tutorials and courses on the **Global Tuna Atlas (GTA)** datasets, the related **Shiny applications**, and how to use **VLab5** within the **Blue-Cloud 2026** project.  
+Our aim is to help researchers, practitioners and decision-makers explore, analyse and **reproduce** global tuna fisheries workflows.
+
+**You will learn to:**
+
+- understand the structure and provenance of GTA datasets;
+- run analyses reproducibly on VLab5;
+- use GTA Shiny apps for exploration and QA/QC.
+
+
+> **Acknowledgement.** This work is part of **Blue-Cloud 2026** and has received funding from the **European Union’s Horizon Europe** programme (Grant Agreement **No 101094227**). 
+
+---
+
+## Modules
+
+#### Lesson 1 - Intro to Global Tuna Atlas
+
+This lesson introduces the **Global Tuna Atlas (GTA)**: its purpose, data levels (nominal, georeferenced, raised), and how it brings together datasets from all tuna RFMOs for global transparency and comparability.
+
+---
+
+#### Lesson 2 - Running R Workflows in VLab5
+
+Here you will learn how to run **reproducible R workflows** inside **VLab5**, using tools like `renv`, and understand how GTA workflows ensure consistency and collaboration.
+
+---
+
+#### Lesson 3 - Exploring GTA Data via Shiny
+
+This lesson shows how to explore GTA datasets with **Shiny apps**: filtering by species, fleet, or gear, visualizing catches and effort through maps and time series, and exporting results easily.
+
+
+---
+
+## Reuse & license
+
+Materials are open for reuse unless noted otherwise.
 

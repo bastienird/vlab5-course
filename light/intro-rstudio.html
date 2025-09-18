@@ -159,7 +159,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
 </div>
-<p>This returns information such as: - <code>version</code>: RStudio version installed (e.g., <code>2023.3.0.386</code>) - <code>release_name</code>: Code name for the release (e.g., <code>Cherry Blossom</code>) - <code>mode</code>: Whether you’re on the server version</p>
+<p>This returns information such as:</p>
+<ul>
+<li><code>version</code>: RStudio version installed (e.g., <code>2023.3.0.386</code>)</li>
+<li><code>release_name</code>: Code name for the release (e.g., <code>Cherry Blossom</code>)</li>
+<li><code>mode</code>: Whether you’re on the server version</li>
+</ul>
 <h4 id="system-information" class="anchored">System Information</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.info</span>()</span></code></pre></div>
@@ -182,11 +187,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                                                          "jovyan" </code></pre>
 </div>
 </div>
-<p>You’ll see OS-level details such as: - <code>sysname</code>: Operating system - <code>release</code>: Kernel version - <code>machine</code>: Architecture (usually <code>x86_64</code>) - <code>user</code>: Your current user session (likely <code>jovyan</code>)</p>
+<p>You’ll see OS-level details such as:</p>
+<ul>
+<li><code>sysname</code>: Operating system</li>
+<li><code>release</code>: Kernel version</li>
+<li><code>machine</code>: Architecture (usually <code>x86_64</code>)</li>
+<li><code>user</code>: Your current user session (likely <code>jovyan</code>)</li>
+</ul>
 <h4 id="ram-availability-in-gb" class="anchored">RAM Availability (in GB)</h4>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this uses system-level shell command</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">"free -g"</span>)</span></code></pre></div>
-<p>This command shows approximate memory allocation: - <code>total</code>: Total memory available (e.g., 125 GB) - <code>used</code> and <code>available</code>: What’s currently in use or free</p>
+<p>This command shows approximate memory allocation:</p>
+<ul>
+<li><code>total</code>: Total memory available (e.g., 125 GB)</li>
+<li><code>used</code> and <code>available</code>: What’s currently in use or free</li>
+</ul>
 <blockquote>
 <p>⚠️ <strong>Note</strong>: The number you see in “available” RAM may be lower (e.g., 32 GB) due to container quotas or dynamic allocation. The full infrastructure may have more memory, but your session may be limited based on demand and environment.</p>
 <p>📊 To get a user-friendly view of the actual allocated RAM, go to the <strong>top-right Environment panel</strong> in RStudio and click <strong>“Memory usage report”</strong>. This tool gives you a live snapshot of RAM used by your session.</p>

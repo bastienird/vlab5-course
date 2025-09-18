@@ -16,7 +16,7 @@ VLab Course Team
 
 ------------------------------------------------------------------------
 
-## Option A — Set a user-level cache in `~/.Renviron`
+## Option A - Set a user-level cache in `~/.Renviron`
 
 Create (or edit) a file named `~/.Renviron` and add:
 
@@ -47,7 +47,7 @@ significantly increase disk usage.
 
 ------------------------------------------------------------------------
 
-## Option B — Set a project-level cache in `<project>/.Renviron`
+## Option B - Set a project-level cache in `<project>/.Renviron`
 
 If you prefer to scope the cache setting to a **single project**, create
 a file named `.Renviron` in the **project root** (next to `.Rproj`)

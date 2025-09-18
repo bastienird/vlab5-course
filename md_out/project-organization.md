@@ -12,7 +12,7 @@ your environment.
 Projects are located in:
 
 ``` bash
-~/GitHubRepos
+cd ~/GitHubRepos
 ```
 
 To view the full list of repositories (including `dev` and `stable`
@@ -37,7 +37,7 @@ are available.
 
 | Repository                           | Versions     | Description                                                                                                                                                                                | Main Script                      | GitHub                                                                  |
 |--------------------------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|-------------------------------------------------------------------------|
-| **geoflow-tunaatlas**                | stable + dev | Prepares the **Global Tuna Atlas** datasets (Levels 0, 1, 2; effort and CPUE) and deploys them to Zenodo. Also contains Dockerfiles for downloading source datasets and running workflows. | `launching_jsons_creating_GTA.R` | [GitHub](https://github.com/firms-gta/tunaatlas_pie_map_shiny)          |
+| **geoflow-tunaatlas**                | stable + dev | Prepares the **Global Tuna Atlas** datasets (Levels 0, 1, 2; effort and CPUE) and deploys them to Zenodo. Also contains Dockerfiles for downloading source datasets and running workflows. | `launching_jsons_creating_GTA.R` | [GitHub](https://github.com/firms-gta/geoflow-tunaatlas)                |
 | **tunaatlas_pie_map_shiny**          | stable + dev | A Shiny app for **visualizing any dataset in CWP format** with various plots and maps.                                                                                                     | global.R                         | [GitHub](https://github.com/firms-gta/tunaatlas_pie_map_shiny)          |
 | **shiny_compare_tunaatlas_datasets** | dev only     | A Shiny app to **compare GTA datasets** from zenodo DOIs.                                                                                                                                  | global.R                         | [GitHub](https://github.com/firms-gta/shiny_compare_fisheries_datasets) |
 | **darwin_core_viewer**               | dev only     | A basic Shiny app **to visualize biodiversity data using the** **Darwin Core** data format. Provides maps and plots. Designed as a starting point for custom apps.                         | `app.R`                          | [GitHub](https://github.com/firms-gta/darwin_core_viewer)               |

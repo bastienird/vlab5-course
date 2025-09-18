@@ -2608,8 +2608,8 @@ vertical-align: -.125em;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#step-1-open-the-project-.rproj" id="toc-step-1-open-the-project-.rproj" class="nav-link active" data-scroll-target="#step-1-open-the-project-.rproj">Step 1 — Open the project (<code>.Rproj</code>)</a></li>
-  <li><a href="#step-2-restore-the-project-environment-with-renv" id="toc-step-2-restore-the-project-environment-with-renv" class="nav-link" data-scroll-target="#step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project environment with <code>renv</code></a></li>
+  <li><a href="#step-1---open-the-project-.rproj" id="toc-step-1---open-the-project-.rproj" class="nav-link active" data-scroll-target="#step-1---open-the-project-.rproj">Step 1 - Open the project (<code>.Rproj</code>)</a></li>
+  <li><a href="#step-2---restore-the-project-environment-with-renv" id="toc-step-2---restore-the-project-environment-with-renv" class="nav-link" data-scroll-target="#step-2---restore-the-project-environment-with-renv">Step 2 - Restore the Project environment with <code>renv</code></a></li>
   <li><a href="#example-with-geoflow-tunaatlas-project" id="toc-example-with-geoflow-tunaatlas-project" class="nav-link" data-scroll-target="#example-with-geoflow-tunaatlas-project">Example with geoflow-tunaatlas project</a>
   <ul class="collapse">
   <li><a href="#step-3-explore-the-.rmd-report" id="toc-step-3-explore-the-.rmd-report" class="nav-link" data-scroll-target="#step-3-explore-the-.rmd-report">Step 3: Explore the <code>.Rmd</code> report</a></li>
@@ -2646,8 +2646,8 @@ vertical-align: -.125em;
 
 <p>Before running any code in a repository, make sure you are <strong>inside the correct R project</strong> (<code>.Rproj</code>). This activates project-specific settings (including <code>renv</code>) and sets the working directory properly.</p>
 <hr>
-<section id="step-1-open-the-project-.rproj" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-open-the-project-.rproj">Step 1 — Open the project (<code>.Rproj</code>)</h2>
+<section id="step-1---open-the-project-.rproj" class="level2">
+<h2 class="anchored" data-anchor-id="step-1---open-the-project-.rproj">Step 1 - Open the project (<code>.Rproj</code>)</h2>
 <p>Open a project using one of these options:</p>
 <ul>
 <li><strong>From the Files pane</strong> (bottom-right): navigate to the repository folder and click the <code>.Rproj</code> file.</li>
@@ -2660,8 +2660,8 @@ vertical-align: -.125em;
 </blockquote>
 <hr>
 </section>
-<section id="step-2-restore-the-project-environment-with-renv" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-restore-the-project-environment-with-renv">Step 2 — Restore the Project environment with <code>renv</code></h2>
+<section id="step-2---restore-the-project-environment-with-renv" class="level2">
+<h2 class="anchored" data-anchor-id="step-2---restore-the-project-environment-with-renv">Step 2 - Restore the Project environment with <code>renv</code></h2>
 <p>The <a href="https://rstudio.github.io/renv/"><code>renv</code> package</a> manages <strong>project-specific R environments</strong> to guarantee <strong>reproducibility</strong>. It records exact package versions in <code>renv.lock</code> and restores them on any machine.</p>
 <p>Run this once per project:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2702,7 +2702,12 @@ vertical-align: -.125em;
 </section>
 <section id="other-repositories" class="level2">
 <h2 class="anchored" data-anchor-id="other-repositories">Other repositories</h2>
-<p>For all of the other repositories in this course: - <code>tunaatlas_pie_map_shiny</code> - <code>shiny_compare_tunaatlas_datasets</code> - <code>darwin_core_viewer</code> the usage is much simpler. You typically only need two commands to get started:</p>
+<p>For all of the other repositories in this course:</p>
+<ul>
+<li><code>tunaatlas_pie_map_shiny</code></li>
+<li><code>shiny_compare_tunaatlas_datasets</code></li>
+<li><code>darwin_core_viewer</code> the usage is much simpler. You typically only need two commands to get started:</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These repositories are Shiny apps that can be launched directly after restoring the environment.</p>

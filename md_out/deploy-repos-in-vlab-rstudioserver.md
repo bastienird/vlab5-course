@@ -19,11 +19,11 @@ repository:
 
 Key files include:
 
-- **07_vlab5_github_repositories.sh** — defines which GitHub
+- **07_vlab5_github_repositories.sh** - defines which GitHub
   repositories (stable/dev) are preloaded into the environment.  
   [View
   script](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/07_vlab5_github_repositories.sh)
-- **Dockerfile** — defines the RStudio server Docker image and how
+- **Dockerfile** - defines the RStudio server Docker image and how
   repositories and dependencies are installed.  
   [View
   Dockerfile](https://code-repo.d4science.org/gCubeSystem/rstudio-d4science/src/branch/fisheriesatlas-vlab5/Dockerfile)
@@ -58,7 +58,7 @@ Reference: <https://support.d4science.org/issues/29739>
 - Using **`~/blue-cloud-dataspace/`** is recommended: it is accessible
   across all users and all VLab instances (though slightly slower than
   local storage).  
-- `.Renviron.site` ensures the cache is **global to the image** — every
+- `.Renviron.site` ensures the cache is **global to the image** - every
   repository opened in RStudio will reuse this shared cache.
 
 Effectively:
@@ -97,7 +97,7 @@ here are the essentials to look at and adapt per VLab:
 
 ## 4) Summary
 
-- **Basic users**: You don’t need to worry about this — VLab5 is already
+- **Basic users**: You don’t need to worry about this - VLab5 is already
   configured.
 - **Advanced users**: You can adapt the Dockerfile and scripts for your
   own VLab deployment, preload specific repos, and configure a global
@@ -106,6 +106,6 @@ here are the essentials to look at and adapt per VLab:
   accessibility across all VLab instances.
 
 > ✅ If you are interested in deploying or customizing your own RStudio
-> environment with these settings, reach out — we can provide a
+> environment with these settings, reach out - we can provide a
 > step-by-step session on adapting the Dockerfile and repository scripts
 > for your use case.

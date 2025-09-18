@@ -8,7 +8,7 @@ correct R project** (`.Rproj`). This activates project-specific settings
 
 ------------------------------------------------------------------------
 
-## Step 1 — Open the project (`.Rproj`)
+## Step 1 - Open the project (`.Rproj`)
 
 Open a project using one of these options:
 
@@ -26,7 +26,7 @@ rstudioapi::openProject("~/GitHubRepos/geoflow-tunaatlas/stable")
 
 ------------------------------------------------------------------------
 
-## Step 2 — Restore the Project environment with `renv`
+## Step 2 - Restore the Project environment with `renv`
 
 The [`renv` package](https://rstudio.github.io/renv/) manages
 **project-specific R environments** to guarantee **reproducibility**. It
@@ -104,10 +104,12 @@ beyond the `.Rmd` example shown here.
 
 ## Other repositories
 
-For all of the other repositories in this course: -
-`tunaatlas_pie_map_shiny` - `shiny_compare_tunaatlas_datasets` -
-`darwin_core_viewer` the usage is much simpler. You typically only need
-two commands to get started:
+For all of the other repositories in this course:
+
+- `tunaatlas_pie_map_shiny`
+- `shiny_compare_tunaatlas_datasets`
+- `darwin_core_viewer` the usage is much simpler. You typically only
+  need two commands to get started:
 
 ``` r
 renv::restore()

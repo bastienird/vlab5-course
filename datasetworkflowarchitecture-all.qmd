@@ -48,7 +48,7 @@ Each dataset is produced using harmonized formats based on **CWP standards** and
 ## Effort Dataset (IRD Level 0)
 - **Time span:** 1950–2023  
 - **Content:** 23 different measurement units; no aggregation  
-- **Specificities:** Known duplicates/parallel series (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS)—end-users must harmonize for their analysis  
+- **Specificities:** Known duplicates/parallel series (e.g., ICCAT Hours.FAD vs Hours.FSC; WCPFC SETS vs DAYS)-end-users must harmonize for their analysis  
 - **DOI:** <https://doi.org/10.5281/zenodo.15496164>
 
 ---

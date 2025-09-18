@@ -38,4 +38,8 @@ mkdir -p light
 cp -r temp-light/light_build/* light/
 rm -rf temp-light
 
+python3 md_to_moodle_codeblocks.py \
+  --src md_out \
+  --dst md_moodle
+
 echo "✅ Done!"
