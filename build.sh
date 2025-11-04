@@ -8,4 +8,4 @@ dpkg -i /tmp/quarto.deb
 fi
 
 quarto render --to html
-cp -r _site/* repository/
+cp -r _site/* .
